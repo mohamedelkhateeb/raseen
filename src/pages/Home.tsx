@@ -23,7 +23,7 @@ const Home: React.FC = () => {
           )}
         </button>
       </div>
-      <div className="flex flex-col md:flex-row w-full">
+      <div className="flex flex-col lg:flex-row w-full">
         <Filters />
         <div className="w-full">
           <div
