@@ -1,4 +1,3 @@
-// pages/Home.tsx
 import Layout from "../components/Layout";
 import Card from "../components/Card";
 import Filters from "../components/Filters";
@@ -9,8 +8,6 @@ import ImgCard from "../assets/image-card.svg";
 import SearchBox from "../components/SearchBox";
 const Home: React.FC = () => {
   const [listStyle, setListStyle] = useState("grid");
-  console.log(listStyle);
-
   return (
     <Layout>
       <div className="flex justify-around mb-12 mx-4 mr-8">

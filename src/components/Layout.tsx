@@ -5,7 +5,7 @@ import HeroSection from "./HeroSection";
 import Footer from "./Footer";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <div className="w-fit">
       <TaskBar />
       <NavBar />
       <HeroSection />
