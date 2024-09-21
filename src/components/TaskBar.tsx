@@ -6,7 +6,7 @@ const TaskBar = () => {
   return (
     <div>
       <section>
-        <section className=" py-4 top-bar w-full gap-8 md:h-[60px] h-44 bg-[#004267] flex justify-around md:justify-between items-center px-8 lg:px-[84px] flex-col md:flex-row">
+        <section className=" py-4 top-bar w-full gap-4 y-5 md:h-[60px] h-44 bg-[#004267] flex justify-around md:justify-between items-center px-8 lg:px-[84px] flex-col md:flex-row">
           <div className="flex justify-center items-center w-[152px] h-[20px] gap-[15px]">
             <SocialMediaIcons />
           </div>
