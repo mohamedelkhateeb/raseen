@@ -63,7 +63,7 @@ const NavBar: React.FC = () => {
             احصل على عرض مجاناً
           </button>
         </div>
-        <div className="hidden">
+        <div className="">
           <AnchorTemporaryDrawer />
         </div>
       </div>
