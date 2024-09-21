@@ -5,7 +5,7 @@ import AnchorTemporaryDrawer from "./SideBard";
 const NavBar: React.FC = () => {
   return (
     <header className="bg-white shadow-md lg:px-16 p-4 pb-12">
-      <div className=" container gap-14 max-w-none flex justify-around items-center lg:flex-row flex-col lg:h-[134px] rounded-full bg-[#FAFAFA] ">
+      <div className=" container gap-14 max-w-none flex justify-around items-center lg:flex-row flex-col lg:h-[134px] rounded-full lg:bg-[#FAFAFA] ">
         <div className="flex items-center">
           <img src={Group} alt="Rseen Logo" />
         </div>
