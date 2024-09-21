@@ -41,7 +41,7 @@ export default function AnchorTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -54,7 +54,7 @@ export default function AnchorTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['All mail', 'Trash', 'Spam'].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>

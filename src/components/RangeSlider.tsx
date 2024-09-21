@@ -13,11 +13,17 @@ function valuetext(value: number) {
   return `${value}`;
 }
 
-const RangeSlider: React.FC<RangeSliderProps> = ({ label, defaultValue, min, max,mes }) => {
+const RangeSlider: React.FC<RangeSliderProps> = ({
+  label,
+  defaultValue,
+  min,
+  max,
+  mes,
+}) => {
   const [value, setValue] = React.useState<number[]>(defaultValue);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
-    console.log(newValue);
+    console.log(event);
 
     setValue(newValue as number[]);
   };
@@ -26,8 +32,14 @@ const RangeSlider: React.FC<RangeSliderProps> = ({ label, defaultValue, min, max
       <h3 className="text-lg font-bold mb-2">{label}</h3>
       <div className="flex justify-between mt-2">
         <div className="flex justify-between w-full">
-          <span className=" font-bold">{value[1]}{mes}</span>
-          <span className=" font-bold">{value[0]}{mes}</span>
+          <span className=" font-bold">
+            {value[1]}
+            {mes}
+          </span>
+          <span className=" font-bold">
+            {value[0]}
+            {mes}
+          </span>
         </div>
       </div>
       <Box sx={{ width: 300 }}>
