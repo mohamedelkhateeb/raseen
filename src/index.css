@@ -22,7 +22,7 @@ body {
 
 @media (max-width: 480px) {
   html {
-    font-size: 10px; /* base font size further reduced for very small screens */
+    font-size: 8px; /* base font size further reduced for very small screens */
   }
 }
 
