@@ -6,12 +6,12 @@ const TaskBar = () => {
   return (
     <div>
       <section>
-        <section className="top-bar w-full h-[60px] bg-[#004267] flex justify-between items-center px-[84px]">
+        <section className="top-bar w-full md:h-[60px] h-44 bg-[#004267] flex justify-around md:justify-between items-center px-8 lg:px-[84px] flex-col md:flex-row">
           <div className="flex justify-center items-center w-[152px] h-[20px] gap-[24px]">
             <SocialMediaIcons />
           </div>
-          <div className="flex justify-center items-center w-[458px] h-[20px]">
-            <p className="w-[408px] h-[26px] text-[14px] text-[#FFFFFF]">
+          <div className="flex gap-2 items-center h-[20px]">
+            <p className=" h-[26px] text-[14px] text-[#FFFFFF]">
               اكتشف كل ما يخص بيتك من تشطيب وتصميم الى ديكور .. مع رصين{" "}
             </p>
             <svg

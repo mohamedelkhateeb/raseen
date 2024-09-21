@@ -7,3 +7,39 @@ body {
   font-family: "Roboto","cairo", sans-serif;
   width: 100%
 }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 13px; /* base font size reduced for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 10px; /* base font size further reduced for very small screens */
+  }
+}
+
+body,
+html {
+  font-family: "Inter", "Helvetica Neue", Arial, "Segoe UI", Roboto, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  min-width: fit-content;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background-color: #f5f7fb;
+}
