@@ -34,10 +34,7 @@ const Sidebar: React.FC = () => {
         min={0}
         max={5}
       />
-      <Dropdown
-        label="المدينة"
-        options={["حدد المدينة", "الرياض", "جدة", "الدمام"]}
-      />
+      <Dropdown />
     </aside>
   );
 };
