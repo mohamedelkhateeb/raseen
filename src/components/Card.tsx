@@ -6,16 +6,33 @@ interface CardProps {
   title: string;
   description: string;
   imageUrl: string;
+  listStyle?: string;
 }
 
-const Card: React.FC<CardProps> = ({ title, description, imageUrl }) => {
+const Card: React.FC<CardProps> = ({
+  title,
+  description,
+  imageUrl,
+  listStyle,
+}) => {
   const [liked, setLiked] = useState(false);
   return (
-    <div className="bg-white w-full shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <img src={imageUrl} alt={title} className="w-full h-56 object-cover" />
-      <div className="p-4">
+    <div
+      className={`bg-white w-full shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300  ${
+        listStyle === "grid" ? "flex flex-col" : "flex flex-row h-[185px]"
+      }`}
+    >
+      {/* In grid, image is at the top; in list, image is next to text */}
+      <img
+        src={imageUrl}
+        alt={title}
+        className={`${
+          listStyle === "grid" ? "w-full h-56" : "w-1/3 h-auto"
+        } object-cover`}
+      />
+      <div className={`${listStyle === "grid" ? "p-4" : "p-4 w-2/3"}`}>
         <div className="flex justify-between items-center">
-          <h2 className=" text-xl font-medium mb-2 text-right">{title}</h2>
+          <h2 className="text-2xl font-bold mb-2 text-right">{title}</h2>
           {liked ? (
             <FaHeart
               size={30}
@@ -32,7 +49,7 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl }) => {
             />
           )}
         </div>
-        <p className="font-normal text-sm text-right w-2/3">{description}</p>
+        <p className="font-normal text-lg text-right max-w-[450px]">{description}</p>
       </div>
     </div>
   );

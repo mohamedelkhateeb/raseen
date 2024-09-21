@@ -32,31 +32,37 @@ const Home: React.FC = () => {
             }`}
           >
             <Card
+              listStyle = {listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
+              listStyle = {listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
+              listStyle = {listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
+              listStyle = {listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
+              listStyle = {listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
+              listStyle = {listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
