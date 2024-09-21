@@ -2,7 +2,7 @@ import image from "../assets/image.svg";
 const HeroSection: React.FC = () => {
   return (
     <div
-      className="relative bg-cover bg-center h-64 md:h-96"
+      className="relative bg-cover bg-center h-64 md:min-h-80"
       style={{ backgroundImage: `url(${image})` }}
     >
       <div className="absolute inset-0 bg-[#403D3FCC] bg-opacity-50 flex items-center justify-center">

@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   const [listStyle, setListStyle] = useState("grid");
   return (
     <Layout>
-      <div className="flex justify-around mb-12 mx-4 mr-8">
+      <div className="flex justify-around mb-8 mx-4 mr-8">
         <SearchBox />
         <button className="mr-auto ml-4 ">
           {listStyle === "grid" ? (
