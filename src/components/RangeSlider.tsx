@@ -53,6 +53,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
           color="primary"
           min={min}
           max={max}
+          step={10}
         />
       </Box>
     </div>

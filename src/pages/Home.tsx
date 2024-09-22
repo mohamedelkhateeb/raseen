@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         <SearchBox />
         <button className="mr-auto ml-4 ">
           {listStyle === "grid" ? (
-            <IoIosList size={45} onClick={() => setListStyle("list")} />
+            <IoIosList color="#5E5E5E" size={45} onClick={() => setListStyle("list")} />
           ) : (
             <HiOutlineSquares2X2
               size={45}

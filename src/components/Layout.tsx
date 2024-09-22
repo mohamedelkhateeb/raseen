@@ -9,8 +9,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <TaskBar />
       <NavBar />
       <HeroSection />
-      <div className="container mx-auto px-4 py-8 flex justify-between"></div>
-      <main className=" px-2">{children}</main>
+      <div className="container mx-auto px-4 py-5 flex justify-between"></div>
+      <main className=" px-6">{children}</main>
       <footer>
         <Footer />
       </footer>

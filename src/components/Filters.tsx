@@ -23,7 +23,7 @@ const Sidebar: React.FC = () => {
       <RangeSlider
         label="السعر"
         defaultValue={[100, 1000000.0]}
-        mes="$"
+        mes=""
         min={0}
         max={1000}
       />
