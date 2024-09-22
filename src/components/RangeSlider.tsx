@@ -8,6 +8,7 @@ interface RangeSliderProps {
   min: number;
   mes: string;
   max: number;
+  step: number;
 }
 function valuetext(value: number) {
   return `${value}`;
@@ -19,6 +20,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
   min,
   max,
   mes,
+  step,
 }) => {
   const [value, setValue] = React.useState<number[]>(defaultValue);
 
@@ -53,7 +55,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
           color="primary"
           min={min}
           max={max}
-          step={10}
+          step={step}
         />
       </Box>
     </div>

@@ -26,6 +26,7 @@ const Sidebar: React.FC = () => {
         mes=""
         min={0}
         max={1000}
+        step={10}
       />
       <RangeSlider
         label="التقييم"
@@ -33,6 +34,7 @@ const Sidebar: React.FC = () => {
         mes=""
         min={0}
         max={5}
+        step={1}
       />
       <Dropdown />
     </aside>
