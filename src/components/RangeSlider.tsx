@@ -33,7 +33,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
     <div className="mb-6">
       <h3 className="text-lg font-bold mb-2">{label}</h3>
       <div className="flex justify-between mt-2">
-        <div className="flex justify-between w-full">
+        <div className="flex justify-between w-[300px]">
           <span className=" font-bold">
             {value[1]}
             {mes}
@@ -46,7 +46,14 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
       </div>
       <Box sx={{ width: 300 }}>
         <Slider
-          sx={{ width: 420, color: "#004267", height: 8 }}
+          sx={{
+            width: {
+              xs: 300,
+              sm: 400,
+            },
+            color: "#004267",
+            height: 8,
+          }}
           getAriaLabel={() => "Temperature range"}
           value={value}
           onChange={handleChange}

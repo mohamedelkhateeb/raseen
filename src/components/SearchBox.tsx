@@ -9,7 +9,7 @@ const SearchBox: React.FC = () => {
       <input
         type="text"
         placeholder="ابحث هنا عن أي فئة"
-        className="lg:w-[418px] text-xl h-[60px] px-8 pr-12 border rounded-full bg-[#FBFBFB] focus:outline-none focus:ring-2 focus:ring-primary"
+        className="lg:w-[418px] w-96 text-xl h-[60px] px-8 pr-14 lg:pr-12 border rounded-full bg-[#FBFBFB] focus:outline-none focus:ring-2 focus:ring-primary"
       />
     </div>
   );

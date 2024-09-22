@@ -18,7 +18,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({
   return (
     <div className="mb-6">
       <h3 className="text-lg font-bold mb-5">{title}</h3>
-      <div className="gap-6 grid w-[418px] grid-cols-2">
+      <div className="gap-6 grid sm:w-[418px] grid-cols-2">
         {categories.map((category, index) => (
           <button
             onClick={() => handleCategoryClick(index)}
