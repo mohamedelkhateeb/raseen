@@ -14,11 +14,16 @@ const Home: React.FC = () => {
         <SearchBox />
         <button className="mr-auto ml-4 ">
           {listStyle === "grid" ? (
-            <IoIosList color="#5E5E5E" size={45} onClick={() => setListStyle("list")} />
+            <IoIosList
+              color="#5E5E5E"
+              size={45}
+              onClick={() => setListStyle("list")}
+            />
           ) : (
             <HiOutlineSquares2X2
               size={45}
               onClick={() => setListStyle("grid")}
+              color="#5E5E5E"
             />
           )}
         </button>
@@ -32,37 +37,37 @@ const Home: React.FC = () => {
             }`}
           >
             <Card
-              listStyle = {listStyle}
+              listStyle={listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
-              listStyle = {listStyle}
+              listStyle={listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
-              listStyle = {listStyle}
+              listStyle={listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
-              listStyle = {listStyle}
+              listStyle={listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
-              listStyle = {listStyle}
+              listStyle={listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}
             />
             <Card
-              listStyle = {listStyle}
+              listStyle={listStyle}
               title="شركة التميز للديكور"
               description="خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي"
               imageUrl={ImgCard}

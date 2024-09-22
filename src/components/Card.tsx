@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <div
       className={`bg-white w-full shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300  ${
-        listStyle === "grid" ? "flex flex-col" : "flex flex-row h-[125px]"
+        listStyle === "grid" ? "flex flex-col" : "flex flex-row h-[130px]"
       }`}
     >
       {/* In grid, image is at the top; in list, image is next to text */}
@@ -32,7 +32,7 @@ const Card: React.FC<CardProps> = ({
       />
       <div className={`${listStyle === "grid" ? "p-4" : "p-4 w-2/3"}`}>
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold mb-2 text-right">{title}</h2>
+          <h2 className="text-2xl font-medium mb-2 text-right">{title}</h2>
           {liked ? (
             <FaHeart
               size={30}
