@@ -9,7 +9,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { TbListDetails } from "react-icons/tb";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -37,64 +37,57 @@ export default function AnchorTemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 270 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ul className="flex justify-center items-center flex-col lg:gap-8 gap-4 ">
-          <li className="text-xl">
+        <ul className="flex justify-center flex-col px-6 lg:gap-8 gap-4 my-6">
+          <li className="flex justify-between text-xl hover:bg-gray-200 px-5 py-3 rounded-full cursor-pointer">
             <a href="#" className="  text-secondary font-[600]">
               الرئيسية
             </a>
+            <IoIosArrowBack />
           </li>
-          <li className="text-xl">
-            <a
-              href="#"
-              className="  hover:text-secondary text-[#000000] font-[600]"
-            >
-              إعرفني
-            </a>
-          </li>
-          <li className="flex gap-1 text-xl items-center hover:text-secondary">
-            <a
-              href="#"
-              className="  hover:text-secondary text-[#000000] font-[600]"
-            >
+          <li className="flex justify-between text-xl hover:bg-gray-200 px-5 py-3 rounded-full cursor-pointer">
+            <a href="#" className="  text-[#000000] font-[600]">
               المكاتب الهندسية
             </a>
-            <IoIosArrowDown />
+            <IoIosArrowBack />
           </li>
-          <li className="flex gap-1 text-xl items-center hover:text-secondary">
-            <a
-              href="#"
-              className=" hover:text-secondary  text-[#000000] font-[600]"
-            >
+          <li className="flex justify-between text-xl hover:bg-gray-200 px-5 py-3 rounded-full cursor-pointer">
+            <a href="#" className="  text-[#000000] font-[600]">
               المقاولات والديكور
             </a>
-            <IoIosArrowDown />
+            <IoIosArrowBack />
           </li>
-          <li className="text-xl">
-            <a
-              href="#"
-              className="  hover:text-secondary text-[#000000] font-[600]"
-            >
+          <li className="flex justify-between text-xl hover:bg-gray-200 px-5 py-3 rounded-full cursor-pointer">
+            <a href="#" className="  text-[#000000] font-[600]">
               المقالات
             </a>
+            <IoIosArrowBack />
           </li>
-          <li className="text-xl">
-            <a
-              href="#"
-              className="  hover:text-secondary text-[#000000] font-[600]"
-            >
+          <li className="flex justify-between text-xl hover:bg-gray-200 px-5 py-3 rounded-full cursor-pointer">
+            <a href="#" className="  text-[#000000] font-[600]">
               تواصل معنا
             </a>
+            <IoIosArrowBack />
+          </li>
+          <li className="flex justify-between text-xl hover:bg-gray-200 px-5 py-3 rounded-full cursor-pointer">
+            <a href="#" className="  text-[#000000] font-[600]">
+              إعرفني
+            </a>
+            <IoIosArrowBack />
           </li>
         </ul>
-        
+        <Divider />
+        <div className="flex justify-center mt-5">
+          <button className="min-w-[200px] bg-[#004267] text-white px-6 py-6 rounded-full font-[600]">
+            احصل على عرض مجاناً
+          </button>
+        </div>
       </List>
-      <Divider />
     </Box>
   );
 
