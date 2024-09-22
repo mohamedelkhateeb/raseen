@@ -3,9 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  width: 100%;
-}
 * {
   box-sizing: border-box;
   padding: 0;
