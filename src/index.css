@@ -5,28 +5,28 @@
 body {
   width: 100%;
 }
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  user-select: none;
+  /* Consider removing user-select: none unless necessary */
 }
 
 @media (max-width: 768px) {
   html {
-    font-size: 13px; /* base font size reduced for smaller screens */
+    font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
   html {
-    font-size: 10px; /* base font size further reduced for very small screens */
+    font-size: 10px;
   }
 }
-body,
-html {
-  /* overflow: auto; */
-  min-width: fit-content;
+
+body, html {
+  min-width: 100%; /* Ensure body and html are responsive */
   margin: 0;
   border: 0;
   padding: 0;
@@ -44,5 +44,5 @@ html {
 
 ::-webkit-scrollbar-track {
   background: #ddd;
-  border-radius: 20px;
+  border-radius: 20px;
 }
