@@ -24,7 +24,8 @@
 body,
 html {
   overflow: auto;
-  min-width: fit-content;
+  min-width:min-content;
+  max-width: max-content;
   margin: 0;
   border: 0;
   padding: 0;
