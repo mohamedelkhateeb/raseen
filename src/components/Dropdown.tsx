@@ -15,7 +15,7 @@ export default function BasicSelect() {
   return (
     <div dir="rtl">
       <h3 className="text-2xl font-bold mb-2">المدينة</h3>
-      <Box sx={{ minWidth: 120 }}>
+      <Box>
         <FormControl fullWidth>
           <Select
             displayEmpty

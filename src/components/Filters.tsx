@@ -5,7 +5,7 @@ import Dropdown from "./Dropdown";
 
 const Sidebar: React.FC = () => {
   return (
-    <aside className="w-[500px] p-3 mx-auto">
+    <aside className="lg:w-[500px] p-3 mx-auto">
       <CategorySection
         title="القسم الرئيسي"
         categories={["المكاتب الهندسية", "مقاولات وديكور"]}
