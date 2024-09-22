@@ -33,7 +33,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
     <div className="mb-6">
       <h3 className="text-lg font-bold mb-2">{label}</h3>
       <div className="flex justify-between mt-2">
-        <div className="flex justify-between w-[300px]">
+        <div className="flex justify-between w-[400px] xs:mr-4">
           <span className=" font-bold">
             {value[1]}
             {mes}
@@ -48,8 +48,8 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
         <Slider
           sx={{
             width: {
-              xs: 300,
               sm: 400,
+              xs: 350,
             },
             color: "#004267",
             height: 8,
