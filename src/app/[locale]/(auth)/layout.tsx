@@ -1,4 +1,3 @@
-export const dynmic = 'force-dynamic';
 import SigninCover from '../../../../public/sigin-pic.svg';
 import SigninLogo from '../../../../public/rseen 2.svg';
 import Image from 'next/image';
