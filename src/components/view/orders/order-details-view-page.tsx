@@ -15,9 +15,6 @@ const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
     { title: 'طلباتي', link: '/orders' },
     { title: 'تفاصيل الطلب', link: '' },
   ];
-
-  // console.log(order?.offer_accepted);
-
   return (
     <div className="flex flex-col gap-8 px-10">
       <Breadcrumbs items={items} />
@@ -29,7 +26,7 @@ const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
         icon={<img src={order?.category?.img} className="mx-5 text-[30px] lg:text-[50px]" color="#004267" />}
         showStatus={false}
       >
-        {order?.status.id == 3 && <RateForm companyId={order?.offer_accepted?.company?.id} />}
+        {order?.status.id == 3 && <RateForm companyId={order?.offer_accepted?.company?.id} img={order?.offer_accepted?.company?.img} />}
         {order?.status.id == 2 && <FinishOrder offerId={order?.id} />}
       </OrderCard>
       <OrderDetailsCard

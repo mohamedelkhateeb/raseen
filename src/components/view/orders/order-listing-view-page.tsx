@@ -4,11 +4,6 @@ import { BsBuildingCheck } from 'react-icons/bs';
 import { Link } from '@/i18n/routing';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import Image from 'next/image';
-import ImageCard0 from '../../../../public/home-page/image (1).svg';
-import ImageCard1 from '../../../../public/home-page/image (2).svg';
-import ImageCard2 from '../../../../public/home-page/image (3).svg';
-import ImageCard3 from '../../../../public/home-page/image (4).svg';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { Breadcrumbs } from '@/components/common/breadcrumd';
 import { TbSmartHome } from 'react-icons/tb';
@@ -54,12 +49,12 @@ const OrderListingViewPage = ({ orders }: { orders: ReadOrder[] }) => {
           className="flex w-full items-center justify-center"
         >
           <CarouselContent className="xl:gap-14">
-            {[ImageCard0, ImageCard1, ImageCard2, ImageCard3]?.map((v, index) => (
+            {['1', '1', '1', '1']?.map((v, index) => (
               <Link href={'/companies'} key={index} className="xl:w-[400px]">
                 <CarouselItem key={index} className="basis-1/3 lg:basis-1/4">
                   <Card className="border-0 shadow-none">
                     <CardContent className="flex aspect-square flex-col items-center p-0">
-                      <Image className="h-full w-full object-fill" src={v} alt="" />
+                      <img className="h-full w-full object-fill" src={v} alt="" />
                       <h1 className="my-5 font-bold xl:text-2xl">المقاولات والديكور</h1>
                     </CardContent>
                   </Card>

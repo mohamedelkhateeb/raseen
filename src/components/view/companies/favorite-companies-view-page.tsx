@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from './card';
-import ImgCard from '../../../../public/image-card.svg';
 import { TbSmartHome } from 'react-icons/tb';
 import { Breadcrumbs } from '@/components/common/breadcrumd';
 import { getFavCompanies } from '@/services/companyService';

@@ -1,6 +1,5 @@
 import React from 'react';
 import { PictureDialog } from '../companies/picture-dialog';
-import ComWo from '../../../../public/catt.svg';
 import { statusColorMap } from './cards/order-card';
 import OrderButton from '@/components/common/order-button';
 

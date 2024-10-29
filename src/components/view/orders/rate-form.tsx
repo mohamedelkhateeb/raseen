@@ -1,17 +1,15 @@
 'use client';
 import React from 'react';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import Popup from '@/components/common/popup';
-import Image from 'next/image';
 import RatingStars from '@/components/common/rating-stars';
 import { Textarea } from '@/components/ui/textarea';
-import com from '../../../../public/comoff.svg';
 import { cn } from '@/lib/utils';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { DialogClose } from '@/components/ui/dialog';
 import { rateCompany } from '@/services/companyService';
 import toast from 'react-hot-toast';
-const RateForm = ({ companyId }: { companyId?: number }) => {
+const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
   const handleRatingChange = async (formData: FormData) => {
     console.log(Object.fromEntries(formData));
     const res = await rateCompany(formData);
@@ -35,7 +33,7 @@ const RateForm = ({ companyId }: { companyId?: number }) => {
       description=""
     >
       <form action={handleRatingChange} className="flex flex-col items-center gap-6 py-7">
-        <Image src={com} alt="company" />
+        <img src={img} alt="company" />
         <h1 className="text-2xl font-semibold">شركة المتميز للديكور</h1>
         <p className="text-2xl text-gray-600">ما مستوى رضاك عن التعامل مع الشركة؟</p>
         <RatingStars style="w-12 h-12" />
