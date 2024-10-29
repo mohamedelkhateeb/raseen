@@ -1,6 +1,5 @@
 import { buttonVariants } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import Profile from '../../../../../public/profile.svg';
 import { CiEdit } from 'react-icons/ci';
 import { FaHeart } from 'react-icons/fa6';
 import { LuLogOut } from 'react-icons/lu';
@@ -16,11 +15,11 @@ export function UserMenu() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <img src={session?.user?.img || Profile} alt="Profile" className="lg:w-30 h-24 w-24 cursor-pointer rounded-full" width={200} height={200} />
+        <img src={session?.user?.img} alt="Profile" className="lg:w-30 h-24 w-24 cursor-pointer rounded-full" width={200} height={200} />
       </PopoverTrigger>
       <PopoverContent className="w-96 p-8 shadow-lg" side="bottom" sideOffset={20} align="end">
         <div className="flex items-center gap-4">
-          <img src={session?.user?.img || Profile} alt="Profile" className="lg:w-30 h-24 w-24 cursor-pointer rounded-full" width={200} height={200} />
+          <img src={session?.user?.img} alt="Profile" className="lg:w-30 h-24 w-24 cursor-pointer rounded-full" width={200} height={200} />
           <div className="flex flex-col gap-2">
             <h1 className="font-semibold">{session?.user?.name}</h1>
             <p className="text-xs text-gray-700">{session?.user?.email}</p>

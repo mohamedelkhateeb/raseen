@@ -1,7 +1,7 @@
 import { direction } from '@/utils/helpers';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
-import ImageCard5 from '../../../../public/home-page/image (6).svg';
+import ImageCard5 from '../../../../public/card.svg';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { Link } from '@/i18n/routing';
 import Banners from './sections/banners';
@@ -13,7 +13,7 @@ import Articals from './sections/articals';
 
 export default async function HomeView() {
   const t = await getTranslations('HomePage');
-  const data = await getHomeContent();  
+  const data = await getHomeContent();
   return (
     <div dir={await direction()}>
       <Banners banners={data?.banners || []} />
