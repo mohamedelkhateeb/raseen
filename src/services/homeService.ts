@@ -5,6 +5,7 @@ export const getHomeContent = async () => {
   const locale = await getLocale();
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/home-page`, {
+      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language': locale,
@@ -26,7 +27,7 @@ export const getHomeContent = async () => {
 };
 export const getSubCategories = async (catNum: string) => {
   try {
-    const response = await Fetcher(`sub-categoreis/${catNum == "0" ? '' : catNum}`);
+    const response = await Fetcher(`sub-categoreis/${catNum == '0' ? '' : catNum}`);
     return response?.data;
   } catch (error) {
     console.error(error);

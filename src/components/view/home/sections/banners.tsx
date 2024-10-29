@@ -16,7 +16,7 @@ const Banners = ({ banners }: { banners: Banner[] }) => {
         <CarouselItem key={index}>
           <section dir="rtl" className="mt-10 flex w-full flex-col justify-between gap-10 lg:flex-row">
             <div className="flex flex-col justify-center gap-8">
-              <h1 className={cn('w-full text-2xl font-bold leading-normal md:text-3xl xl:w-[728px] xl:text-5xl xl:leading-normal')}>
+              <h1 className={cn('w-full text-2xl font-semibold leading-normal md:text-3xl xl:w-[728px] xl:text-5xl xl:leading-normal')}>
                 {banner?.title}
               </h1>
               <p className={cn('w-full text-lg font-semibold leading-7 md:w-[500px] xl:w-[710px] xl:text-3xl')}>{banner?.desc}</p>

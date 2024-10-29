@@ -11,7 +11,7 @@ import { LuLayoutDashboard } from 'react-icons/lu';
 const Articals = ({ articals }: { articals: Article[] }) => {
   const plugin = React.useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
   return (
-    <section id="articles" className="my-14 flex flex-col items-center justify-center gap-16 lg:mt-24 lg:gap-32">
+    <section id="articles" className="my-14 flex flex-col items-center justify-center gap-16 lg:mt-8 lg:gap-16">
       <Title content="ابتكر واجهات ملهمة وتجارب لمنزلك" />
       <Carousel
         plugins={[plugin.current]}
@@ -19,10 +19,10 @@ const Articals = ({ articals }: { articals: Article[] }) => {
           align: 'start',
           loop: true,
         }}
-        className="m-auto min-w-[95%] px-10 lg:p-0 "
+        className="m-auto min-w-[95%] px-10 lg:p-0"
         dir="ltr"
       >
-        <CarouselContent className=" gap-4">
+        <CarouselContent className="gap-4">
           {articals?.map((a, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
               <div className="flex flex-col justify-center rounded-lg border bg-card text-card-foreground shadow-sm lg:max-h-[723px] lg:max-w-[560px]">

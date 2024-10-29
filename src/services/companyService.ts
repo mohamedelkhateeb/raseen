@@ -39,7 +39,6 @@ export const getFavCompanies = async () => {
 export const getCompany = async (id: string) => {
   try {
     const response = await Fetcher(`company-details/${id}`);
-    console.log(response);
     return response?.data;
   } catch (error) {
     console.error(error);

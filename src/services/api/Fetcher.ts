@@ -8,7 +8,7 @@ interface FetchOptions extends RequestInit {
   headers?: Record<string, string>;
 }
 
-const Fetcher = async <T>(endpoint: string, opt: FetchOptions = {}) => {
+const Fetcher = async <T>(endpoint: string, opt: FetchOptions = { cache: 'no-store' }) => {
   try {
     const session = await getServerSession(options);
     const TOKEN = session?.token;
@@ -20,7 +20,7 @@ const Fetcher = async <T>(endpoint: string, opt: FetchOptions = {}) => {
     if (TOKEN) {
       headers['Authorization'] = `Bearer ${TOKEN}`;
     }
-    const url = `${API_BASE_URL}api/${endpoint}`;    
+    const url = `${API_BASE_URL}api/${endpoint}`;
     const response = await fetch(url, {
       ...opt,
       headers,
@@ -32,7 +32,7 @@ const Fetcher = async <T>(endpoint: string, opt: FetchOptions = {}) => {
         statusText: response.statusText,
         data: null,
         success: response.ok,
-        url:url
+        url: url,
       };
     });
     return data;

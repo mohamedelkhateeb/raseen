@@ -60,7 +60,7 @@ export const getOrder = async (id: string) => {
     const response = await Fetcher(`order-details/${id}`, {
       next: { tags: ['order'] },
     });
-    return response
+    return response;
   } catch (error) {
     console.error(error);
   }

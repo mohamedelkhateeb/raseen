@@ -14,7 +14,7 @@ const Categories = async ({ categories }: { categories: Category[] }) => {
   const catNum = searchParamsCache.get('category');
   const data: Category[] = await getSubCategories(catNum);
   return (
-    <section className="my-10 flex flex-col items-center justify-center gap-10 p-4 px-8 lg:mt-24">
+    <section className="my-10 flex flex-col items-center justify-center gap-10 p-4 px-8 lg:mt-8">
       <Title content={'خدمات رصين'} />
       <div className="grid grid-cols-3 gap-5">
         <CategorySection selectedStyle="bg-[#004267] text-white transition" categories={categories} />

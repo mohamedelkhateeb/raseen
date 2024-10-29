@@ -7,7 +7,7 @@ import React from 'react';
 
 const Partners = ({ partners = [] }: { partners: Partner[] }) => {
   return (
-    <section className="my-10 flex flex-col items-center justify-center gap-10 lg:mt-24">
+    <section className="my-10 flex flex-col items-center justify-center lg:mt-8">
       <Title content="شركاء النجاح" />
       <CarouselSize showArrows={false}>
         {partners?.map((partner, index) => (
