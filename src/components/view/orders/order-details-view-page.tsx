@@ -1,0 +1,66 @@
+import { Breadcrumbs } from '@/components/common/breadcrumd';
+import React from 'react';
+import { TbSmartHome } from 'react-icons/tb';
+import OrderCard, { statusColorMap } from './cards/order-card';
+import OrderDetailsCard from './order-details-card';
+import Offers from './offers';
+import OfferCard from './cards/offer-card';
+import RateForm from './rate-form';
+import { TOrder } from '@/types/models/order.model';
+import FinishOrder from './finish-order';
+
+const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
+  const items = [
+    { title: <TbSmartHome size={30} color="#EA8D09" />, link: '/' },
+    { title: 'طلباتي', link: '/orders' },
+    { title: 'تفاصيل الطلب', link: '' },
+  ];
+
+  // console.log(order?.offer_accepted);
+
+  return (
+    <div className="flex flex-col gap-8 px-10">
+      <Breadcrumbs items={items} />
+      <OrderCard
+        label={order?.status.name}
+        id={order?.code}
+        title={order?.category?.name}
+        status={order.status.id as keyof typeof statusColorMap}
+        icon={<img src={order?.category?.img} className="mx-5 text-[30px] lg:text-[50px]" color="#004267" />}
+        showStatus={false}
+      >
+        {order?.status.id == 3 && <RateForm companyId={order?.offer_accepted?.company?.id} />}
+        {order?.status.id == 2 && <FinishOrder offerId={order?.id} />}
+      </OrderCard>
+      <OrderDetailsCard
+        subCategory={order?.sub_categories}
+        city={order.city?.name}
+        desc={order?.note}
+        images={order?.images}
+        status={order.status.id as keyof typeof statusColorMap}
+        label={order?.status.name}
+      />
+      <div className="flex flex-col gap-8">
+        {order?.offer_accepted && (
+          <>
+            <h1 className="text-xl font-bold">الشركة المقبولة</h1>
+            <OfferCard
+              isAccepted={order?.status.id == 3 || order?.status.id == 2 ? true : false}
+              companyImage={order?.offer_accepted?.company?.img}
+              companyName={order?.offer_accepted?.company?.name}
+              stars={order?.offer_accepted?.company?.avg_rates}
+              description={order?.offer_accepted?.note}
+              price={order?.offer_accepted?.price}
+            />
+          </>
+        )}
+      </div>
+      <Offers
+        offers={order?.offers ? order?.offers : order?.offers_rejected}
+        isAccepted={order?.status?.id == 3 || order?.status?.id == 2 ? true : false}
+      />
+    </div>
+  );
+};
+
+export default OrderDetailsViewPage;

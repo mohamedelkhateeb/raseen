@@ -1,0 +1,29 @@
+{
+  "lang": "en",
+  "HomePage": {
+    "followUs": "Follow us on:",
+    "slogen": "Discover everything related to your home, from finishing and design to decoration... with Rasian",
+    "signin": "Sign in",
+    "NavigationMenu": {
+      "home": "Home",
+      "about": "About Me",
+      "services": {
+        "value": "Engineering Offices",
+        "sub": {
+          "maps": "Plans",
+          "desgins": "Designs",
+          "externalFacadeDesigns": "External Facade Designs",
+          "completeDesign": "Complete Design Services",
+          "plans": "Execution Plans",
+          "amountCount": "Quantity Calculation"
+        }
+      },
+      "contracting": "Contracting and Decoration",
+      "articles": "Articles",
+      "contact": "Contact Us"
+    },
+    "homeTitle": "",
+    "getOffer": "Get a Free Offer",
+    "content": "Provides you with everything you need to design your perfect home. Enjoy advanced 2D and 3D design studios, where you can meticulously plan and design every interior corner."
+  }
+}
