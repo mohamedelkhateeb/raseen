@@ -25,17 +25,17 @@ const Footer: React.FC = () => {
             <h3 className="mb-4 text-lg font-bold">روابط هامة</h3>
             <ul>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
+                <Link href="/" className="hover:text-primary">
                   الرئيسية
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
+                <Link href="/companies" className="hover:text-primary">
                   الشركات
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
+                <Link href="/#articles" className="hover:text-primary">
                   المقالات
                 </Link>
               </li>

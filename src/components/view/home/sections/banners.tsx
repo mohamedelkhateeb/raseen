@@ -14,7 +14,7 @@ const Banners = ({ banners }: { banners: Banner[] }) => {
     <CarouselSize showArrows={false} delay={10000}>
       {banners?.map((banner, index) => (
         <CarouselItem key={index}>
-          <section dir="rtl" className="mt-10 flex w-full flex-col justify-between gap-10 lg:flex-row">
+          <section dir="rtl" className="flex w-full flex-col justify-between gap-10 lg:flex-row">
             <div className="flex flex-col justify-center gap-8">
               <h1 className={cn('w-full text-2xl font-semibold leading-normal md:text-3xl xl:w-[728px] xl:text-5xl xl:leading-normal')}>
                 {banner?.title}

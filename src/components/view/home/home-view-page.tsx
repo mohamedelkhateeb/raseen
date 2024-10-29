@@ -15,7 +15,7 @@ export default async function HomeView() {
   const t = await getTranslations('HomePage');
   const data = await getHomeContent();
   return (
-    <div dir={await direction()}>
+    <div dir={await direction()} className='flex flex-col justify-center gap-10'>
       <Banners banners={data?.banners || []} />
       <Categories categories={data?.categories || []} />
       <section className="flex h-fit flex-col items-center justify-center gap-14 bg-[#004267] py-12">

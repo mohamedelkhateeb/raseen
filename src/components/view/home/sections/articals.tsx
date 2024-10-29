@@ -11,7 +11,7 @@ import { LuLayoutDashboard } from 'react-icons/lu';
 const Articals = ({ articals }: { articals: Article[] }) => {
   const plugin = React.useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
   return (
-    <section id="articles" className="my-14 flex flex-col items-center justify-center gap-16 lg:mt-8 lg:gap-16">
+    <section id="articles" className="flex flex-col items-center justify-center gap-5 lg:mt-8 lg:gap-16 mb-7">
       <Title content="ابتكر واجهات ملهمة وتجارب لمنزلك" />
       <Carousel
         plugins={[plugin.current]}

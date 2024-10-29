@@ -7,7 +7,7 @@ import { BiSolidQuoteAltLeft } from 'react-icons/bi';
 
 const Rates = ({ rates = [] }: { rates: Rate[] }) => {
   return (
-    <section id="articles" className="my-8 flex flex-col items-center justify-center gap-16  lg:gap-16">
+    <section id="articles" className="flex flex-col items-center justify-center gap-5 lg:gap-16">
       <Title content="ماذا قالوا عن رصين" />
       <CarouselSize>
         {rates?.map((rate, index) => (
