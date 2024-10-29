@@ -1,3 +1,4 @@
+export const dynmic = 'force-dynamic';
 import Footer from '@/components/layouts/Footer';
 import Header from '@/components/layouts/Header';
 

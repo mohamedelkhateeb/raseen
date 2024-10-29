@@ -51,7 +51,7 @@ export default function NavigationMenuBar() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/about" className={itemStyle}>
+            <Link href="/" className={itemStyle}>
               {t('NavigationMenu.about')}
             </Link>
           </NavigationMenuItem>
