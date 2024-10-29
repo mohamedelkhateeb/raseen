@@ -5,15 +5,22 @@ import Fetcher from './api/Fetcher';
 import { revalidateTag } from 'next/cache';
 
 export const getCompanies = async (filter: any, search?: string | null) => {
+  const selectedIds: string[] = filter?.sub_categories ? filter?.sub_categories.split(',') : [];
+
+  console.log('selectedIds', filter?.sub_categories);
+  
   const formData = new FormData();
   if (search) formData.append('search', search);
   formData.append('category_id', filter?.category_id || 1);
-  formData.append('sub_categories', JSON.stringify(filter?.sub_categories || [{ id: 1 }]));
+  formData.append('sub_categories', JSON.stringify(selectedIds.map((id) => ({ id }))));
   formData.append('city_id', filter?.city_id || 1);
   formData.append('min_price', filter?.min_price || 0);
   formData.append('min_avg_rates', filter?.max_price || 0);
   formData.append('max_price', filter?.min_avg_rates || 0);
   formData.append('max_price', filter?.max_avg_rates || 0);
+
+  console.log('formData', Object.fromEntries(formData));
+
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/${search ? 'search' : 'filter'}`, {
       method: 'POST',

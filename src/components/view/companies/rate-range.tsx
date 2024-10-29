@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Slider } from '@/components/ui/slider';
 
-export function RateRange({ mes, label, defaultValue, max, min, step, dataFilter, setDataFilter }: any) {
+export function RateRange({ mes, label, defaultValue, max, min, step, minRate, maxRate, setMinRate, setMaxRate }: any) {
   return (
     <div className="mb-6">
       <h3 className="mb-4 text-lg font-bold">{label}</h3>
@@ -10,19 +10,19 @@ export function RateRange({ mes, label, defaultValue, max, min, step, dataFilter
           <input
             type="number"
             className="w-32 rounded-xl border p-2 text-center font-bold lg:w-28 lg:px-2"
-            onChange={(e) => setDataFilter({ ...dataFilter, max_avg_rates: e.target.value.toString() })}
+            onChange={(e) => setMinRate(e.target.value.toString())}
             maxLength={1}
             minLength={1}
             max={5}
-            value={dataFilter.min_avg_rates}
+            value={minRate}
           />
           <input
             type="number"
             className="w-32 rounded-xl border p-2 text-center font-bold lg:w-28 lg:px-2"
-            onChange={(e) => setDataFilter({ ...dataFilter, min_avg_rates: e.target.value.toString() })}
+            onChange={(e) => setMaxRate(e.target.value.toString())}
             maxLength={1}
             minLength={1}
-            value={dataFilter.max_avg_rates}
+            value={maxRate}
           />
         </div>
       </div>
@@ -31,7 +31,10 @@ export function RateRange({ mes, label, defaultValue, max, min, step, dataFilter
         max={max}
         defaultValue={defaultValue}
         step={step}
-        onValueChange={(value: any) => setDataFilter({ ...dataFilter, max_avg_rates: value[0], min_avg_rates: value[1] })}
+        onValueChange={(value: any) => {
+          setMinRate(value[0].toString());
+          setMaxRate(value[1].toString());
+        }}
         color="red"
         className={cn('w-[100%] text-darkBlue')}
       />

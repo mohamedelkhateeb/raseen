@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Slider } from '@/components/ui/slider';
 
-export function PriceRange({ mes, label, defaultValue, max, min, step, dataFilter, setDataFilter }: any) {
+export function PriceRange({ label, defaultValue, max, min, step, maxPrice, minPrice, setMaxPrice, setMinPrice }: any) {
   return (
     <div className="mb-6">
       <h3 className="mb-4 text-lg font-bold">{label}</h3>
@@ -10,30 +10,32 @@ export function PriceRange({ mes, label, defaultValue, max, min, step, dataFilte
           <input
             type="number"
             className="w-32 rounded-xl border p-2 text-center font-bold lg:w-28 lg:px-2"
-            onChange={(e) => setDataFilter({ ...dataFilter, max_price: e.target.value.toString() })}
+            onChange={(e) => setMaxPrice(e.target.value.toString())}
             min={min}
             max={max}
             step={step}
-            value={dataFilter?.max_price}
+            value={maxPrice}
           />
           <input
             type="number"
             className="w-32 rounded-xl border p-2 text-center font-bold lg:w-28 lg:px-2"
-            onChange={(e) => setDataFilter({ ...dataFilter, min_price: e.target.value.toString() })}
+            onChange={(e) => setMinPrice(e.target.value.toString())}
             min={min}
             max={max}
             step={step}
-            value={dataFilter?.min_price}
+            value={minPrice}
           />
         </div>
       </div>
       <Slider
-        value={[dataFilter.min_price || defaultValue[0], dataFilter.max_price || defaultValue[1]]}
         min={min}
         max={max}
         defaultValue={defaultValue}
         step={step}
-        onValueChange={(value: any) => setDataFilter({ ...dataFilter, min_price: value[0], max_price: value[1] })}
+        onValueChange={(value: any) => {
+          setMinPrice(value[0].toString());
+          setMaxPrice(value[1].toString());
+        }}
         color="red"
         className={cn('w-[100%] text-darkBlue')}
       />

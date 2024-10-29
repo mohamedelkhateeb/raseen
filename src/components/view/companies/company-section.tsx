@@ -15,11 +15,10 @@ const CategorySection = ({ title, categories, dataFilter, setDataFilter }: Categ
       <div className="grid grid-cols-2 gap-6 sm:w-[418px]">
         {categories?.map((c, index) => (
           <button
-            onClick={() => setDataFilter({ ...dataFilter, category_id: c.id })}
+            onClick={() => setDataFilter(c.id)}
             key={index}
             className={
-              'rounded border bg-[Stroke] px-4 py-4 font-medium transition' +
-              (index + 1 == dataFilter.category_id ? ' border-primary bg-[#00426708]' : '')
+              'rounded border bg-[Stroke] px-4 py-4 font-medium transition' + (index + 1 == dataFilter ? ' border-primary bg-[#00426708]' : '')
             }
           >
             {c.name}

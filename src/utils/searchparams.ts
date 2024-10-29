@@ -1,16 +1,14 @@
-import { filterSchema } from '@/types/schema/order';
 import { createSearchParamsCache, createSerializer, parseAsInteger, parseAsJson, parseAsString } from 'nuqs/server';
 export const searchParams = {
   page: parseAsInteger.withDefault(1),
   limit: parseAsInteger.withDefault(10),
-  category: parseAsString.withDefault("1"),
-  filter: parseAsJson(filterSchema.parse).withDefault({
-    category_id: 1,
-    sub_categories: [{ id: 1 }],
-    city_id: 1,
-    min_price: 0,
-    max_price: 10000,
-  }),
+  category: parseAsString.withDefault('1'),
+  city_id: parseAsString.withDefault('1'),
+  subCategories: parseAsString.withOptions({ shallow: false }).withDefault(''),
+  minPrice: parseAsInteger.withDefault(0),
+  maxPrice: parseAsInteger.withDefault(10000),
+  minRate: parseAsInteger.withDefault(0),
+  maxRate: parseAsInteger.withDefault(3),
   search: parseAsString.withOptions({ shallow: false }),
 };
 
