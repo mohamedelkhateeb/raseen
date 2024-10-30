@@ -15,7 +15,7 @@ export default async function HomeView() {
   const t = await getTranslations('HomePage');
   const data = await getHomeContent();
   return (
-    <div dir={await direction()} className='flex flex-col justify-center gap-10'>
+    <div dir={await direction()} className="flex flex-col justify-center gap-10">
       <Banners banners={data?.banners || []} />
       <Categories categories={data?.categories || []} />
       <section className="flex h-fit flex-col items-center justify-center gap-14 bg-[#004267] py-12">
@@ -29,7 +29,7 @@ export default async function HomeView() {
                 كل ما تحتاجه لمنزلك احصل عليه مع رصين بأعلى جودة وخدمات متميزة
               </p>
               <div className="flex items-center">
-                <Link href="/services" className={'flex items-center justify-end gap-4 py-0 text-xl font-bold text-white lg:pb-6 lg:text-2xl'}>
+                <Link href="/companies" className={'flex items-center justify-end gap-4 py-0 text-xl font-bold text-white lg:pb-6 lg:text-2xl'}>
                   تصفح الخدمات <IoIosArrowRoundBack size={35} color="white" />
                 </Link>
               </div>

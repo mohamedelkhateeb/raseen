@@ -19,7 +19,7 @@ const Banners = ({ banners }: { banners: Banner[] }) => {
               <h1 className={cn('w-full text-2xl font-semibold leading-normal md:text-3xl xl:w-[728px] xl:text-5xl xl:leading-normal')}>
                 {banner?.title}
               </h1>
-              <p className={cn('w-full text-lg font-semibold leading-7 md:w-[500px] xl:w-[710px] xl:text-3xl')}>{banner?.desc}</p>
+              <p className={cn('w-full text-lg font-semibold leading-7 md:w-[500px] xl:w-[710px] xl:text-2xl')}>{banner?.desc}</p>
               <Link
                 href={'/orders/new'}
                 className={cn(

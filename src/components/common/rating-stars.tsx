@@ -22,7 +22,7 @@ const RatingStars: React.FC<RatingStarsProps> = ({ initialValue = 0, readOnly = 
   return (
     <div className="flex items-center gap-1">
       {[1, 2, 3, 4, 5]?.map((value, index) => (
-        <label key={index} className={`cursor-pointer transition hover:scale-125 ${readOnly ? 'cursor-not-allowed' : ''}`}>
+        <label key={index} className={` ${readOnly ? 'cursor-auto' : 'cursor-pointer transition hover:scale-125'}`}>
           <span className="sr-only">{`${value} stars`}</span>
           <input
             type="radio"

@@ -9,6 +9,7 @@ import CategoryFilter from '@/components/view/companies/filters';
 import Image from 'next/image';
 import { Category, Company } from '@/types/models/home.model';
 import { parseAsString, useQueryState } from 'nuqs';
+import PageContainer from '@/components/layouts/page-container';
 const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Company[]; categories: Category[]; subCategory: Category[] }) => {
   const [listStyle, setListStyle] = useState('grid');
   const [search, setSearch] = useQueryState('search', parseAsString.withOptions({ shallow: false }));
@@ -42,29 +43,31 @@ const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Co
           )}
         </button>
       </div>
-      <div className="my-20 flex w-full flex-col px-2 lg:flex-row lg:px-10">
+      <div className="my-10 flex w-full flex-col px-2 lg:flex-row lg:px-10">
         <CategoryFilter subCategories={subCategory} categories={categories} />
-        <div className="w-full">
-          <div className={`grid w-full gap-4 p-4 ${listStyle == 'grid' ? 'lg:grid-cols-2' : 'lg:grid-cols-1'}`}>
-            {companies?.length > 0 ? (
-              companies?.map((company) => (
-                <Card
-                  key={company.id}
-                  title={company.name}
-                  description={company.desc}
-                  imageUrl={company.img}
-                  listStyle={listStyle}
-                  isLiked={company.fav}
-                  id={company.id}
-                />
-              ))
-            ) : (
-              <>
-                <h1 className="mx-auto text-3xl">لا يوجد نتائج</h1>
-                <h1 className="mx-auto text-3xl">لا يوجد نتائج</h1>
-              </>
-            )}
-          </div>
+        <div className="w-full" >
+          <PageContainer scrollable>
+            <div className={`grid w-full gap-4 p-4 ${listStyle == 'grid' ? 'lg:grid-cols-2' : 'lg:grid-cols-1'}`}>
+              {companies?.length > 0 ? (
+                companies?.map((company) => (
+                  <Card
+                    key={company.id}
+                    title={company.name}
+                    description={company.desc}
+                    imageUrl={company.img}
+                    listStyle={listStyle}
+                    isLiked={company.fav}
+                    id={company.id}
+                  />
+                ))
+              ) : (
+                <>
+                  <h1 className="mx-auto text-3xl">لا يوجد نتائج</h1>
+                  <h1 className="mx-auto text-3xl">لا يوجد نتائج</h1>
+                </>
+              )}
+            </div>
+          </PageContainer>
         </div>
       </div>
     </>
