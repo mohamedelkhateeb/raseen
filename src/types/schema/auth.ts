@@ -9,7 +9,7 @@ export const signUpSchema = object({
   phone: z.string({ required_error: 'رقم الجوال مطلوب' }).length(9, 'رقم الجوال يجب ان يكون 9 ارقام'),
   device_key: z.string({ required_error: 'Device key is required' }).nullish().default('device key'),
   name: z.string({ required_error: 'الاسم مطلوب' }).min(3, 'الاسم يجب ان يكون على الاقل 3 حروف'),
-  email: z.string({ required_error: 'البريد الالكتروني مطلوب' }).email('البريد الالكتروني غير صحيح'),
+  email: z.string({ required_error: 'البريد الالكتروني مطلوب' }).nullish(),
   city_id: z.coerce.number({ required_error: 'المدينة مطلوبة' }).min(1, 'المدينة مطلوبة'),
 });
 

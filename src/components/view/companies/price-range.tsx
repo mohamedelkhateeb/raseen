@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Slider } from '@/components/ui/slider';
 
-export function PriceRange({ label, defaultValue, max, min, step, maxPrice, minPrice, setMaxPrice, setMinPrice }: any) {
+export function PriceRange({ label, max, min, step, maxPrice, minPrice, setMaxPrice, setMinPrice }: any) {
   return (
     <div className="mb-6">
       <h3 className="mb-4 text-lg font-bold">{label}</h3>
@@ -30,7 +30,6 @@ export function PriceRange({ label, defaultValue, max, min, step, maxPrice, minP
       <Slider
         min={min}
         max={max}
-        defaultValue={defaultValue}
         step={step}
         onValueChange={(value: any) => {
           setMinPrice(value[0].toString());
@@ -38,6 +37,7 @@ export function PriceRange({ label, defaultValue, max, min, step, maxPrice, minP
         }}
         color="red"
         className={cn('w-[100%] text-darkBlue')}
+        value={[minPrice, maxPrice]}
       />
     </div>
   );

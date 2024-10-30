@@ -21,7 +21,7 @@ const Categories = async ({ categories }: { categories: Category[] }) => {
       </div>
       <CarouselSize showArrows={true}>
         {data?.map((category, index) => (
-          <Link href={`/companies?category=${catNum}&subCategory=${category.id}`} key={index}>
+          <Link href={`/companies?category=${catNum}&subCategories=${category.id}`} key={index}>
             <CarouselItem key={index} className="basis-1/3 lg:basis-1/4">
               <Card className="border-0 shadow-none">
                 <CardContent className="flex aspect-square flex-col items-center p-0">
