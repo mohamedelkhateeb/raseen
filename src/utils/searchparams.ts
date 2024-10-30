@@ -2,7 +2,7 @@ import { createSearchParamsCache, createSerializer, parseAsInteger, parseAsJson,
 export const searchParams = {
   page: parseAsInteger.withDefault(1),
   limit: parseAsInteger.withDefault(10),
-  category: parseAsString.withDefault('1'),
+  category: parseAsString.withDefault('0'),
   city_id: parseAsString.withDefault('1'),
   subCategories: parseAsString.withOptions({ shallow: false }).withDefault(''),
   minPrice: parseAsInteger.withDefault(0),

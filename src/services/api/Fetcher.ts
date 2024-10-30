@@ -22,9 +22,12 @@ const Fetcher = async <T>(endpoint: string, opt: FetchOptions = { cache: 'no-sto
     }
     const url = `${API_BASE_URL}api/${endpoint}`;
     const response = await fetch(url, {
+      cache: 'no-store',
       ...opt,
       headers,
     });
+    console.log(url);
+
     const data = await response?.json().catch(() => {
       return {
         message: 'Failed Request',

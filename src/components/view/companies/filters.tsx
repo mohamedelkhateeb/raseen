@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { parseAsInteger, parseAsJson, parseAsString, useQueryState } from 'nuqs';
+import { parseAsInteger, parseAsString, useQueryState } from 'nuqs';
 import CategorySection from './company-section';
 import { PriceRange } from './price-range';
 import DropdownMenu from './dropdown';
@@ -8,7 +8,7 @@ import SubCategoryFilter from './sub-category-filter';
 import { RateRange } from './rate-range';
 
 const CategoryFilter = ({ categories, subCategories }: { categories: Category[]; subCategories: Category[] }) => {
-  const [category, setCategory] = useQueryState('category', parseAsInteger.withOptions({ shallow: false }).withDefault(1));
+  const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }).withDefault('0'));
   const [subCategory, setSubCategory] = useQueryState('subCategories', parseAsString.withOptions({ shallow: false }).withDefault(''));
   const [minPrice, setMinPrice] = useQueryState('minPrice', parseAsInteger.withOptions({ shallow: false }).withDefault(0));
   const [maxPrice, setMaxPrice] = useQueryState('maxPrice', parseAsInteger.withOptions({ shallow: false }).withDefault(10000));
@@ -16,8 +16,8 @@ const CategoryFilter = ({ categories, subCategories }: { categories: Category[];
   const [maxRate, setMaxRate] = useQueryState('maxRate', parseAsInteger.withOptions({ shallow: false }).withDefault(3));
   const [city, setCity] = useQueryState('city_id', parseAsInteger.withOptions({ shallow: false }).withDefault(1));
 
-  console.log(subCategory);
-  
+  console.log(category);
+
   return (
     <aside className="mx-auto w-[350px] space-y-10 p-3 sm:w-[430px] lg:w-[500px]">
       <CategorySection title="القسم الرئيسي" categories={categories} dataFilter={category} setDataFilter={setCategory} />

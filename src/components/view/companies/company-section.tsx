@@ -17,9 +17,7 @@ const CategorySection = ({ title, categories, dataFilter, setDataFilter }: Categ
           <button
             onClick={() => setDataFilter(c.id)}
             key={index}
-            className={
-              'rounded border bg-[Stroke] px-4 py-4 font-medium transition' + (index + 1 == dataFilter ? ' border-primary bg-[#00426708]' : '')
-            }
+            className={'rounded border bg-[Stroke] px-4 py-4 font-medium transition' + (c.id == dataFilter ? ' border-primary bg-[#00426708]' : '')}
           >
             {c.name}
           </button>

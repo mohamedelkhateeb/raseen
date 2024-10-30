@@ -26,7 +26,7 @@ export const getHomeContent = async () => {
   }
 };
 export const getSubCategories = async (catNum: string) => {
-  try {
+  try {    
     const response = await Fetcher(`sub-categoreis/${catNum == '0' ? '' : catNum}`);
     return response?.data;
   } catch (error) {
