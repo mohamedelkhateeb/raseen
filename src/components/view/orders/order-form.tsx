@@ -13,7 +13,7 @@ import { Category } from '@/types/models/home.model';
 import { useDirection } from '@/utils/helpers';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { parseAsInteger, useQueryState } from 'nuqs';
+import { parseAsInteger, parseAsString, useQueryState } from 'nuqs';
 import MultiImageUpload from './multi-image-upload';
 import { Order } from '@/types/models/order.model';
 import { set } from 'zod';
@@ -22,7 +22,7 @@ import { createOrder } from '@/services/orderService';
 import toast from 'react-hot-toast';
 
 export default function OrderForm({ categories, subCategories }: { categories: Category[]; subCategories: Category[] }) {
-  const [category, setCategory] = useQueryState('category', parseAsInteger.withOptions({ shallow: false }).withDefault(1));
+  const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }).withDefault('0'));
   const [data, setData] = useState<Order>({
     max: '',
     min: '',
@@ -46,9 +46,8 @@ export default function OrderForm({ categories, subCategories }: { categories: C
       formData.append(`images[${index}]`, image);
     });
     const res = await createOrder(formData);
-
     if (res?.status) {
-      setIsPopupOpen({ open: true, id: 1 });
+      setIsPopupOpen({ open: true, id: res?.data?.id });
     } else {
       toast.error(res?.message);
     }
@@ -63,7 +62,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
             required
             onValueChange={(value) => {
               setData({ ...data, category_id: value });
-              setCategory(parseInt(value));
+              setCategory(value);
               setData({ ...data, sub_categories: [] });
             }}
           >
@@ -83,7 +82,19 @@ export default function OrderForm({ categories, subCategories }: { categories: C
           <p className="py-4 text-xl font-semibold">{'القسم الفرعي'}</p>
           <Select>
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
-              <SelectValue className="text-xl text-gray-200" placeholder={' القسم الفرعي'} />
+              <SelectValue
+                className="text-xl text-gray-200"
+                placeholder={
+                  data.sub_categories.length > 0
+                    ? data.sub_categories
+                        .map((sub) => {
+                          const selectedOption = subCategories.find((option) => option.id.toString() === sub.id);
+                          return selectedOption ? selectedOption.name : '';
+                        })
+                        .join(', ')
+                    : 'القسم الفرعي'
+                }
+              />
             </SelectTrigger>
             <SelectContent className="flex flex-col gap-10" dir={useDirection()}>
               {subCategories?.map((option, index) => (
@@ -97,7 +108,15 @@ export default function OrderForm({ categories, subCategories }: { categories: C
                   <Checkbox
                     className="h-4 w-4"
                     id={index.toString()}
-                    onCheckedChange={() => setData({ ...data, sub_categories: [...data.sub_categories, { id: option.id.toString() }] })}
+                    onCheckedChange={() => {
+                      const isSelected = data.sub_categories.some((sub) => sub.id === option.id.toString());
+                      setData({
+                        ...data,
+                        sub_categories: isSelected
+                          ? data.sub_categories.filter((sub) => sub.id !== option.id.toString())
+                          : [...data.sub_categories, { id: option.id.toString() }],
+                      });
+                    }}
                     checked={data.sub_categories.some((sub: any) => sub.id == option.id.toString())}
                   />
                 </div>
@@ -151,7 +170,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
             <h1 className="text-2xl font-bold">تم نشر طلبك بنجاح</h1>
             <p className="text-sm text-gray-600">ستتلقى عروض الشركات في تفاصيل طلبك</p>
             <Link
-              href="/orders/1"
+              href={`/orders/${isPopupOpen?.id}`}
               className={cn(buttonVariants({ variant: 'default', size: 'default' }), 'my-5 w-full bg-darkBlue px-8 py-7 text-base text-white')}
             >
               الذهاب الى تفاصيل الطلب

@@ -13,9 +13,6 @@ const OrderListingViewPage = ({ orders }: { orders: ReadOrder[] }) => {
     { title: <TbSmartHome size={30} color="#EA8D09" />, link: '/' },
     { title: 'طلباتي', link: '/' },
   ];
-
-  console.log(orders);
-
   return (
     <section className="px-7">
       <Breadcrumbs items={items} />

@@ -10,32 +10,28 @@ import {
 import { useTranslations } from 'next-intl';
 import { useDirection } from '@/utils/helpers';
 import { Link } from '@/i18n/routing';
-import { useMenuItems } from '@/constants/useMenuItems';
-import { NavItem, NavItems } from '@/types/app';
 
 // Helper function to generate menu sections
-const renderMenuItems = (items: NavItem[]) => (
-  <ul className="flex h-[300px] w-[200px] flex-col border-t-4 border-[#004267] p-2 pt-6">
+const renderMenuItems = (items: any[], categoryId: string) => (
+  <ul className="flex min-h-fit w-[200px] flex-col border-t-4 border-[#004267] p-2 pt-6">
     {items.map((item, i) => (
-      <Link className="px-4 py-2 text-gray-400 hover:text-black" key={i} title={item.title} href={item.href}>
-        {item.title}
+      <Link href={`/companies?category=${categoryId}&subCategories=${item?.id}`} className="px-4 py-2 text-gray-400 hover:text-black" key={i}>
+        {item.name}
       </Link>
     ))}
   </ul>
 );
 
-export default function NavigationMenuBar() {
+export default function NavigationMenuBar({ subOne, subTwo }: any) {
   const t = useTranslations('HomePage');
   const itemStyle = 'text-lg font-semibold transition-all hover:text-[#EA8D09] p-0';
   const direction = useDirection();
-  const menuItems: NavItems = useMenuItems();
-
-  const renderMenuSection = (label: string, items: NavItem[]) => (
+  const renderMenuSection = (label: string, items: any[], categoryId: string) => (
     <NavigationMenu dir={direction}>
       <NavigationMenuList className="flex">
         <NavigationMenuItem>
           <NavigationMenuTrigger className={itemStyle}>{t(`NavigationMenu.${label}`)}</NavigationMenuTrigger>
-          <NavigationMenuContent className="left-0 top-0 overflow-auto">{renderMenuItems(items)}</NavigationMenuContent>
+          <NavigationMenuContent className="left-0 top-0 overflow-auto">{renderMenuItems(items, categoryId)}</NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
@@ -57,8 +53,8 @@ export default function NavigationMenuBar() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      {renderMenuSection('services.value', menuItems.services)}
-      {renderMenuSection('contracting', menuItems.contracts)}
+      {renderMenuSection('services.value', subOne, '1')}
+      {renderMenuSection('contracting', subTwo, '2')}
     </div>
   );
 }

@@ -11,8 +11,8 @@ const Rates = ({ rates = [] }: { rates: Rate[] }) => {
       <Title content="ماذا قالوا عن رصين" />
       <CarouselSize>
         {rates?.map((rate, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-            <div className="rounded-2xl bg-[#F9F9F9] p-10 xl:w-[550px]" dir="rtl">
+          <CarouselItem key={index} className="md:basis-1/2 xl:basis-1/3">
+            <div className="rounded-2xl bg-[#F9F9F9] p-10" dir="rtl">
               <div className="flex items-center gap-4">
                 <div className="flex flex-col justify-center gap-4">
                   <h1 className="text-3xl font-bold">{rate?.user_rate?.name}</h1>

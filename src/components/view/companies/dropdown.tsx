@@ -17,7 +17,12 @@ const DropdownMenu = ({ dataFilter, setDataFilter, triggerStyle }: any) => {
   return (
     <div>
       <p className="py-4 text-xl font-bold">المدينة</p>
-      <Select defaultValue={dataFilter?.city_id} required onValueChange={(value) => setDataFilter({ ...dataFilter, city_id: value })} name="city_id">
+      <Select
+        defaultValue={dataFilter?.city?.id?.toString()}
+        required
+        onValueChange={(value) => setDataFilter({ ...dataFilter, city_id: value })}
+        name="city_id"
+      >
         <SelectTrigger dir={useDirection()} className={cn('rounded-2xl px-5 py-9 text-xl')}>
           <SelectValue className={cn('text-xl', triggerStyle)} placeholder="اختار مدينتك" />
         </SelectTrigger>

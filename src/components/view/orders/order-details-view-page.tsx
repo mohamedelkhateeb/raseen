@@ -15,6 +15,8 @@ const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
     { title: 'طلباتي', link: '/orders' },
     { title: 'تفاصيل الطلب', link: '' },
   ];
+  console.log({order});
+  
   return (
     <div className="flex flex-col gap-8 px-10">
       <Breadcrumbs items={items} />

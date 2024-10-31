@@ -15,11 +15,11 @@ export function UserMenu() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <img src={session?.user?.img} alt="Profile" className="lg:w-30 h-24 w-24 cursor-pointer rounded-full" width={200} height={200} />
+        <img src={session?.user?.img} alt="Profile" className="h-20 w-20 cursor-pointer rounded-full lg:w-24" width={200} height={200} />
       </PopoverTrigger>
       <PopoverContent className="w-96 p-8 shadow-lg" side="bottom" sideOffset={20} align="end">
         <div className="flex items-center gap-4">
-          <img src={session?.user?.img} alt="Profile" className="lg:w-30 h-24 w-24 cursor-pointer rounded-full" width={200} height={200} />
+          <img src={session?.user?.img} alt="Profile" className="h-20 w-20 cursor-pointer rounded-full lg:h-24 lg:w-24" width={200} height={200} />
           <div className="flex flex-col gap-2">
             <h1 className="font-semibold">{session?.user?.name}</h1>
             <p className="text-xs text-gray-700">{session?.user?.email}</p>
@@ -41,7 +41,7 @@ export function UserMenu() {
             تعديل
           </PopoverClose>
         </Link>
-        <div className="mt-10 flex flex-col gap-4 text-lg font-semibold">
+        <div className="mt-3 flex flex-col gap-4 text-lg font-semibold">
           <Link href={'/orders'}>
             <PopoverClose className="flex items-center gap-4">
               <BsBoxSeam color="#004267" />

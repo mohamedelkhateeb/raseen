@@ -1,12 +1,11 @@
-import SocialMediaIcons from '../svgs/social-media';
+'use client';
 import RaseenLogo from '../svgs/raseen-logo';
 import { PlayStore } from '../svgs/play-store';
 import { AppStore } from '../svgs/app-store';
 import { Link } from '@/i18n/routing';
-import { LuInstagram } from 'react-icons/lu';
-import { RiSnapchatFill } from 'react-icons/ri';
-import { FaFacebookF, FaXTwitter } from 'react-icons/fa6';
-const Footer: React.FC = () => {
+import SocialMediaLinks from '../common/social-media-links';
+const Footer = () => {
+
   return (
     <footer className="border-t bg-[#F8F8F8] p-6 text-center md:p-12 md:text-right">
       <div className="flex flex-col gap-20 lg:flex-row">
@@ -77,13 +76,13 @@ const Footer: React.FC = () => {
             <h3 className="mb-4 text-lg font-bold">خدماتنا</h3>
             <ul>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
+                <Link href="/companies?category=1" className="hover:text-primary">
                   المكاتب الهندسية
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
-                  التشطيب والديكور
+                <Link href="/companies?category=2" className="hover:text-primary">
+                  المقاولات والديكور
                 </Link>
               </li>
             </ul>
@@ -95,10 +94,7 @@ const Footer: React.FC = () => {
         <div className="mx-auto flex flex-col items-center justify-between text-sm text-gray-500 md:flex-row">
           <div className="mb-6 flex gap-4 md:mb-0">
             <div className="mt-7 flex w-full items-center gap-4">
-              <LuInstagram color="#004267" size={40} className="rounded-full bg-[#E5ECF0] p-3 hover:bg-slate-300" />
-              <RiSnapchatFill color="#004267" size={40} className="rounded-full bg-[#E5ECF0] p-3 hover:bg-slate-300" />
-              <FaXTwitter color="#004267" size={40} className="rounded-full bg-[#E5ECF0] p-3 hover:bg-slate-300" />
-              <FaFacebookF color="#004267" size={40} className="rounded-full bg-[#E5ECF0] p-3 hover:bg-slate-300" />
+              <SocialMediaLinks />
             </div>
           </div>
           <p className="mb-4 md:mb-0">

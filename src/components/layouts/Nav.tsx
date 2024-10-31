@@ -11,20 +11,20 @@ import { Link } from '@/i18n/routing';
 import { UserMenu } from '../view/auth/user/user-menu';
 import { IoMdNotifications } from 'react-icons/io';
 import { useSession } from 'next-auth/react';
-const NavBar: React.FC = () => {
+const NavBar = ({ subOne, subTwo }: any) => {
   const t = useTranslations('HomePage');
   const { data: session } = useSession();
   return (
     <header className="bg-white p-2 pb-4 lg:px-16">
       <div className="flex items-center justify-between gap-8 rounded-full px-4 md:px-11 lg:bg-[#FAFAFA] lg:py-6">
         <div className={cn('block lg:!hidden')}>
-          <MobileSidebar />
+          <MobileSidebar subOne={subOne} subTwo={subTwo} />
         </div>
         <Link href={'/'} className="flex w-[60px] items-center max-sm:mr-auto lg:w-[100px]">
           <RaseenLogo />
         </Link>
         <div className={cn('hidden rounded-full bg-white px-7 py-7 lg:block')}>
-          <NavigationMenuBar />
+          <NavigationMenuBar subOne={subOne} subTwo={subTwo} />
         </div>
         <div className="flex items-center">
           <Link

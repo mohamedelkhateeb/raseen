@@ -18,18 +18,18 @@ import { SelectLang } from '../common/choose-lang';
 import { cn } from '@/lib/utils';
 import { useSession } from 'next-auth/react';
 
-export function MobileSidebar() {
+export function MobileSidebar({ subOne, subTwo }: any) {
   const t = useTranslations('HomePage');
   const accordionItems = [
     {
-      value: 'item-1',
+      value: '1',
       trigger: t('NavigationMenu.services.value'),
-      content: useMenuItems().services,
+      content: subOne,
     },
     {
-      value: 'item-2',
+      value: '2',
       trigger: t('NavigationMenu.contracting'),
-      content: [],
+      content: subTwo,
     },
   ];
 
@@ -53,7 +53,7 @@ export function MobileSidebar() {
               {t('NavigationMenu.home')}
             </Link>
             <Separator />
-            <Link className="font-semibold" href="/about">
+            <Link className="font-semibold" href="/">
               {t('NavigationMenu.about')}
             </Link>
             <Separator />

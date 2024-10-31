@@ -10,7 +10,7 @@ interface AccordionItemData {
 }
 
 interface AccordionProps {
-  items: AccordionItemData[];
+  items: any[];
 }
 
 export default function GenericAccordion({ items }: AccordionProps) {
@@ -22,9 +22,13 @@ export default function GenericAccordion({ items }: AccordionProps) {
           <AccordionContent className="flex flex-col">
             {typeof item.content === 'string'
               ? item.content
-              : item?.content?.map((content, Sindex) => (
-                  <Link href={content.href} key={Sindex} className="px-4 py-2 text-gray-800 hover:text-black">
-                    {content.title}
+              : item?.content?.map((content: any, index: any) => (
+                  <Link
+                    href={`/companies?category=${item?.value}&subCategories=${content?.id}`}
+                    key={index}
+                    className="px-4 py-2 text-gray-800 hover:text-black"
+                  >
+                    {content?.name}
                   </Link>
                 ))}
           </AccordionContent>

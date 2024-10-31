@@ -6,6 +6,7 @@ import { User } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { useSession } from 'next-auth/react';
+import SocialMediaLinks from '../common/social-media-links';
 
 const Slogen = () => {
   const t = useTranslations('HomePage');
@@ -13,8 +14,8 @@ const Slogen = () => {
   return (
     <div>
       <section className="top-bar y-5 flex w-full items-center justify-around gap-4 bg-[#004267] px-8 py-4 md:h-[60px] md:flex-row md:justify-between lg:px-[84px]">
-        <div className="hidden h-[20px] w-[152px] items-center justify-center gap-[15px] md:flex">
-          <SocialMediaIcons />
+        <div className="hidden items-center justify-center gap-[15px] md:flex">
+          <SocialMediaLinks />
         </div>
         <div className="flex h-[20px] items-center gap-2">
           <p className="text-[#FFFFFF] sm:text-sm">{t('slogen')}</p>
