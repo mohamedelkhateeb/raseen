@@ -88,7 +88,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
                 placeholder={
                   data.sub_categories.length > 0
                     ? data.sub_categories
-                        .map((sub) => {
+                        ?.map((sub) => {
                           const selectedOption = subCategories.find((option) => option.id.toString() === sub.id);
                           return selectedOption ? selectedOption.name : '';
                         })

@@ -14,7 +14,7 @@ import { Link } from '@/i18n/routing';
 // Helper function to generate menu sections
 const renderMenuItems = (items: any[], categoryId: string) => (
   <ul className="flex min-h-fit w-[200px] flex-col border-t-4 border-[#004267] p-2 pt-6">
-    {items.map((item, i) => (
+    {items?.map((item, i) => (
       <Link href={`/companies?category=${categoryId}&subCategories=${item?.id}`} className="px-4 py-2 text-gray-400 hover:text-black" key={i}>
         {item.name}
       </Link>

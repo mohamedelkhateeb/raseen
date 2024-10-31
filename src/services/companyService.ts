@@ -9,7 +9,7 @@ export const getCompanies = async (filter: any, search?: string | null) => {
   const formData = new FormData();
   if (search) formData.append('search', search);
   formData.append('category_id', filter?.category_id || 1);
-  formData.append('sub_categories', JSON.stringify(selectedIds.map((id) => ({ id }))));
+  formData.append('sub_categories', JSON.stringify(selectedIds?.map((id) => ({ id }))));
   formData.append('city_id', filter?.city_id || 1);
   // formData.append('min_price', filter?.min_price || 0);
   // formData.append('max_price', filter?.min_avg_rates || 0);
