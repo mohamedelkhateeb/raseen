@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import React from 'react';
 import { TbAlertOctagonFilled } from 'react-icons/tb';
 import Image from 'next/image';
-import cover from '../../../../public/cover2.svg';
+import cover from '../../../../../public/cover2.svg';
 import { PictureDialog } from '@/components/view/home/companies/picture-dialog';
 import { Company } from '@/types/models/home.model';
 import RatingStars from '@/components/common/rating-stars';
