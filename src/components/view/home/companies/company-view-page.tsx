@@ -4,8 +4,8 @@ import image from '../../../../public/image.svg';
 import { BiSearch } from 'react-icons/bi';
 import { IoIosList } from 'react-icons/io';
 import { HiOutlineSquares2X2 } from 'react-icons/hi2';
-import Card from '@/components/view/companies/card';
-import CategoryFilter from '@/components/view/companies/filters';
+import Card from '@/components/view/home/companies/card';
+import CategoryFilter from '@/components/view/home/companies/filters';
 import Image from 'next/image';
 import { Category, Company } from '@/types/models/home.model';
 import { parseAsString, useQueryState } from 'nuqs';
@@ -45,7 +45,7 @@ const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Co
       </div>
       <div className="my-10 flex w-full flex-col px-2 lg:flex-row lg:px-10">
         <CategoryFilter subCategories={subCategory} categories={categories} />
-        <div className="w-full" >
+        <div className="w-full">
           <PageContainer scrollable>
             <div className={`grid w-full gap-4 p-4 ${listStyle == 'grid' ? 'lg:grid-cols-2' : 'lg:grid-cols-1'}`}>
               {companies?.length > 0 ? (

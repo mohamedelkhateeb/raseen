@@ -1,17 +1,18 @@
 'use client';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
-import Title from '@/components/ui/title';
 import { Link } from '@/i18n/routing';
 import { Article } from '@/types/models/home.model';
-import Autoplay from 'embla-carousel-autoplay';
-import React from 'react';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { LuLayoutDashboard } from 'react-icons/lu';
+import Title from '@/components/ui/title';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel';
+import React from 'react';
+import useCarousel from '@/hooks/use-carousel';
 
-const Articals = ({ articals }: { articals: Article[] }) => {
-  const plugin = React.useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
+const Articals = ({ articals = [] }: { articals: Article[] }) => {
+  const { setApi, current, count, plugin } = useCarousel();
+
   return (
-    <section id="articles" className="flex flex-col items-center justify-center gap-5 lg:mt-8 lg:gap-16 mb-7">
+    <section id="articles" className="mb-10 flex flex-col items-center justify-center gap-5 lg:gap-10">
       <Title content="ابتكر واجهات ملهمة وتجارب لمنزلك" />
       <Carousel
         plugins={[plugin.current]}
@@ -19,12 +20,13 @@ const Articals = ({ articals }: { articals: Article[] }) => {
           align: 'start',
           loop: true,
         }}
-        className="m-auto min-w-[95%] px-10 lg:p-0"
+        setApi={setApi}
+        className="m-auto max-w-[90%]"
         dir="ltr"
       >
-        <CarouselContent className="gap-4">
+        <CarouselContent>
           {articals?.map((a, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={index} className="basis md:basis-1/2 lg:basis-1/3">
               <div className="flex flex-col justify-center rounded-lg border bg-card text-card-foreground shadow-sm lg:max-h-[723px] lg:max-w-[560px]">
                 <img src={a.img} alt="Image" className="rounded-md object-cover" />
                 <div className="mt-8 flex w-full justify-end px-4 lg:mt-8">
@@ -44,6 +46,11 @@ const Articals = ({ articals }: { articals: Article[] }) => {
           ))}
         </CarouselContent>
       </Carousel>
+      <div className="flex flex-row-reverse items-center gap-2 py-2 text-center text-sm text-muted-foreground">
+        {Array.from({ length: articals?.length })?.map((_, index) => (
+          <div key={index} className={`${index + 1 === current ? 'h-3 w-3 rounded-full bg-darkBlue' : 'h-2 w-2 rounded-full bg-[#D9D9D9]'}`}></div>
+        ))}
+      </div>
     </section>
   );
 };

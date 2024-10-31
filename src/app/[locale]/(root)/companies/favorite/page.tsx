@@ -1,5 +1,5 @@
 import { options } from '@/app/api/auth/[...nextauth]/options';
-import FavoriteCompaniesViewPage from '@/components/view/companies/favorite-companies-view-page';
+import FavoriteCompaniesViewPage from '@/components/view/home/companies/favorite-companies-view-page';
 import { redirect } from '@/i18n/routing';
 import { getServerSession } from 'next-auth';
 import React from 'react';

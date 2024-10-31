@@ -1,5 +1,5 @@
 import React from 'react';
-import { PictureDialog } from '../companies/picture-dialog';
+import { PictureDialog } from '../home/companies/picture-dialog';
 import { statusColorMap } from './cards/order-card';
 import OrderButton from '@/components/common/order-button';
 

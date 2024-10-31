@@ -1,4 +1,4 @@
-import CompanyViewPage from '@/components/view/companies/company-view-page';
+import CompanyViewPage from '@/components/view/home/companies/company-view-page';
 import { getCategories, getCompanies } from '@/services/companyService';
 import { getSubCategories } from '@/services/homeService';
 import { Category } from '@/types/models/home.model';

@@ -1,5 +1,4 @@
 import { CarouselSize } from '@/components/common/carousel';
-import { Card, CardContent } from '@/components/ui/card';
 import { CarouselItem } from '@/components/ui/carousel';
 import Title from '@/components/ui/title';
 import { Link } from '@/i18n/routing';
@@ -21,18 +20,18 @@ const Categories = async ({ categories }: { categories: Category[] }) => {
       </div>
       <CarouselSize showArrows={true}>
         {data?.map((category, index) => (
-          <Link href={`/companies?category=${catNum}&subCategories=${category.id}`} key={index}>
-            <CarouselItem key={index} className="basis-1/3 lg:basis-1/4">
-              <Card className="border-0 shadow-none">
-                <CardContent className="flex aspect-square flex-col items-center p-0">
-                  <div className="flex h-[100px] w-[100px] flex-col items-center justify-center lg:h-[340px] lg:w-[340px]">
-                    <img className="w-full object-cover" src={category?.img} alt="" />
-                  </div>
-                  <p className="text-md mt-5 font-bold">{category?.name}</p>
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          </Link>
+          <CarouselItem key={index} className="basis-1/3 lg:basis-1/4">
+            <Link
+              className="flex flex-col items-center justify-center"
+              href={`/companies?category=${catNum}&subCategories=${category.id}`}
+              key={index}
+            >
+              <div className="flex flex-col items-center justify-center">
+                <img className="object-cover" src={category?.img} alt="" />
+              </div>
+              <p className="text-md mt-5 font-bold">{category?.name}</p>
+            </Link>
+          </CarouselItem>
         ))}
       </CarouselSize>
     </section>

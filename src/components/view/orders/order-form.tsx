@@ -8,7 +8,7 @@ import Image from 'next/image';
 import CardImg from '../../../../public/10802151_4529819 1.svg';
 import Popup from '@/components/common/popup';
 import { useState } from 'react';
-import DropdownMenu from '../companies/dropdown';
+import DropdownMenu from '../home/companies/dropdown';
 import { Category } from '@/types/models/home.model';
 import { useDirection } from '@/utils/helpers';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';

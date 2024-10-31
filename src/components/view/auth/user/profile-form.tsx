@@ -6,7 +6,7 @@ import { MdOutlineDelete } from 'react-icons/md';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { updateProfile } from '@/services/authService';
-import DropdownMenu from '../../companies/dropdown';
+import DropdownMenu from '../../home/companies/dropdown';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 export default function ProfileForm({ profile }: any) {
   const { imageUrl, handleImageChange, resetImage } = useImageUpload();
