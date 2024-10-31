@@ -17,6 +17,9 @@ export default async function CompanyPage({ searchParams }: { searchParams: Reco
     { category_id, city_id, max_price, max_avg_rates, min_price, min_avg_rates, sub_categories },
     searchParamsCache.get('search'),
   );
+
+  console.log({ companies });
+
   const categories = await getCategories();
   const subCategory: Category[] = await getSubCategories(category_id);
 

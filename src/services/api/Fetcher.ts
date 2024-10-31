@@ -8,7 +8,7 @@ interface FetchOptions extends RequestInit {
   headers?: Record<string, string>;
 }
 
-const Fetcher = async <T>(endpoint: string, opt: FetchOptions = { cache: 'no-store' }) => {
+const Fetcher = async <T>(endpoint: string, opt: FetchOptions = {  }) => {
   try {
     const session = await getServerSession(options);
     const TOKEN = session?.token;
@@ -23,7 +23,6 @@ const Fetcher = async <T>(endpoint: string, opt: FetchOptions = { cache: 'no-sto
     const url = `${API_BASE_URL}api/${endpoint}`;
     const response = await fetch(url, {
       next: { revalidate: 0 },
-      cache: 'no-store',
       ...opt,
       headers,
     });
