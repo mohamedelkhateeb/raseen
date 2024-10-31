@@ -22,12 +22,12 @@ const Categories = async ({ categories }: { categories: Category[] }) => {
         {data?.map((category, index) => (
           <CarouselItem key={index} className="basis-1/3 lg:basis-1/4">
             <Link
-              className="flex flex-col items-center justify-center"
+              className="flex w-full flex-col items-center justify-center"
               href={`/companies?category=${catNum}&subCategories=${category.id}`}
               key={index}
             >
-              <div className="flex flex-col items-center justify-center">
-                <img className="object-cover" src={category?.img} alt="" />
+              <div className="flex w-full flex-col items-center justify-center">
+                <img className="w-full object-cover" src={category?.img} alt="" />
               </div>
               <p className="text-md mt-5 font-bold">{category?.name}</p>
             </Link>

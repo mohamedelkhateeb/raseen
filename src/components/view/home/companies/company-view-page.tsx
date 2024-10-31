@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import image from '../../../../public/image.svg';
+import image from '../../../../../public/image.svg';
 import { BiSearch } from 'react-icons/bi';
 import { IoIosList } from 'react-icons/io';
 import { HiOutlineSquares2X2 } from 'react-icons/hi2';
@@ -18,7 +18,7 @@ const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Co
       <div className="relative h-56 bg-cover bg-center lg:h-64" style={{ backgroundImage: `url(${image})` }}>
         <div className="absolute inset-0 flex items-center justify-center bg-[#403D3FCC] bg-opacity-50">
           <h1 className="text-2xl text-white lg:text-4xl">
-            الرئيسية • خدمات رصين • <span className="text-[#EA8D09]">المكاتب الهندسية</span>
+            الرئيسية • خدمات رصين • <span className="text-[#EA8D09]">الشركات</span>
           </h1>
         </div>
         <Image src={image} alt="Card image" className="h-full w-full object-cover" width={700} height={500} />

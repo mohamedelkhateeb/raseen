@@ -4,10 +4,11 @@ import { PlayStore } from '../svgs/play-store';
 import { AppStore } from '../svgs/app-store';
 import { Link } from '@/i18n/routing';
 import SocialMediaLinks from '../common/social-media-links';
+import { useClientFetch } from '@/hooks/use-client-fetch';
 const Footer = () => {
-
+  const { Data } = useClientFetch(null, 'footer');
   return (
-    <footer className="border-t bg-[#F8F8F8] p-6 text-center md:p-12 md:text-right">
+    <footer className="border-t bg-[#F8F8F8] p-6 text-center md:px-12 md:text-right">
       <div className="flex flex-col gap-20 lg:flex-row">
         <div className="flex flex-col items-center gap-5 sm:text-left">
           <RaseenLogo />
@@ -15,8 +16,12 @@ const Footer = () => {
             موقع يوفر لك كل ما تحتاجه لمساحتك من مقاولات .. تشطيب .. وحتى الديكور الداخلي
           </p>
           <div className="flex justify-center gap-4 sm:justify-start">
-            <PlayStore />
-            <AppStore />
+            <button onClick={() => window.open(Data?.data?.android, '_blank')}>
+              <PlayStore />
+            </button>
+            <button onClick={() => window.open(Data?.data?.ios, '_blank')}>
+              <AppStore />
+            </button>
           </div>
         </div>
         <div className="container mx-auto grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-4">

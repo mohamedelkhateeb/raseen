@@ -16,7 +16,7 @@ export function CarouselSize({ children, showArrows = false, delay = 5000 }: { c
         className="m-auto max-w-[90%]"
         dir="ltr"
       >
-        <CarouselContent className="gap-4">{children}</CarouselContent>
+        <CarouselContent className="gap-2">{children}</CarouselContent>
         {showArrows && (
           <>
             <CarouselPrevious />
