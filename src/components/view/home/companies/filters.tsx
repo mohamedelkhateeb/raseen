@@ -13,13 +13,13 @@ import SubCategoryFilter from './sub-category-filter';
 import { RateRange } from './rate-range';
 
 const CategoryFilter = ({ categories, subCategories }: { categories: Category[]; subCategories: Category[] }) => {
-  const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }).withDefault(''));
-  const [subCategory, setSubCategory] = useQueryState('subCategories', parseAsString.withOptions({ shallow: false }).withDefault(''));
-  const [minPrice, setMinPrice] = useQueryState('minPrice', parseAsInteger.withOptions({ shallow: false }).withDefault(0));
-  const [maxPrice, setMaxPrice] = useQueryState('maxPrice', parseAsInteger.withOptions({ shallow: false }).withDefault(100000));
-  const [minRate, setMinRate] = useQueryState('minRate', parseAsInteger.withOptions({ shallow: false }).withDefault(0));
-  const [maxRate, setMaxRate] = useQueryState('maxRate', parseAsInteger.withOptions({ shallow: false }).withDefault(5));
-  const [city, setCity] = useQueryState('city_id', parseAsInteger.withOptions({ shallow: false }).withDefault(1));
+  const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(''));
+  const [subCategory, setSubCategory] = useQueryState('subCategories', parseAsString.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(''));
+  const [minPrice, setMinPrice] = useQueryState('minPrice', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(0));
+  const [maxPrice, setMaxPrice] = useQueryState('maxPrice', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(100000));
+  const [minRate, setMinRate] = useQueryState('minRate', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(0));
+  const [maxRate, setMaxRate] = useQueryState('maxRate', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(5));
+  const [city, setCity] = useQueryState('city_id', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(1));
   const [cities, setCities] = useState<Cities[]>([]);
   useEffect(() => {
     const getData = async () => {
@@ -31,8 +31,8 @@ const CategoryFilter = ({ categories, subCategories }: { categories: Category[];
 
   return (
     <aside className="mx-auto w-[350px] space-y-10 p-3 sm:w-[430px] lg:w-[500px]">
-      <CategorySection title="القسم الرئيسي" categories={categories} dataFilter={category} setDataFilter={setCategory} />
-      <SubCategoryFilter title="القسم الفرعي" categories={subCategories} dataFilter={subCategory} setDataFilter={setSubCategory} />
+      <CategorySection title="القسم الرئيسي" categories={categories || []} dataFilter={category} setDataFilter={setCategory} />
+      <SubCategoryFilter title="القسم الفرعي" categories={subCategories || []} dataFilter={subCategory} setDataFilter={setSubCategory} />
       <PriceRange
         label="السعر"
         min={0}

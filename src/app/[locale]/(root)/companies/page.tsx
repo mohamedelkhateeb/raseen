@@ -13,15 +13,14 @@ export default async function CompanyPage({ searchParams }: { searchParams: Reco
   const max_avg_rates = searchParamsCache.get('maxRate');
   const min_price = searchParamsCache.get('minPrice');
   const min_avg_rates = searchParamsCache.get('minRate');
-  const companies = await getCompanies(
+  const companies = getCompanies(
     { category_id, city_id, max_price, max_avg_rates, min_price, min_avg_rates, sub_categories },
     searchParamsCache.get('search'),
   );
+  const categories = getCategories();
+  const subCategory = getSubCategories(category_id);
+  const [companiesRes, categoriesRes, subCategoryRes] = await Promise.all([companies, categories, subCategory]);
+  console.log({ categoriesRes }, { subCategoryRes });
 
-  console.log({ companies });
-
-  const categories = await getCategories();
-  const subCategory: Category[] = await getSubCategories(category_id);
-
-  return <CompanyViewPage companies={companies?.data || []} categories={categories || []} subCategory={subCategory || []} />;
+  return <CompanyViewPage companies={companiesRes?.data || []} categories={categoriesRes || []} subCategory={subCategoryRes || []} />;
 }
