@@ -13,17 +13,16 @@ import { Category } from '@/types/models/home.model';
 import { useDirection } from '@/utils/helpers';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { parseAsInteger, parseAsString, useQueryState } from 'nuqs';
+import { parseAsString, useQueryState } from 'nuqs';
 import MultiImageUpload from './multi-image-upload';
 import { Order } from '@/types/models/order.model';
-import { set } from 'zod';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { createOrder } from '@/services/orderService';
 import toast from 'react-hot-toast';
 
 export default function OrderForm({ categories, subCategories }: { categories: Category[]; subCategories: Category[] }) {
   const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }).withDefault('0'));
-  const [data, setData] = useState<Order>({
+  const [data, setData] = useState<Order & { imagesToUpload: any[] }>({
     max: '',
     min: '',
     notes: '',
@@ -31,25 +30,28 @@ export default function OrderForm({ categories, subCategories }: { categories: C
     sub_categories: [],
     category_id: category.toString() || '1',
     images: [],
+    imagesToUpload: [],
   });
   const [isPopupOpen, setIsPopupOpen] = useState({ open: false, id: 0 });
 
   const handleSubmit = async () => {
     const formData = new FormData();
-    formData.append('category_id', data.category_id);
+    formData.append('category_id', category);
     formData.append('min', data.min);
     formData.append('max', data.max);
     formData.append('note', data.notes);
     formData.append('city_id', data.city_id);
     formData.append('sub_categories', JSON.stringify(data.sub_categories));
-    data.images.forEach((image, index) => {
-      formData.append(`images[${index}]`, image);
+    data.imagesToUpload.forEach((image, index) => {
+      formData.append(`images[${index}][img]`, image);
     });
+    console.log(Object.fromEntries(formData));
     const res = await createOrder(formData);
+    console.log(res);
     if (res?.status) {
       setIsPopupOpen({ open: true, id: res?.data?.id });
     } else {
-      toast.error(res?.message);
+      toast.error(res?.message || 'حدث خطأ، حاول مرة اخرى');
     }
   };
 
@@ -61,7 +63,6 @@ export default function OrderForm({ categories, subCategories }: { categories: C
           <Select
             required
             onValueChange={(value) => {
-              setData({ ...data, category_id: value });
               setCategory(value);
               setData({ ...data, sub_categories: [] });
             }}

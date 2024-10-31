@@ -10,5 +10,6 @@ export default async function OrdersPage() {
     redirect('/sign-in');
   }
   const orders = await getOrders();
+
   return <OrderListingViewPage orders={orders} />;
 }

@@ -8,8 +8,7 @@ const OrderDetailsPage = async ({ params }: { params: { orderId: string } }) => 
   if (!result.status) {
     return redirect('/');
   }
-
-  return <OrderDetailsViewPage order={result?.data} />;
+  return <OrderDetailsViewPage order={result?.data}  />;
 };
 
 export default OrderDetailsPage;

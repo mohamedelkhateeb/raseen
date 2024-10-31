@@ -22,6 +22,7 @@ const Fetcher = async <T>(endpoint: string, opt: FetchOptions = { cache: 'no-sto
     }
     const url = `${API_BASE_URL}api/${endpoint}`;
     const response = await fetch(url, {
+      next: { revalidate: 0 },
       cache: 'no-store',
       ...opt,
       headers,

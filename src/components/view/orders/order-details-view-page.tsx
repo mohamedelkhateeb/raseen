@@ -8,6 +8,7 @@ import OfferCard from './cards/offer-card';
 import RateForm from './rate-form';
 import { TOrder } from '@/types/models/order.model';
 import FinishOrder from './finish-order';
+import { BsBuildingCheck } from 'react-icons/bs';
 
 const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
   const items = [
@@ -15,17 +16,18 @@ const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
     { title: 'طلباتي', link: '/orders' },
     { title: 'تفاصيل الطلب', link: '' },
   ];
-  console.log({order});
-  
+  console.log({ order });
+
   return (
     <div className="flex flex-col gap-8 px-10">
       <Breadcrumbs items={items} />
       <OrderCard
         label={order?.status.name}
-        id={order?.code}
+        id={order?.id}
+        code={order?.code}
         title={order?.category?.name}
         status={order.status.id as keyof typeof statusColorMap}
-        icon={<img src={order?.category?.img} className="mx-5 text-[30px] lg:text-[50px]" color="#004267" />}
+        icon={<BsBuildingCheck className="mx-5 text-[30px] lg:text-[50px]" color="#004267" />}
         showStatus={false}
       >
         {order?.status.id == 3 && <RateForm companyId={order?.offer_accepted?.company?.id} img={order?.offer_accepted?.company?.img} />}

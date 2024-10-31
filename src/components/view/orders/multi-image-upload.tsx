@@ -6,8 +6,8 @@ import { CarouselSize } from '@/components/common/carousel';
 import { CarouselItem } from '@/components/ui/carousel';
 
 interface MultiImageUploadProps {
-  data: Order;
-  setData: (data: Order) => void;
+  data: Order & { imagesToUpload: any[] };
+  setData: (data: Order & { imagesToUpload: any[] }) => void;
 }
 
 const MultiImageUpload: React.FC<MultiImageUploadProps> = ({ data, setData }) => {
@@ -21,6 +21,7 @@ const MultiImageUpload: React.FC<MultiImageUploadProps> = ({ data, setData }) =>
       setData({
         ...data,
         images: [...data.images, ...imageFiles],
+        imagesToUpload: [...data.imagesToUpload, ...files],
       });
     }
   };
