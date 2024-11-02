@@ -13,7 +13,6 @@ import PageContainer from '@/components/layouts/page-container';
 const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Company[]; categories: Category[]; subCategory: Category[] }) => {
   const [listStyle, setListStyle] = useState('grid');
   const [search, setSearch] = useQueryState('search', parseAsString.withOptions({ shallow: false }));
-  console.log({companies});
   
   return (
     <>

@@ -22,7 +22,7 @@ export default async function CompanyPage({ searchParams }: { searchParams: Reco
   const categories = getCategories();
   const subCategory = getSubCategories(category_id);
   const [companiesRes, categoriesRes, subCategoryRes] = await Promise.all([companies, categories, subCategory]);
-console.log(companiesRes?.data.links);
+console.log("companies",companiesRes);
 
   return <CompanyViewPage companies={companiesRes?.data?.data || []} categories={categoriesRes || []} subCategory={subCategoryRes || []} />;
 }

@@ -14,11 +14,15 @@ export default function ProfileForm({ profile }: any) {
     name: profile?.name || '',
     email: profile?.email || '',
     phone: profile?.phone || '',
-    img: profile?.img || '',
+    img: null,
     city_id: profile?.city || '',
   });
 
   const handleSubmit = async (formData: FormData) => {
+    if (!imageUrl) {
+      formData.delete('img');
+    }
+    console.log(Object.fromEntries(formData));
     const res = await updateProfile(formData);
     if (res?.status) {
       toast.success('تم التعديل بنجاح');
