@@ -14,7 +14,7 @@ export function PriceRange({ label, max, min, step, maxPrice, minPrice, setMaxPr
             min={min}
             max={max}
             step={step}
-            value={maxPrice}
+            defaultValue={maxPrice}
           />
           <input
             type="number"
@@ -23,7 +23,7 @@ export function PriceRange({ label, max, min, step, maxPrice, minPrice, setMaxPr
             min={min}
             max={max}
             step={step}
-            value={minPrice}
+            defaultValue={minPrice}
           />
         </div>
       </div>
@@ -37,7 +37,7 @@ export function PriceRange({ label, max, min, step, maxPrice, minPrice, setMaxPr
         }}
         color="red"
         className={cn('w-[100%] text-darkBlue')}
-        value={[minPrice, maxPrice]}
+        defaultValue={[minPrice, maxPrice]}
       />
     </div>
   );

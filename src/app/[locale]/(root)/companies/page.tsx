@@ -6,6 +6,7 @@ import { searchParamsCache } from '@/utils/searchparams';
 
 export default async function CompanyPage({ searchParams }: { searchParams: Record<string, string> }) {
   searchParamsCache.parse(searchParams);
+  const pageNumber = searchParamsCache.get('page');
   const category_id = searchParamsCache.get('category');
   const sub_categories = searchParamsCache.get('subCategories');
   const city_id = searchParamsCache.get('city_id');
@@ -15,12 +16,13 @@ export default async function CompanyPage({ searchParams }: { searchParams: Reco
   const min_avg_rates = searchParamsCache.get('minRate');
   const companies = getCompanies(
     { category_id, city_id, max_price, max_avg_rates, min_price, min_avg_rates, sub_categories },
+    pageNumber,
     searchParamsCache.get('search'),
   );
   const categories = getCategories();
   const subCategory = getSubCategories(category_id);
   const [companiesRes, categoriesRes, subCategoryRes] = await Promise.all([companies, categories, subCategory]);
-  console.log({ categoriesRes }, { subCategoryRes });
+console.log(companiesRes?.data.links);
 
-  return <CompanyViewPage companies={companiesRes?.data || []} categories={categoriesRes || []} subCategory={subCategoryRes || []} />;
+  return <CompanyViewPage companies={companiesRes?.data?.data || []} categories={categoriesRes || []} subCategory={subCategoryRes || []} />;
 }

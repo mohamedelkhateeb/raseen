@@ -13,13 +13,16 @@ import SubCategoryFilter from './sub-category-filter';
 import { RateRange } from './rate-range';
 
 const CategoryFilter = ({ categories, subCategories }: { categories: Category[]; subCategories: Category[] }) => {
-  const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(''));
-  const [subCategory, setSubCategory] = useQueryState('subCategories', parseAsString.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(''));
-  const [minPrice, setMinPrice] = useQueryState('minPrice', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(0));
-  const [maxPrice, setMaxPrice] = useQueryState('maxPrice', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(100000));
-  const [minRate, setMinRate] = useQueryState('minRate', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(0));
-  const [maxRate, setMaxRate] = useQueryState('maxRate', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(5));
-  const [city, setCity] = useQueryState('city_id', parseAsInteger.withOptions({ shallow: false,throttleMs: 1000 }).withDefault(1));
+  const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false, throttleMs: 1000 }).withDefault(''));
+  const [subCategory, setSubCategory] = useQueryState(
+    'subCategories',
+    parseAsString.withOptions({ shallow: false, throttleMs: 1000 }).withDefault(''),
+  );
+  const [minPrice, setMinPrice] = useQueryState('minPrice', parseAsInteger.withOptions({ shallow: false, throttleMs: 1000 }).withDefault(0));
+  const [maxPrice, setMaxPrice] = useQueryState('maxPrice', parseAsInteger.withOptions({ shallow: false, throttleMs: 1000 }).withDefault(100000));
+  const [minRate, setMinRate] = useQueryState('minRate', parseAsInteger.withOptions({ shallow: false, throttleMs: 1000 }).withDefault(0));
+  const [maxRate, setMaxRate] = useQueryState('maxRate', parseAsInteger.withOptions({ shallow: false, throttleMs: 1000 }).withDefault(5));
+  const [city, setCity] = useQueryState('city_id', parseAsInteger.withOptions({ shallow: false, throttleMs: 1000 }).withDefault(1));
   const [cities, setCities] = useState<Cities[]>([]);
   useEffect(() => {
     const getData = async () => {
@@ -33,17 +36,8 @@ const CategoryFilter = ({ categories, subCategories }: { categories: Category[];
     <aside className="mx-auto w-[350px] space-y-10 p-3 sm:w-[430px] lg:w-[500px]">
       <CategorySection title="القسم الرئيسي" categories={categories || []} dataFilter={category} setDataFilter={setCategory} />
       <SubCategoryFilter title="القسم الفرعي" categories={subCategories || []} dataFilter={subCategory} setDataFilter={setSubCategory} />
-      <PriceRange
-        label="السعر"
-        min={0}
-        max={100000}
-        step={10}
-        minPrice={minPrice}
-        maxPrice={maxPrice}
-        setMinPrice={setMinPrice}
-        setMaxPrice={setMaxPrice}
-      />
-      <RateRange label="التقييم" min={0} max={5} step={1} minRate={minRate} maxRate={maxRate} setMinRate={setMinRate} setMaxRate={setMaxRate} />
+      <PriceRange label="السعر" min={0} max={100000} step={10} minPrice={0} maxPrice={1000000} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
+      <RateRange label="التقييم" min={0} max={5} step={1} minRate={0} maxRate={5} setMinRate={setMinRate} setMaxRate={setMaxRate} />
       <div>
         <p className="py-4 text-xl font-bold">المدينة</p>
         <Select value={city.toString()} required onValueChange={(value) => setCity(+value)} name="city_id">

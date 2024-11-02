@@ -13,7 +13,7 @@ export function RateRange({ mes, label, max, min, step, minRate, maxRate, setMin
             onChange={(e) => setMaxRate(e.target.value.toString())}
             maxLength={1}
             minLength={1}
-            value={maxRate}
+            defaultValue={maxRate}
             max={5}
             min={0}
           />
@@ -23,14 +23,14 @@ export function RateRange({ mes, label, max, min, step, minRate, maxRate, setMin
             onChange={(e) => setMinRate(e.target.value.toString())}
             maxLength={1}
             minLength={1}
-            value={minRate}
+            defaultValue={minRate}
             max={5}
             min={0}
           />
         </div>
       </div>
       <Slider
-        value={[minRate, maxRate]}
+        defaultValue={[minRate, maxRate]}
         min={min}
         max={max}
         step={step}
