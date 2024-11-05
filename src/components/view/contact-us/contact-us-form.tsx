@@ -1,27 +1,17 @@
 'use client';
-import { Button, buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { Textarea } from '@/components/ui/textarea';
-import Image from 'next/image';
-import CardImg from '../../../../public/10802151_4529819 1.svg';
-import Popup from '@/components/common/popup';
 import { useState } from 'react';
-import DropdownMenu from '../home/companies/dropdown';
-import { Category } from '@/types/models/home.model';
-import { useDirection } from '@/utils/helpers';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
-import { parseAsString, useQueryState } from 'nuqs';
-import { Order } from '@/types/models/order.model';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
-import { createOrder } from '@/services/orderService';
 import toast from 'react-hot-toast';
 import { contactUs } from '@/services/homeService';
+import { useRouter } from '@/i18n/routing';
+import { useDirection } from '@/utils/helpers';
 
 export default function ContactUsForm() {
-  const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }).withDefault('0'));
+  const router = useRouter();
   const [data, setData] = useState<{ name: string; email: string; msg: string; resson: string; type: string }>({
     name: '',
     email: '',
@@ -36,6 +26,7 @@ export default function ContactUsForm() {
     console.log(res);
     if (res?.status) {
       toast.success('تم ارسال شكواك بنجاح');
+      router.push('/');
     } else {
       toast.error(res?.message || 'حدث خطأ، حاول مرة اخرى');
     }

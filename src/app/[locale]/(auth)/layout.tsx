@@ -17,7 +17,14 @@ export default async function LocaleLayout({ children }: { children: React.React
       </Link>
       <main className="flex h-full items-center p-4 lg:p-8">{children}</main>
       <div className="ml-10 mr-auto hidden max-h-[90vh] lg:flex">
-        <Image src={SigninCover} alt="Sign in cover" className="object-contain" />
+        <Image
+          src={SigninCover}
+          alt="Sign in cover"
+          className="object-contain"
+          layout="responsive"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
       </div>
     </div>
   );

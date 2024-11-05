@@ -1,7 +1,7 @@
 'use client';
 import FormError from '@/components/common/form-error';
 import Saudi from '@/components/svgs/saudi-flag';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { Input } from '@/components/ui/input';
 import { Link, useRouter } from '@/i18n/routing';
@@ -25,8 +25,8 @@ export default function SigninForm() {
       return;
     }
     const res: Response<Data> = await signIn(result.data);
-    console.log({res});
-    
+    console.log({ res });
+
     if (!res?.data?.is_active && !res?.data?.is_available) {
       setUserauth({
         otp: 0,
@@ -69,18 +69,17 @@ export default function SigninForm() {
             loader="تسجيل الدخول..."
             style="ml-auto py-6 xl:py-9 xl:text-2xl w-full bg-darkBlue text-white text-base rounded-lg"
           />
-          <Button
-            onClick={() => router.push('/sign-up')}
-            size={'default'}
+          <Link
+            href="/sign-company"
             className={cn(
-              'mt-2 w-full rounded-lg border border-darkBlue bg-transparent py-6 text-base text-darkBlue hover:text-white lg:text-xl xl:py-9 xl:text-2xl',
+              buttonVariants({
+                variant: 'outline',
+              }),
+              'mt-2 w-full rounded-lg border border-darkBlue bg-transparent py-6 text-base text-darkBlue hover:bg-darkBlue hover:text-white lg:text-xl xl:py-9 xl:text-2xl',
             )}
           >
             انشاء حساب كشركه
-          </Button>
-          <Button size="sm" variant="link" asChild className={'text:lg font-bold text-[#004267] lg:hidden lg:text-xl'}>
-            <Link href="/services">تخطي التسجيل</Link>
-          </Button>
+          </Link>
         </div>
       </form>
     </>
