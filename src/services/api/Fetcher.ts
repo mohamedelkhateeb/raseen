@@ -8,7 +8,7 @@ interface FetchOptions extends RequestInit {
   headers?: Record<string, string>;
 }
 
-const Fetcher = async <T>(endpoint: string, opt: FetchOptions = {  }) => {
+const Fetcher = async <T>(endpoint: string, opt: FetchOptions = {}) => {
   try {
     const session = await getServerSession(options);
     const TOKEN = session?.token;
@@ -27,7 +27,6 @@ const Fetcher = async <T>(endpoint: string, opt: FetchOptions = {  }) => {
       headers,
     });
     console.log(url);
-
     const data = await response?.json().catch(() => {
       return {
         message: 'Failed Request',

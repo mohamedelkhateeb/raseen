@@ -25,6 +25,8 @@ export default function SigninForm() {
       return;
     }
     const res: Response<Data> = await signIn(result.data);
+    console.log({res});
+    
     if (!res?.data?.is_active && !res?.data?.is_available) {
       setUserauth({
         otp: 0,

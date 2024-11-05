@@ -2,6 +2,7 @@ import React from 'react';
 import { PictureDialog } from '../home/companies/picture-dialog';
 import { statusColorMap } from './cards/order-card';
 import OrderButton from '@/components/common/order-button';
+import { Textarea } from '@/components/ui/textarea';
 
 const OrderDetailsCard = ({
   subCategory,
@@ -32,9 +33,9 @@ const OrderDetailsCard = ({
         <span className="text-lg text-gray-400">المدينة:</span>
         <h1 className="text-lg font-bold">{city}</h1>
       </div>
-      <div className="flex gap-3">
+      <div className="flex flex-col gap-3">
         <span className="text-lg text-gray-400">وصف الطلب:</span>
-        <h1 className="text-lg font-bold">{desc}</h1>
+        <Textarea disabled className="h-52 max-h-64 cursor-none" value={desc || ''} />
       </div>
       <div className="flex flex-col gap-3">
         <span className="text-lg text-gray-400">الصور المرفقة:</span>

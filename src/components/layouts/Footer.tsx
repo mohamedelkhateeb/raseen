@@ -39,12 +39,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/#articles" className="hover:text-primary">
+                <Link href="/articles" className="hover:text-primary">
                   المقالات
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
+                <Link href="/contact-us" className="hover:text-primary">
                   تواصل معنا
                 </Link>
               </li>
@@ -60,8 +60,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
-                  الأحكام والشروط
+                <Link href="/terms" className="hover:text-primary">
+                  الشروط و الاحكام
                 </Link>
               </li>
               <li className="mb-2">

@@ -34,7 +34,7 @@ const CategoryFilter = ({ categories, subCategories }: { categories: Category[];
 
   return (
     <aside className="mx-auto w-[350px] space-y-10 p-3 sm:w-[430px] lg:w-[500px]">
-      <CategorySection title="القسم الرئيسي" categories={categories || []} dataFilter={category} setDataFilter={setCategory} />
+      <CategorySection title="القسم الرئيسي" categories={categories || []} dataFilter={category} setDataFilter={setCategory} setSubCategory={setSubCategory}  />
       <SubCategoryFilter title="القسم الفرعي" categories={subCategories || []} dataFilter={subCategory} setDataFilter={setSubCategory} />
       <PriceRange label="السعر" min={0} max={100000} step={10} minPrice={0} maxPrice={1000000} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
       <RateRange label="التقييم" min={0} max={5} step={1} minRate={0} maxRate={5} setMinRate={setMinRate} setMaxRate={setMaxRate} />

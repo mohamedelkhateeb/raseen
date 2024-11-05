@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import FormError from '@/components/common/form-error';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { redirect, useRouter } from '@/i18n/routing';
@@ -10,6 +10,7 @@ const OTPStyle = 'mr-5 rounded-lg h-28 w-28 md:h-[100px] md:w-[100px] xl:h-[130p
 import { signIn } from 'next-auth/react';
 
 const OTPForm = () => {
+  const otpRef = useRef<any>(null);
   const [value, setValue] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const router = useRouter();
@@ -36,11 +37,14 @@ const OTPForm = () => {
       console.error(error);
     }
   };
+  useEffect(() => {
+    otpRef.current?.focus();
+  }, []);
   return (
     <form action={submitForm}>
       <p className="py-3 font-semibold">رقم التحقق</p>
       <div className="space-y-2">
-        <InputOTP className="" maxLength={4} value={value} onChange={(value) => setValue(value)}>
+        <InputOTP ref={otpRef} className="" maxLength={4} value={value} onChange={(value) => setValue(value)}>
           <InputOTPGroup>
             <InputOTPSlot className={OTPStyle} index={0} />
             <InputOTPSlot className={OTPStyle} index={1} />

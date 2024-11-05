@@ -11,8 +11,6 @@ export const createOrder = async (data: FormData) => {
       body: data,
       headers: await ReqHeaders({}),
     });
-    console.log(response);
-    
     return await response.json();
   } catch (error) {
     console.error(error);
@@ -67,9 +65,9 @@ export const getOrder = async (id: string) => {
     console.error(error);
   }
 };
-export const getRelatedService = async (id: string) => {
+export const getRelatedService = async () => {
   try {
-    const response = await Fetcher(`order-subcategories/${id}`, {
+    const response = await Fetcher(`order-subcategories`, {
       next: { tags: ['order'] },
     });
     return response;

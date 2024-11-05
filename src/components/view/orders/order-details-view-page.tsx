@@ -9,6 +9,7 @@ import RateForm from './rate-form';
 import { TOrder } from '@/types/models/order.model';
 import FinishOrder from './finish-order';
 import { BsBuildingCheck } from 'react-icons/bs';
+import Rate from './cards/rate';
 
 const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
   const items = [
@@ -16,11 +17,20 @@ const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
     { title: 'طلباتي', link: '/orders' },
     { title: 'تفاصيل الطلب', link: '' },
   ];
-  console.log({ order });
+  console.log(order.rates);
+  console.log(order);
 
   return (
     <div className="flex flex-col gap-8 px-10">
       <Breadcrumbs items={items} />
+      {order?.rates?.id && (
+        <Rate
+          msg={order?.rates?.msg}
+          rate={order?.rates?.rate}
+          name={order?.rates?.user_rate?.name}
+          icon={<img src={order?.rates?.user_rate?.img} className="mx-5 h-32 w-32 rounded-full text-[30px] lg:text-[50px]" />}
+        />
+      )}
       <OrderCard
         label={order?.status.name}
         id={order?.id}
@@ -30,7 +40,9 @@ const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
         icon={<BsBuildingCheck className="mx-5 text-[30px] lg:text-[50px]" color="#004267" />}
         showStatus={false}
       >
-        {order?.status.id == 3 && <RateForm companyId={order?.offer_accepted?.company?.id} img={order?.offer_accepted?.company?.img} />}
+        {!order?.rates?.id && order?.status.id == 3 && (
+          <RateForm companyId={order?.offer_accepted?.company?.id} img={order?.offer_accepted?.company?.img} />
+        )}
         {order?.status.id == 2 && <FinishOrder offerId={order?.id} />}
       </OrderCard>
       <OrderDetailsCard

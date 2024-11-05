@@ -2,6 +2,7 @@
 import RatingStars from '@/components/common/rating-stars';
 import { Button } from '@/components/ui/button';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
+import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { acceptOffer } from '@/services/orderService';
 import Image from 'next/image';
@@ -16,9 +17,10 @@ type OfferCardProps = {
   price: number | string;
   isAccepted?: boolean;
   offerId?: number;
+  companyId?: number;
 };
 
-const OfferCard = ({ companyName, stars, description, price, companyImage, isAccepted, offerId }: OfferCardProps) => {
+const OfferCard = ({ companyName, stars, description, price, companyImage, isAccepted, offerId, companyId }: OfferCardProps) => {
   const handleAccept = async (formData: FormData) => {
     console.log(Object.fromEntries(formData));
     const res = await acceptOffer(formData);
@@ -31,7 +33,7 @@ const OfferCard = ({ companyName, stars, description, price, companyImage, isAcc
   };
   return (
     <div dir="rtl" className="flex w-full flex-col gap-4 rounded-xl bg-[#f3f3f3d5] px-24 py-14">
-      <div className="flex items-center gap-6">
+      <Link href={`/companies/${companyId}`} className="flex items-center gap-6">
         <div>
           <img src={companyImage} alt="company logo" className="h-full w-full object-cover" />
         </div>
@@ -42,7 +44,7 @@ const OfferCard = ({ companyName, stars, description, price, companyImage, isAcc
             <p>{stars}</p>
           </h1>
         </div>
-      </div>
+      </Link>
       <p className="text-lg font-semibold">
         السعر المقترح: <span className="text-xl font-bold text-[#004267]"> {price}</span>
       </p>

@@ -1,7 +1,7 @@
 import { options } from '@/app/api/auth/[...nextauth]/options';
 import OrderListingViewPage from '@/components/view/orders/order-listing-view-page';
 import { redirect } from '@/i18n/routing';
-import { getOrders } from '@/services/orderService';
+import { getOrders, getRelatedService } from '@/services/orderService';
 import { getServerSession } from 'next-auth';
 
 export default async function OrdersPage() {
@@ -10,6 +10,7 @@ export default async function OrdersPage() {
     redirect('/sign-in');
   }
   const orders = await getOrders();
+  const relatedServices = await getRelatedService();
 
-  return <OrderListingViewPage orders={orders} />;
+  return <OrderListingViewPage orders={orders} relatedServices={relatedServices?.data || []} />;
 }

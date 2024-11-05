@@ -104,3 +104,31 @@ input[type='number']::-webkit-inner-spin-button {
     font-size: 11px;
   }
 }
+
+.half-fill {
+  position: relative;
+}
+.half-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; /* Adjust for half-fill */
+  height: 100%;
+  background-color: currentColor;
+}
+
+.terms-page ol {
+  list-style-type: decimal; /* Customize list style */
+  padding-left: 20px;
+}
+
+.terms-page li {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.terms-page b {
+  font-weight: bold;
+}

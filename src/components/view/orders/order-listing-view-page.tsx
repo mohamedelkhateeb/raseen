@@ -8,13 +8,13 @@ import { IoIosArrowRoundBack } from 'react-icons/io';
 import { Breadcrumbs } from '@/components/common/breadcrumd';
 import { TbSmartHome } from 'react-icons/tb';
 import { ReadOrder, TOrder } from '@/types/models/order.model';
-const OrderListingViewPage = ({ orders }: { orders: ReadOrder[] }) => {
+const OrderListingViewPage = ({ orders, relatedServices }: { orders: ReadOrder[]; relatedServices: any[] }) => {
   const items = [
     { title: <TbSmartHome size={30} color="#EA8D09" />, link: '/' },
     { title: 'طلباتي', link: '/' },
   ];
-  console.log(orders);
-  
+  console.log({ relatedServices });
+
   return (
     <section className="px-7">
       <Breadcrumbs items={items} />
@@ -48,13 +48,13 @@ const OrderListingViewPage = ({ orders }: { orders: ReadOrder[] }) => {
           className="flex w-full items-center justify-center"
         >
           <CarouselContent className="xl:gap-14">
-            {['1', '1', '1', '1']?.map((v, index) => (
+            {relatedServices?.map((v, index) => (
               <Link href={'/companies'} key={index} className="xl:w-[400px]">
                 <CarouselItem key={index} className="basis-1/3 lg:basis-1/4">
                   <Card className="border-0 shadow-none">
                     <CardContent className="flex aspect-square flex-col items-center p-0">
-                      <img className="h-full w-full object-fill" src={v} alt="" />
-                      <h1 className="my-5 font-bold xl:text-2xl">المقاولات والديكور</h1>
+                      <img className="h-full w-full object-fill" src={v?.img ?? ''} alt="" />
+                      <h1 className="my-5 font-bold xl:text-2xl"> {v?.name}</h1>
                     </CardContent>
                   </Card>
                 </CarouselItem>

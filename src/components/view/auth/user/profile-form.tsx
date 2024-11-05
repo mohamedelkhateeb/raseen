@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { updateProfile } from '@/services/authService';
 import DropdownMenu from '../../home/companies/dropdown';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
+import { useSession } from 'next-auth/react';
 export default function ProfileForm({ profile }: any) {
   const { imageUrl, handleImageChange, resetImage } = useImageUpload();
   const [data, setData] = useState<any>({
@@ -31,7 +32,7 @@ export default function ProfileForm({ profile }: any) {
     }
   };
 
-  return (
+    return (
     <>
       <form action={handleSubmit} className="my-8 grid grid-cols-2 gap-10 overflow-auto rounded-2xl border-2 bg-white p-12">
         <div className="col-span-2 flex items-center gap-5">

@@ -16,6 +16,7 @@ const CompanyDetails = ({ company }: { company: Company }) => {
     toast.error("Company doesn't exist, please try again later");
     redirect('/companies');
   }
+  console.log(company);
   return (
     <main className="flex w-full">
       <div className="mt-20 px-3 lg:px-12">
@@ -23,7 +24,7 @@ const CompanyDetails = ({ company }: { company: Company }) => {
           <div className="my-6 flex w-full items-center justify-between lg:w-2/3">
             <h1 className="text-2xl font-semibold">{company?.name}</h1>
             <div className="mx-4 flex items-center gap-2">
-              <RatingStars readOnly={true} initialValue={company?.rates_count} style="w-8 h-8" />
+              <RatingStars readOnly={true} initialValue={parseInt(company?.avg_rates)} style="w-8 h-8" />
               <span>{company?.avg_rates}</span>
               <span>({company?.rates_count})</span>
             </div>
@@ -45,8 +46,8 @@ const CompanyDetails = ({ company }: { company: Company }) => {
               <div className="hidden min-w-96 flex-col lg:flex">
                 <h1 className="my-8 text-2xl font-bold text-darkBlue">اقسام اخرى</h1>
                 <div className="flex flex-col gap-8 rounded-2xl border border-[#E0E0E0] bg-[#FAFAFA] px-6 py-8 font-semibold">
-                  {company?.sub_categories?.map((c) => (
-                    <div className="flex items-center gap-2">
+                  {company?.sub_categories?.map((c, index) => (
+                    <div key={index} className="flex items-center gap-2">
                       <h1>{c?.name}</h1>
                     </div>
                   ))}

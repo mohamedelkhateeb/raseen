@@ -27,9 +27,11 @@ const MultiImageUpload: React.FC<MultiImageUploadProps> = ({ data, setData }) =>
   };
   const removeImage = (indexToRemove: number) => {
     const updatedImages = data.images.filter((_, index) => index !== indexToRemove);
+    const updatedImagesToUpload = data.imagesToUpload.filter((_, index) => index !== indexToRemove);
     setData({
       ...data,
       images: updatedImages,
+      imagesToUpload: updatedImagesToUpload,
     });
   };
   return (

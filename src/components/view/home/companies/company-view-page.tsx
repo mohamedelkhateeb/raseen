@@ -12,8 +12,8 @@ import { parseAsString, useQueryState } from 'nuqs';
 import PageContainer from '@/components/layouts/page-container';
 const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Company[]; categories: Category[]; subCategory: Category[] }) => {
   const [listStyle, setListStyle] = useState('grid');
-  const [search, setSearch] = useQueryState('search', parseAsString.withOptions({ shallow: false }));
-  
+  const [search, setSearch] = useQueryState('search', parseAsString.withOptions({ shallow: false, throttleMs: 1000 }));
+
   return (
     <>
       <div className="relative h-56 bg-cover bg-center lg:h-64" style={{ backgroundImage: `url(${image})` }}>

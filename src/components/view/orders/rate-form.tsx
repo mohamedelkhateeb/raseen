@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Popup from '@/components/common/popup';
 import RatingStars from '@/components/common/rating-stars';
@@ -10,11 +10,13 @@ import { DialogClose } from '@/components/ui/dialog';
 import { rateCompany } from '@/services/companyService';
 import toast from 'react-hot-toast';
 const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
+  const buttonRef = useRef<any>(null);
   const handleRatingChange = async (formData: FormData) => {
     console.log(Object.fromEntries(formData));
     const res = await rateCompany(formData);
     if (res?.status) {
       toast.success('تم ارسال التقييم بنجاح');
+      buttonRef.current?.click();
     } else {
       toast.error('حدث خطأ، حاول مرة اخرى');
     }
@@ -54,6 +56,7 @@ const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
             style="w-full rounded-xl bg-darkBlue px-8 py-12 text-xl text-white sm:py-9 xl:text-2xl"
           />
           <DialogClose
+            ref={buttonRef}
             className={cn(
               'mr-auto w-full rounded-xl border-2 border-darkBlue bg-transparent px-8 text-xl text-darkBlue hover:bg-darkBlue hover:text-white xl:text-2xl',
             )}

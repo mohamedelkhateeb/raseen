@@ -1,7 +1,6 @@
 'use client';
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog';
 import { DialogDescription } from '@radix-ui/react-dialog';
-import Image from 'next/image';
 
 export function PictureDialog({ images }: any) {
   return (

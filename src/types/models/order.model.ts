@@ -67,6 +67,16 @@ export type TOrder = {
   }>;
   offers: Array<TOffer>;
   offers_rejected: Array<TOffer>;
-  rates: string;
+  rates: {
+    id: number;
+    user_rate: {
+      id: number;
+      name: string;
+      img: string;
+    };
+    rate: number;
+    msg: string;
+    created_at: string;
+  };
   offer_accepted?: TOffer;
 };

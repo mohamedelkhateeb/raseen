@@ -6,16 +6,20 @@ interface CategorySectionProps {
   categories: Category[];
   dataFilter: any;
   setDataFilter: any;
+  setSubCategory: any;
 }
 
-const CategorySection = ({ title, categories, dataFilter, setDataFilter }: CategorySectionProps) => {
+const CategorySection = ({ title, categories, dataFilter, setDataFilter, setSubCategory }: CategorySectionProps) => {
   return (
     <div className="mb-6">
       <h3 className="mb-5 text-lg font-bold">{title}</h3>
       <div className="grid grid-cols-2 gap-6 sm:w-[418px]">
         {categories?.map((c, index) => (
           <button
-            onClick={() => setDataFilter(c.id)}
+            onClick={() => {
+              setDataFilter(c.id);
+              setSubCategory('');
+            }}
             key={index}
             className={'rounded border bg-[Stroke] px-4 py-4 font-medium transition' + (c.id == dataFilter ? ' border-primary bg-[#00426708]' : '')}
           >

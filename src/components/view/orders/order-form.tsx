@@ -23,22 +23,23 @@ import toast from 'react-hot-toast';
 export default function OrderForm({ categories, subCategories }: { categories: Category[]; subCategories: Category[] }) {
   const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }).withDefault('0'));
   const [data, setData] = useState<Order & { imagesToUpload: any[] }>({
-    max: '',
-    min: '',
+    max: '0',
+    min: '0',
     notes: '',
     city_id: '',
     sub_categories: [],
-    category_id: category.toString() || '1',
+    category_id: '',
     images: [],
     imagesToUpload: [],
   });
   const [isPopupOpen, setIsPopupOpen] = useState({ open: false, id: 0 });
 
   const handleSubmit = async () => {
+    setIsPopupOpen({ open: false, id: 0 });
     const formData = new FormData();
     formData.append('category_id', category);
-    formData.append('min', data.min);
-    formData.append('max', data.max);
+    formData.append('min', data.min.replace(/,/g, ''));
+    formData.append('max', data.max.replace(/,/g, ''));
     formData.append('note', data.notes);
     formData.append('city_id', data.city_id);
     formData.append('sub_categories', JSON.stringify(data.sub_categories));
@@ -65,6 +66,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
             onValueChange={(value) => {
               setCategory(value);
               setData({ ...data, sub_categories: [] });
+              setData({ ...data, category_id: value });
             }}
           >
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
@@ -81,7 +83,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
         </div>
         <div>
           <p className="py-4 text-xl font-semibold">{'القسم الفرعي'}</p>
-          <Select>
+          <Select disabled={data.category_id == ''}>
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
               <SelectValue
                 className="text-xl text-gray-200"
@@ -142,17 +144,21 @@ export default function OrderForm({ categories, subCategories }: { categories: C
         <div className="col-span-2 flex items-center gap-5 lg:gap-10">
           <div className="relative w-full">
             <Input
-              type="number"
+              value={data.min.replace(/(\d{3})(?=\d)/g, '$1,')}
+              type="text"
               className="rounded-2xl border-2 px-5 py-9 text-xl"
               placeholder="اكتب السعر"
               onChange={(e) => setData({ ...data, min: e.target.value })}
+              maxLength={8}
             />
             <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
           </div>
           <p>بين</p>
           <div className="relative w-full">
             <Input
-              type="number"
+              maxLength={11}
+              value={data.max.replace(/(\d{3})(?=\d)/g, '$1,')}
+              type="text"
               className="rounded-2xl border-2 px-5 py-9 text-xl"
               placeholder="اكتب السعر"
               onChange={(e) => setData({ ...data, max: e.target.value })}
