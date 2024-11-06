@@ -3,23 +3,27 @@ import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { Input } from '@/components/ui/input';
 import { Link, useRouter } from '@/i18n/routing';
 import React, { useState } from 'react';
-import MultiImageUpload from '../../orders/multi-image-upload';
 import { MdAttachFile } from 'react-icons/md';
 import DropdownMenu from '../../home/companies/dropdown';
-import { LocateIcon } from 'lucide-react';
-import { TbLocationQuestion } from 'react-icons/tb';
 import { IoLocationOutline } from 'react-icons/io5';
+import { useQueryState } from 'nuqs';
+import Popup from '@/components/common/popup';
+import GoogleMap from '../../maps/map';
 
 export default function SignUpCompanyForm() {
   const [errMsg, setErrMsg] = useState('');
+  const [lat] = useQueryState('lat');
+  const [lang] = useQueryState('lang');
+  console.log(lat, lang);
+
   const [data, setData] = useState({
     name: '',
     email: '',
     owner: '',
     address: '',
     owner_img: null,
-    lat: 0,
-    lng: 0,
+    lat: lat,
+    lng: lang,
     location: '',
     commercial_img: null,
     min: '',
@@ -28,6 +32,8 @@ export default function SignUpCompanyForm() {
   const router = useRouter();
 
   const submitForm = async (formData: FormData) => {
+    formData.append('lat', lat?.toString() || '0');
+    formData.append('lng', lang?.toString() || '0');
     console.log(Object.fromEntries(formData));
   };
 
@@ -63,13 +69,21 @@ export default function SignUpCompanyForm() {
           </label>
           <input type="file" id="upload" className="hidden" accept="image/*" name="owner_img" />
         </div>
-        <div className="col-span-2 grid w-full gap-1.5">
-          <p className="py-4 font-semibold lg:text-xl">الموقع</p>
-          <Link href="/map" className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
-            الموقع
-            <IoLocationOutline className="absolute bottom-5 end-4 text-3xl" />
-          </Link>
-        </div>
+        <Popup
+          style="w-[90%] max-h-[96vh] overflow-y-auto"
+          title=""
+          trigger={
+            <div className="col-span-2 grid w-full gap-1.5">
+              <p className="py-4 font-semibold lg:text-xl">الموقع</p>
+              <div className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
+                الموقع
+                <IoLocationOutline className="absolute bottom-5 end-4 text-3xl" />
+              </div>
+            </div>
+          }
+        >
+          <GoogleMap />
+        </Popup>
         <div className="col-span-2 grid w-full gap-1.5">
           <p>تحديد الميزانية</p>
           <div className="col-span-2 flex items-center gap-5 lg:gap-10">

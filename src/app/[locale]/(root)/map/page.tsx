@@ -1,7 +1,8 @@
+import MapApp from '@/components/view/maps/map';
 import React from 'react';
 
 const MapPage = () => {
-  return <div>Map</div>;
+  return <MapApp />;
 };
 
 export default MapPage;
