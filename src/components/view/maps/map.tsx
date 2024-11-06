@@ -23,7 +23,7 @@ const GoogleMap = () => {
           east: 50,
           west: -50,
         }}
-        style={{ width: '95%', height: '70vh', marginLeft: 'auto', marginRight: 'auto', border: '1px solid gray' }}
+        style={{ width: '98%', height: '83vh', marginLeft: 'auto', marginRight: 'auto', border: '1px solid gray' }}
         mapId={process.env.NEXT_PUBLIC_MAP_ID}
         onClick={handleMapClick}
         defaultZoom={8}

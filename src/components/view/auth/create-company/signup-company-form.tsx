@@ -1,7 +1,7 @@
 'use client';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { Input } from '@/components/ui/input';
-import { Link, useRouter } from '@/i18n/routing';
+import { useRouter } from '@/i18n/routing';
 import React, { useState } from 'react';
 import { MdAttachFile } from 'react-icons/md';
 import DropdownMenu from '../../home/companies/dropdown';
@@ -70,8 +70,8 @@ export default function SignUpCompanyForm() {
           <input type="file" id="upload" className="hidden" accept="image/*" name="owner_img" />
         </div>
         <Popup
-          style="w-[90%] max-h-[96vh] overflow-y-auto"
-          title=""
+          style="w-[90%] h-[95vh] overflow-y-auto"
+          title="يرجى تحديد الموقع على الخريطة"
           trigger={
             <div className="col-span-2 grid w-full gap-1.5">
               <p className="py-4 font-semibold lg:text-xl">الموقع</p>
@@ -112,11 +112,11 @@ export default function SignUpCompanyForm() {
             </div>
           </div>
         </div>
-        <div className="mt-8 flex flex-col gap-4">
+        <div className="col-span-2 mt-8 flex items-start justify-start gap-4">
           <LoadingButton
             content="انشاء حساب"
             loader="انشاء حساب..."
-            style="mr-auto w-full rounded-lg bg-darkBlue py-6 text-base text-white xl:py-9 xl:text-2xl"
+            style=" w-1/2 mr-auto rounded-lg bg-darkBlue py-6 text-base text-white xl:py-9 xl:text-2xl"
           />
         </div>
       </form>
