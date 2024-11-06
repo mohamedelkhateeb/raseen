@@ -1,4 +1,4 @@
-import { SignUpCompanyView } from '@/components/view/auth/create-company/signup-view';
+import SignUpCompanyView from '@/components/view/auth/create-company/signup-view';
 import { Metadata } from 'next';
 import React from 'react';
 export const metadata: Metadata = {

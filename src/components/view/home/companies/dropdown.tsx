@@ -14,6 +14,8 @@ const DropdownMenu = ({ dataFilter, setDataFilter, triggerStyle }: any) => {
     };
     getData();
   }, []);
+  console.log({cities});
+  
   return (
     <div>
       <p className="py-4 text-xl font-bold">المدينة</p>
