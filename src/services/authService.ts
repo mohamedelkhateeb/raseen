@@ -32,6 +32,20 @@ export const signUp = async (data: any) => {
     console.error(error);
   }
 };
+export const companySignUp = async (data: FormData) => {
+  const locale = await getLocale();
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/company-sign-up`, {
+      method: 'POST',
+      cache: 'no-cache',
+      body: data,
+      headers: { 'Accept-Language': locale },
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
 export const checkOTP = async (data: { phone: string; otp: number }) => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/check-otp`, {

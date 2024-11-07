@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Create your account to continue to Raseen.',
 };
 
-export default function SigninPage() {
+export default async function SigninPage() {
   return (
     <>
       <SignUpCompanyView />

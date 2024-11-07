@@ -3,6 +3,7 @@ import React from 'react';
 import { TbSmartHome } from 'react-icons/tb';
 import { getProfile } from '@/services/authService';
 import SignUpCompanyForm from './signup-company-form';
+import { getSubCategories } from '@/services/homeService';
 
 const SignUpCompanyView = async () => {
   const items = [
@@ -10,10 +11,11 @@ const SignUpCompanyView = async () => {
     { title: 'الرئيسية', link: '/' },
     { title: 'انشاء حساب كشركة', link: '/' },
   ];
+  const subCategories = await getSubCategories("0");
   return (
     <div className="flex flex-col gap-4 px-10">
       <Breadcrumbs items={items} />
-      <SignUpCompanyForm />
+      <SignUpCompanyForm subCategories={subCategories} />
     </div>
   );
 };
