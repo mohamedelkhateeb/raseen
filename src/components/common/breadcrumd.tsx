@@ -15,7 +15,9 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItemProps[] }) {
           <Fragment key={index}>
             {index !== items.length - 1 && (
               <BreadcrumbItem>
-                <Link href={item.link}>{item.title}</Link>
+                <Link prefetch={true} href={item.link}>
+                  {item.title}
+                </Link>
               </BreadcrumbItem>
             )}
             {index < items.length - 1 && <BreadcrumbSeparator></BreadcrumbSeparator>}

@@ -29,22 +29,22 @@ const Footer = () => {
             <h3 className="mb-4 text-lg font-bold">روابط هامة</h3>
             <ul>
               <li className="mb-2">
-                <Link href="/" className="hover:text-primary">
+                <Link prefetch={true} href="/" className="hover:text-primary">
                   الرئيسية
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/companies" className="hover:text-primary">
+                <Link prefetch={true} href="/companies" className="hover:text-primary">
                   الشركات
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/articles" className="hover:text-primary">
+                <Link prefetch={true} href="/articles" className="hover:text-primary">
                   المقالات
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/contact-us" className="hover:text-primary">
+                <Link prefetch={true} href="/contact-us" className="hover:text-primary">
                   تواصل معنا
                 </Link>
               </li>
@@ -55,22 +55,22 @@ const Footer = () => {
             <h3 className="mb-4 text-lg font-bold">عن رصين</h3>
             <ul>
               <li className="mb-2">
-                <Link href="/about-us" className="hover:text-primary">
+                <Link prefetch={true} href="/about-us" className="hover:text-primary">
                   إعرفني
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/terms" className="hover:text-primary">
+                <Link prefetch={true} href="/terms" className="hover:text-primary">
                   الشروط و الاحكام
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/privacy" className="hover:text-primary">
+                <Link prefetch={true} href="/privacy" className="hover:text-primary">
                   سياسة الخصوصية
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/faq" className="hover:text-primary">
+                <Link prefetch={true} href="/faq" className="hover:text-primary">
                   الأسئلة الشائعة
                 </Link>
               </li>
@@ -81,12 +81,12 @@ const Footer = () => {
             <h3 className="mb-4 text-lg font-bold">خدماتنا</h3>
             <ul>
               <li className="mb-2">
-                <Link href="/companies?category=1" className="hover:text-primary">
+                <Link prefetch={true} href="/companies?category=1" className="hover:text-primary">
                   المكاتب الهندسية
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/companies?category=2" className="hover:text-primary">
+                <Link prefetch={true} href="/companies?category=2" className="hover:text-primary">
                   المقاولات والديكور
                 </Link>
               </li>

@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl, listStyle, is
         listStyle === 'grid' ? 'flex flex-col' : 'flex w-full flex-row'
       }`}
     >
-      <Link href={`/companies/${id}`}>
+      <Link prefetch={true} href={`/companies/${id}`}>
         <img src={imageUrl} alt={title} className={`${listStyle === 'grid' ? 'h-56 w-full' : 'h-full w-full'} object-cover`} />
       </Link>
       <div className={`${listStyle === 'grid' ? 'p-4' : 'w-full p-4'}`}>

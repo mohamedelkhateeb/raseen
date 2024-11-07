@@ -177,6 +177,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
             <h1 className="text-2xl font-bold">تم نشر طلبك بنجاح</h1>
             <p className="text-sm text-gray-600">ستتلقى عروض الشركات في تفاصيل طلبك</p>
             <Link
+              prefetch={true}
               href={`/orders/${isPopupOpen?.id}`}
               className={cn(buttonVariants({ variant: 'default', size: 'default' }), 'my-5 w-full bg-darkBlue px-8 py-7 text-base text-white')}
             >

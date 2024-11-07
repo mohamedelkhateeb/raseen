@@ -22,7 +22,7 @@ export const statusColorMap = {
 const OrderCard = ({ title, id, code, status, icon, label, showStatus, children }: OrderCardProps) => {
   return (
     <div className="flex justify-between rounded-2xl bg-[#FAFAFA] p-8 py-12 xl:mx-11">
-      <Link href={`/orders/${id}`} className="">
+      <Link prefetch={true} href={`/orders/${id}`} className="">
         <div className="flex gap-3">
           {icon}
           <div className="flex flex-col gap-2">

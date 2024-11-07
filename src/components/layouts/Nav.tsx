@@ -20,7 +20,7 @@ const NavBar = ({ subOne, subTwo }: any) => {
         <div className={cn('block lg:!hidden')}>
           <MobileSidebar subOne={subOne} subTwo={subTwo} />
         </div>
-        <Link href={'/'} className="flex w-[60px] items-center justify-center mr-7 lg:w-[100px]">
+        <Link prefetch={true} href={'/'} className="mr-7 flex w-[60px] items-center justify-center lg:w-[100px]">
           <RaseenLogo />
         </Link>
         <div className={cn('hidden rounded-full bg-white px-7 py-7 lg:block')}>
@@ -28,6 +28,7 @@ const NavBar = ({ subOne, subTwo }: any) => {
         </div>
         <div className="flex items-center">
           <Link
+            prefetch={true}
             href={'/orders/new'}
             className={cn(
               buttonVariants({ variant: 'default', size: 'default' }),

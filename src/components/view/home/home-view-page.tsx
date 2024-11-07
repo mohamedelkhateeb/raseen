@@ -29,7 +29,11 @@ export default async function HomeView() {
                 كل ما تحتاجه لمنزلك احصل عليه مع رصين بأعلى جودة وخدمات متميزة
               </p>
               <div className="flex items-center">
-                <Link href="/companies" className={'flex items-center justify-end gap-4 py-0 text-xl font-bold text-white lg:pb-6 lg:text-2xl'}>
+                <Link
+                  prefetch={true}
+                  href="/companies"
+                  className={'flex items-center justify-end gap-4 py-0 text-xl font-bold text-white lg:pb-6 lg:text-2xl'}
+                >
                   تصفح الخدمات <IoIosArrowRoundBack size={35} color="white" />
                 </Link>
               </div>

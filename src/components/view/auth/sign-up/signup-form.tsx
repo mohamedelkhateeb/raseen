@@ -71,7 +71,7 @@ export default function SignUpForm({ cities }: { cities: Cities[] }) {
         <FormError error={errMsg} />
         <div className="my-2 text-right text-sm font-bold">
           بإنشاء حسابك أنت توافق على{' '}
-          <Link href="/terms" className="text-darkBlue underline">
+          <Link prefetch={true} href="/terms" className="text-darkBlue underline">
             شروط وأحكام
           </Link>{' '}
           رصين

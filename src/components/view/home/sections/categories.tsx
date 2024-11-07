@@ -22,6 +22,7 @@ const Categories = async ({ categories }: { categories: Category[] }) => {
         {data?.map((category, index) => (
           <CarouselItem key={index} className="basis-1/3 lg:basis-1/4">
             <Link
+              prefetch={true}
               className="flex w-full flex-col items-center justify-center"
               href={`/companies?category=${catNum}&subCategories=${category.id}`}
               key={index}

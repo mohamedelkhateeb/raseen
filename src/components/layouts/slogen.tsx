@@ -23,7 +23,7 @@ const Slogen = () => {
         </div>
         <div className="hidden items-center justify-center gap-6 md:flex">
           {!session && (
-            <Link href="/sign-in" className="flex items-center justify-center gap-2">
+            <Link prefetch={true} href="/sign-in" className="flex items-center justify-center gap-2">
               <User size={20} color="#FFFFFF" />
               <span className="min-w-24 text-[#FFFFFF] md:text-sm">{t('signin')}</span>
             </Link>

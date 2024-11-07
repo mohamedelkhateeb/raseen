@@ -30,6 +30,7 @@ export function UserMenu() {
           </div>
         </div>
         <Link
+          prefetch={true}
           href={'/profile'}
           className={cn(
             buttonVariants({ variant: 'default', size: 'default' }),
@@ -42,13 +43,13 @@ export function UserMenu() {
           </PopoverClose>
         </Link>
         <div className="mt-3 flex flex-col gap-4 text-lg font-semibold">
-          <Link href={'/orders'}>
+          <Link prefetch={true} href={'/orders'}>
             <PopoverClose className="flex items-center gap-4">
               <BsBoxSeam color="#004267" />
               طلباتي
             </PopoverClose>
           </Link>
-          <Link href={'/companies/favorite'}>
+          <Link prefetch={true} href={'/companies/favorite'}>
             <PopoverClose className="flex items-center gap-4">
               <FaHeart color="#004267" />
               الشركات المفضلة

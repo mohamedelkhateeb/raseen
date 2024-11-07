@@ -24,6 +24,7 @@ export default function GenericAccordion({ items }: AccordionProps) {
               ? item.content
               : item?.content?.map((content: any, index: any) => (
                   <Link
+                    prefetch={true}
                     href={`/companies?category=${item?.value}&subCategories=${content?.id}`}
                     key={index}
                     className="px-4 py-2 text-gray-800 hover:text-black"

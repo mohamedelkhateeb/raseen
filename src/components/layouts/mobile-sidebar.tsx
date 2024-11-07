@@ -50,11 +50,11 @@ export function MobileSidebar({ subOne, subTwo }: any) {
             {/* <SheetClose className="flex items-center justify-between gap-4 px-6 lg:gap-8" /> */}
           </SheetTitle>
           <div className="mb-6 flex flex-col justify-center gap-4 lg:gap-8">
-            <Link className="font-semibold" href="/">
+            <Link prefetch={true} className="font-semibold" href="/">
               {t('NavigationMenu.home')}
             </Link>
             <Separator />
-            <Link className="font-semibold" href="/about-us">
+            <Link prefetch={true} className="font-semibold" href="/about-us">
               {t('NavigationMenu.about')}
             </Link>
             <Separator />
@@ -63,6 +63,7 @@ export function MobileSidebar({ subOne, subTwo }: any) {
           {!session && (
             <div className="mt-5 flex justify-center">
               <Link
+                prefetch={true}
                 href="/sign-in"
                 className={cn(
                   buttonVariants({ variant: 'default', size: 'default' }),

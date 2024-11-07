@@ -15,7 +15,12 @@ import { Link } from '@/i18n/routing';
 const renderMenuItems = (items: any[], categoryId: string) => (
   <ul className="flex min-h-fit w-[200px] flex-col border-t-4 border-[#004267] p-2 pt-6">
     {items?.map((item, i) => (
-      <Link href={`/companies?category=${categoryId}&subCategories=${item?.id}`} className="px-4 py-2 text-gray-400 hover:text-black" key={i}>
+      <Link
+        prefetch={true}
+        href={`/companies?category=${categoryId}&subCategories=${item?.id}`}
+        className="px-4 py-2 text-gray-400 hover:text-black"
+        key={i}
+      >
         {item.name}
       </Link>
     ))}
@@ -42,12 +47,12 @@ export default function NavigationMenuBar({ subOne, subTwo }: any) {
       <NavigationMenu dir={direction} className="ml-3">
         <NavigationMenuList className="flex gap-3 xl:gap-5">
           <NavigationMenuItem>
-            <Link href="/" className={itemStyle}>
+            <Link prefetch={true} href="/" className={itemStyle}>
               {t('NavigationMenu.home')}
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/about-us" className={itemStyle}>
+            <Link prefetch={true} href="/about-us" className={itemStyle}>
               {t('NavigationMenu.about')}
             </Link>
           </NavigationMenuItem>

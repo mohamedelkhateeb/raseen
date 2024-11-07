@@ -36,13 +36,17 @@ const Articals = ({ articals = [] }: { articals: Article[] }) => {
                     <LuLayoutDashboard />
                   </p>
                 </div>
-                <h1 className="text-md mt-3 px-4  text-right font-semibold leading-normal lg:text-xl">{a.title}</h1>
+                <h1 className="text-md mt-3 px-4 text-right font-semibold leading-normal lg:text-xl">{a.title}</h1>
                 <div
-                  className="terms-page pt-4 px-10 text-xs leading-7 lg:text-[14px]"
+                  className="terms-page px-10 pt-4 text-xs leading-7 lg:text-[14px]"
                   dir={useDirection()}
                   dangerouslySetInnerHTML={{ __html: a.desc }}
                 />
-                <Link href="/" className={'text:xl mb-4 flex items-center justify-end gap-4 px-4 font-bold text-[#004267] lg:text-xl'}>
+                <Link
+                  prefetch={true}
+                  href="/"
+                  className={'text:xl mb-4 flex items-center justify-end gap-4 px-4 font-bold text-[#004267] lg:text-xl'}
+                >
                   قراءة المزيد
                   <IoIosArrowRoundBack size={35} color="#004267" />
                 </Link>

@@ -70,6 +70,7 @@ export default function SigninForm() {
             style="ml-auto py-6 xl:py-9 xl:text-2xl w-full bg-darkBlue text-white text-base rounded-lg"
           />
           <Link
+            prefetch={true}
             href="/sign-company"
             className={cn(
               buttonVariants({

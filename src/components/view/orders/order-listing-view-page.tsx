@@ -36,7 +36,9 @@ const OrderListingViewPage = ({ orders, relatedServices }: { orders: ReadOrder[]
         <div className="flex w-[92%] justify-between">
           <h1 className="font-bold lg:text-2xl">خدمات أخرى ذات صلة</h1>
           <span className="flex items-center gap-2 text-xl font-medium text-[#EA8D09]">
-            <Link href={'/companies'}>عرض الكل</Link>
+            <Link prefetch={true} href={'/companies'}>
+              عرض الكل
+            </Link>
             <IoIosArrowRoundBack />
           </span>
         </div>
@@ -49,7 +51,7 @@ const OrderListingViewPage = ({ orders, relatedServices }: { orders: ReadOrder[]
         >
           <CarouselContent className="xl:gap-14">
             {relatedServices?.map((v, index) => (
-              <Link href={'/companies'} key={index} className="xl:w-[400px]">
+              <Link prefetch={true} href={'/companies'} key={index} className="xl:w-[400px]">
                 <CarouselItem key={index} className="basis-1/3 lg:basis-1/4">
                   <Card className="border-0 shadow-none">
                     <CardContent className="flex aspect-square flex-col items-center p-0">

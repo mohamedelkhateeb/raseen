@@ -21,6 +21,7 @@ const Banners = ({ banners }: { banners: Banner[] }) => {
               </h1>
               <p className={cn('w-full text-lg font-semibold leading-7 md:w-[500px] xl:w-[710px] xl:text-2xl')}>{banner?.desc}</p>
               <Link
+                prefetch={true}
                 href={'/orders/new'}
                 className={cn(
                   buttonVariants({ variant: 'default', size: 'default' }),
