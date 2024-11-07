@@ -50,6 +50,78 @@ export const getSubCategories = async (catNum: string) => {
     console.error(error);
   }
 };
+export const aboutUs = async () => {
+  const locale = await getLocale();
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/about-us`, {
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': locale,
+      },
+    });
+    const data = await response?.json().catch(() => {
+      return {
+        message: 'Failed Request',
+        statusCode: response.status,
+        statusText: response.statusText,
+        data: null,
+        success: response.ok,
+      };
+    });
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const faq = async () => {
+  const locale = await getLocale();
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/questions`, {
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': locale,
+      },
+    });
+    const data = await response?.json().catch(() => {
+      return {
+        message: 'Failed Request',
+        statusCode: response.status,
+        statusText: response.statusText,
+        data: null,
+        success: response.ok,
+      };
+    });
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const privacy = async () => {
+  const locale = await getLocale();
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/privacy`, {
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': locale,
+      },
+    });
+    const data = await response?.json().catch(() => {
+      return {
+        message: 'Failed Request',
+        statusCode: response.status,
+        statusText: response.statusText,
+        data: null,
+        success: response.ok,
+      };
+    });
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 export const getTerms = async () => {
   const locale = await getLocale();
   try {

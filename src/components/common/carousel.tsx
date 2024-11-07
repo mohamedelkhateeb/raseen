@@ -2,7 +2,17 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
 import React from 'react';
 import useCarousel from '@/hooks/use-carousel';
-export function CarouselSize({ children, showArrows = false, delay = 5000 }: { children: React.ReactNode; showArrows?: boolean; delay?: number }) {
+export function CarouselSize({
+  children,
+  showArrows = false,
+  delay = 5000,
+  indicators,
+}: {
+  children: React.ReactNode;
+  indicators?: boolean;
+  showArrows?: boolean;
+  delay?: number;
+}) {
   const { setApi, current, count, plugin } = useCarousel();
   return (
     <>
@@ -24,8 +34,8 @@ export function CarouselSize({ children, showArrows = false, delay = 5000 }: { c
           </>
         )}
       </Carousel>
-      {showArrows && (
-        <div className="flex flex-row-reverse items-center gap-2 py-2 text-center text-sm text-muted-foreground">
+      {indicators && (
+        <div className="mx-auto flex flex-row-reverse items-center gap-2 py-2 text-center text-sm text-muted-foreground">
           {Array.from({ length: count })?.map((_, index) => (
             <div key={index} className={`${index + 1 === current ? 'h-3 w-3 rounded-full bg-darkBlue' : 'h-2 w-2 rounded-full bg-[#D9D9D9]'}`}></div>
           ))}

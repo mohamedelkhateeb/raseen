@@ -11,7 +11,7 @@ import React from 'react';
 const Banners = ({ banners }: { banners: Banner[] }) => {
   const t = useTranslations('HomePage');
   return (
-    <CarouselSize showArrows={false} delay={10000}>
+    <CarouselSize indicators={true} delay={10000}>
       {banners?.map((banner, index) => (
         <CarouselItem key={index}>
           <section dir="rtl" className="flex w-full flex-col justify-between gap-10 lg:flex-row">

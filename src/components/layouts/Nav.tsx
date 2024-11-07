@@ -20,7 +20,7 @@ const NavBar = ({ subOne, subTwo }: any) => {
         <div className={cn('block lg:!hidden')}>
           <MobileSidebar subOne={subOne} subTwo={subTwo} />
         </div>
-        <Link href={'/'} className="flex w-[60px] items-center max-sm:mr-auto lg:w-[100px]">
+        <Link href={'/'} className="flex w-[60px] items-center justify-center mr-7 lg:w-[100px]">
           <RaseenLogo />
         </Link>
         <div className={cn('hidden rounded-full bg-white px-7 py-7 lg:block')}>

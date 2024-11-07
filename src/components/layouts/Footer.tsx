@@ -55,7 +55,7 @@ const Footer = () => {
             <h3 className="mb-4 text-lg font-bold">عن رصين</h3>
             <ul>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
+                <Link href="/about-us" className="hover:text-primary">
                   إعرفني
                 </Link>
               </li>
@@ -65,12 +65,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
+                <Link href="/privacy" className="hover:text-primary">
                   سياسة الخصوصية
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="#" className="hover:text-primary">
+                <Link href="/faq" className="hover:text-primary">
                   الأسئلة الشائعة
                 </Link>
               </li>

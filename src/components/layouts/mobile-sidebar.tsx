@@ -17,6 +17,7 @@ import { FaFacebookF } from 'react-icons/fa';
 import { SelectLang } from '../common/choose-lang';
 import { cn } from '@/lib/utils';
 import { useSession } from 'next-auth/react';
+import SocialMediaLinks from '../common/social-media-links';
 
 export function MobileSidebar({ subOne, subTwo }: any) {
   const t = useTranslations('HomePage');
@@ -53,7 +54,7 @@ export function MobileSidebar({ subOne, subTwo }: any) {
               {t('NavigationMenu.home')}
             </Link>
             <Separator />
-            <Link className="font-semibold" href="/">
+            <Link className="font-semibold" href="/about-us">
               {t('NavigationMenu.about')}
             </Link>
             <Separator />
@@ -76,10 +77,7 @@ export function MobileSidebar({ subOne, subTwo }: any) {
           <div className="mt-12">
             <p className="text-sm font-bold">{t('followUs')}</p>
             <div className="mt-7 flex w-full items-center gap-4">
-              <LuInstagram color="#004267" size={40} className="rounded-full bg-[#E5ECF0] p-3 hover:bg-slate-300" />
-              <RiSnapchatFill color="#004267" size={40} className="rounded-full bg-[#E5ECF0] p-3 hover:bg-slate-300" />
-              <FaXTwitter color="#004267" size={40} className="rounded-full bg-[#E5ECF0] p-3 hover:bg-slate-300" />
-              <FaFacebookF color="#004267" size={40} className="rounded-full bg-[#E5ECF0] p-3 hover:bg-slate-300" />
+              <SocialMediaLinks />
             </div>
             <div className="mt-12">
               <Separator className="mt-10" />

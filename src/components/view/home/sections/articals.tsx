@@ -7,6 +7,7 @@ import Title from '@/components/ui/title';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel';
 import React from 'react';
 import useCarousel from '@/hooks/use-carousel';
+import { useDirection } from '@/utils/helpers';
 
 const Articals = ({ articals = [] }: { articals: Article[] }) => {
   const { setApi, current, count, plugin } = useCarousel();
@@ -27,7 +28,7 @@ const Articals = ({ articals = [] }: { articals: Article[] }) => {
         <CarouselContent>
           {articals?.map((a, index) => (
             <CarouselItem key={index} className="basis md:basis-1/2 lg:basis-1/3">
-              <div className="flex flex-col justify-center rounded-lg border bg-card text-card-foreground shadow-sm lg:max-h-[723px] lg:max-w-[560px]">
+              <div className="flex flex-col justify-center rounded-lg border bg-card text-card-foreground shadow-sm">
                 <img src={a.img} alt="Image" className="rounded-md object-cover" />
                 <div className="mt-8 flex w-full justify-end px-4 lg:mt-8">
                   <p className="flex items-center gap-2 rounded-lg bg-[#EA8D09] p-2 py-2 text-[10px] text-white lg:text-sm">
@@ -35,9 +36,13 @@ const Articals = ({ articals = [] }: { articals: Article[] }) => {
                     <LuLayoutDashboard />
                   </p>
                 </div>
-                <h1 className="text-md mt-3 px-4 py-4 text-right font-semibold leading-normal lg:text-xl">{a.title}</h1>
-                <p className="mt-3 px-4 text-right font-medium">{a.desc}</p>
-                <Link href="/" className={'text:xl my-4 flex items-center justify-end gap-4 px-4 font-bold text-[#004267] lg:text-xl'}>
+                <h1 className="text-md mt-3 px-4  text-right font-semibold leading-normal lg:text-xl">{a.title}</h1>
+                <div
+                  className="terms-page pt-4 px-10 text-xs leading-7 lg:text-[14px]"
+                  dir={useDirection()}
+                  dangerouslySetInnerHTML={{ __html: a.desc }}
+                />
+                <Link href="/" className={'text:xl mb-4 flex items-center justify-end gap-4 px-4 font-bold text-[#004267] lg:text-xl'}>
                   قراءة المزيد
                   <IoIosArrowRoundBack size={35} color="#004267" />
                 </Link>
