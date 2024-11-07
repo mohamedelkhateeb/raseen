@@ -107,7 +107,9 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
           <p className="py-4 text-xl font-semibold">رقم الجوال</p>
           <Input required name="phone" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="رقم الجوال" maxLength={9} />
         </div>
-        <DropdownMenu dataFilter={data} setDataFilter={setData} />
+        <div className='col-span-2'>
+          <DropdownMenu dataFilter={data} setDataFilter={setData} />
+        </div>
         <div className="col-span-2 grid w-full gap-1.5">
           <p className="py-7 font-semibold lg:text-xl">صورة السجل التجاري</p>
           <label htmlFor="upload-commercial" className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
