@@ -22,7 +22,8 @@ export default async function LocaleLayout({ children }: { children: React.React
           alt="Sign in cover"
           className="object-contain"
           layout="responsive"
-          loading="lazy"
+          placeholder="blur"
+          priority={true}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
