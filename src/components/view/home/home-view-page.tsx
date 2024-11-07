@@ -12,7 +12,6 @@ import Rates from './sections/rates';
 import Articals from './sections/articals';
 
 export default async function HomeView() {
-  const t = await getTranslations('HomePage');
   const data = await getHomeContent();
   return (
     <div dir={await direction()} className="flex flex-col justify-center gap-10">
