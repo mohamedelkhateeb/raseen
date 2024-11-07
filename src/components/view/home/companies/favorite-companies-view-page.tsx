@@ -12,7 +12,6 @@ const items = [
 ];
 const FavoriteCompaniesViewPage = async () => {
   const data: Company[] = await getFavCompanies();
-  console.log(data);
 
   return (
     <div className="w-full p-4">

@@ -12,10 +12,8 @@ const OrderViewPage = async () => {
     { title: 'الرئيسية', link: '/' },
     { title: 'إنشاء طلب', link: '/orders/new' },
   ];
-
   const CatNum = searchParamsCache.get('category');
-  const categories = await getCategories();
-  const subCategories = await getSubCategories(CatNum);
+  const [categories, subCategories] = await Promise.all([getCategories(), getSubCategories(CatNum)]);
   return (
     <div className="flex flex-col gap-4 px-10">
       <Breadcrumbs items={items} />
