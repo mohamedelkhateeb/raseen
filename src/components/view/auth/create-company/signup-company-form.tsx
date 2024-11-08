@@ -91,23 +91,23 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
       <form action={submitForm} className="my-8 grid gap-5 overflow-auto rounded-2xl border-2 bg-white p-6 lg:grid-cols-2 lg:gap-10 lg:p-12">
         <input type="hidden" name="device_key" value={'device_key'} />
         <input type="hidden" name="location" value={'location'} />
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">الأسم الكامل</p>
           <Input required name="name" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل اسمك كاملاً" />
         </div>
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">البريد الإلكتروني </p>
           <Input required name="email" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل بريدك الإلكتروني" />
         </div>
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">اسم مالك الشركة</p>
           <Input required name="owner" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="اسم مالك الشركة" />
         </div>
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">رقم الجوال</p>
           <Input required name="phone" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="رقم الجوال" maxLength={9} />
         </div>
-        <div className='col-span-2'>
+        <div className="col-span-2">
           <DropdownMenu dataFilter={data} setDataFilter={setData} />
         </div>
         <div className="col-span-2 grid w-full gap-1.5">
@@ -136,7 +136,7 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
           style="w-[90%] h-[95vh] overflow-y-auto"
           title="يرجى تحديد الموقع على الخريطة"
           trigger={
-            <div className="grid w-full gap-1.5">
+            <div className="col-span-2 grid w-full gap-1.5 lg:col-span-1">
               <p className="py-4 font-semibold lg:text-xl">الموقع</p>
               <div className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
                 {lang && lat ? <p>{`${lang}, ${lat}`}</p> : <p>موقع الشركة</p>}
@@ -147,7 +147,7 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
         >
           <GoogleMap />
         </Popup>
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">{'الخدمات'}</p>
           <Select>
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
@@ -192,7 +192,7 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
               ))}
             </SelectContent>
           </Select>
-        </div>{' '}
+        </div>
         <div className="col-span-2 grid w-full gap-1.5">
           <p>تحديد الميزانية</p>
           <div className="col-span-2 flex items-center gap-5 lg:gap-10">

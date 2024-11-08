@@ -34,12 +34,12 @@ export default function ContactUsForm() {
 
   return (
     <>
-      <form action={handleSubmit} className="my-8 grid gap-5 overflow-auto rounded-2xl border-2 bg-white p-6 lg:grid-cols-2 lg:gap-10 lg:p-12">
-        <div className="flex w-full flex-col gap-3">
+      <form action={handleSubmit} className="my-8 grid  gap-5 overflow-auto rounded-2xl border-2 bg-white p-6 lg:grid-cols-2 lg:gap-10 lg:p-12">
+        <div className="flex w-full flex-col gap-3 col-span-2 lg:col-span-1">
           <p className="text-xl font-semibold">الاسم كامل</p>
           <Input type="text" required name="name" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="اكتب اسمك بالكامل" />
         </div>
-        <div className="flex w-full flex-col gap-3">
+        <div className="flex w-full flex-col gap-3 col-span-2 lg:col-span-1">
           <p className="text-xl font-semibold">الايميل</p>
           <Input type="text" required name="email" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="اكتب بريدك الالكتروني" />
         </div>
@@ -66,7 +66,7 @@ export default function ContactUsForm() {
           <Textarea className="h-[200px] rounded-2xl border-2 p-6 text-2xl" placeholder="أكتب هنا....." id="message" name="msg" required />
         </div>
         <div className="col-span-2 mt-8 flex flex-col gap-4">
-          <LoadingButton content="ارسال" loader="ارسال..." style="mr-auto rounded-2xl bg-darkBlue px-8 py-9 text-2xl text-white lg:w-1/4" />
+          <LoadingButton content="ارسال" loader="ارسال..." style="mr-auto rounded-2xl bg-darkBlue px-8 py-9 text-2xl text-white w-1/4" />
         </div>
       </form>
     </>

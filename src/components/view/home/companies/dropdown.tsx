@@ -23,8 +23,9 @@ const DropdownMenu = ({ dataFilter, setDataFilter, triggerStyle }: any) => {
         required
         onValueChange={(value) => setDataFilter({ ...dataFilter, city_id: value })}
         name="city_id"
+        
       >
-        <SelectTrigger dir={useDirection()} className={cn('rounded-2xl px-5 py-9 text-xl')}>
+        <SelectTrigger dir={useDirection()} className={cn('rounded-2xl px-5 py-9 text-xl border-2')}>
           <SelectValue className={cn('text-xl', triggerStyle)} placeholder="اختار مدينتك" />
         </SelectTrigger>
         <SelectContent dir={useDirection()}>

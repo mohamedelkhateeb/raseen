@@ -59,7 +59,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
   return (
     <>
       <form action={handleSubmit} className="my-8 grid gap-5 overflow-auto rounded-2xl border-2 bg-white p-6 lg:grid-cols-2 lg:gap-10 lg:p-12">
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">{'القسم الرئيسي'}</p>
           <Select
             required
@@ -81,7 +81,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
             </SelectContent>
           </Select>
         </div>
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">{'القسم الفرعي'}</p>
           <Select disabled={data.category_id == ''}>
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
