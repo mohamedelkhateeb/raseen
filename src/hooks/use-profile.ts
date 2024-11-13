@@ -14,7 +14,7 @@ export const useProfile = ({ session }: any) => {
         const result = await res.json();
         setProfile(result?.data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     };
     getProfile();

@@ -7,7 +7,7 @@ export function PictureDialog({ images }: any) {
     <Dialog>
       {images?.map((image: any, index: string) => (
         <div key={index}>
-          <DialogTrigger onClick={() => console.log(index, image)} key={index}>
+          <DialogTrigger key={index}>
             <img src={image.img} alt="Image" className="rounded-md object-cover" />
           </DialogTrigger>
           <DialogContent className="w-3/4 border-none bg-transparent p-0 shadow-none lg:w-1/2">

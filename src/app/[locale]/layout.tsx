@@ -34,7 +34,7 @@ export default async function RootLayout({ children, params: { locale } }: { chi
           <main dir={locale === 'ar' ? 'rtl' : 'ltr'} className="w-full flex-1 overflow-hidden">
             <NextTopLoader showSpinner={false} />
             <Providers session={session}>{children}</Providers>
-            <Toaster position="bottom-left" />
+            <Toaster position="top-left" />
           </main>
         </body>
       </NextIntlClientProvider>

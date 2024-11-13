@@ -5,7 +5,7 @@ import Fetcher from './api/Fetcher';
 import { revalidateTag } from 'next/cache';
 
 export const getCompanies = async (filter: any, pageNumber: number, search?: string | null) => {
-  console.log({ filter });
+  //console.log({ filter });
 
   const selectedIds: string[] = filter?.sub_categories ? filter?.sub_categories.split(',') : [];
   const formData = new FormData();
@@ -17,7 +17,7 @@ export const getCompanies = async (filter: any, pageNumber: number, search?: str
   // formData.append('max_price', filter?.min_avg_rates || 0);
   // formData.append('min_avg_rates', filter?.max_price || 0);
   // formData.append('max_avg_rates', filter?.max_avg_rates || 0);
-  console.log(`api/${search ? `search?${pageNumber}` : `filter?page=${pageNumber}`}`);
+  //console.log(`api/${search ? `search?${pageNumber}` : `filter?page=${pageNumber}`}`);
 
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/${search ? `search?${pageNumber}` : `filter?page=${pageNumber}`}`, {
@@ -42,17 +42,15 @@ export const getFavCompanies = async () => {
   }
 };
 export const getCompany = async (id: string) => {
-
   try {
     const response = await Fetcher(`company-details/${id}`);
-    console.log({response});
-    
+    //console.log({ response });
+
     return response?.data;
   } catch (error) {
     console.error(error);
   }
 };
-
 export const getCategories = async () => {
   try {
     const response = await Fetcher(`categories`);
@@ -61,12 +59,10 @@ export const getCategories = async () => {
     console.error(error);
   }
 };
-
 export const filterCompanies = async (data: any) => {
   const response = await apiService.post('', 'filter', data);
   return response;
 };
-
 export const likeCompany = async (data: any) => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/fav-company`, {
@@ -75,7 +71,7 @@ export const likeCompany = async (data: any) => {
       body: data,
       headers: await ReqHeaders({}),
     });
-    console.log(response);
+    //console.log(response);
     revalidateTag('favourites');
     return await response.json();
   } catch (error) {
@@ -90,17 +86,74 @@ export const shareCompany = async (data: any) => {
       body: data,
       headers: await ReqHeaders({}),
     });
-    console.log(response);
+    //console.log(response);
     revalidateTag('favourites');
     return await response.json();
   } catch (error) {
     console.error(error);
   }
 };
-
 export const rateCompany = async (data: FormData) => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/rate`, {
+      method: 'POST',
+      cache: 'no-cache',
+      body: data,
+      headers: await ReqHeaders({}),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const getCompanyOrders = async () => {
+  const result = await Fetcher('company-orders');
+  return result?.data;
+};
+export const getCompanyOffers = async () => {
+  const result = await Fetcher('get-offers');
+  return result?.data;
+};
+export const getCompanyStatics = async (filter: string) => {
+  const data = new FormData();
+  data.append('filter', filter);
+  try {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/company-statics`, {
+      method: 'POST',
+      cache: 'no-cache',
+      headers: await ReqHeaders({}),
+      body: data,
+    });
+    return await result.json().catch(() => ({
+      data: null,
+      status: false,
+      message: 'getting Company Statics failed',
+      statusCode: result?.status,
+      statusText: result?.statusText,
+    }));
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const callPhone = async (data: FormData) => {
+  const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/call-phone`, {
+    method: 'POST',
+    cache: 'no-cache',
+    headers: await ReqHeaders({}),
+    body: data,
+  });
+  return await result.json().catch(() => ({
+    data: null,
+    status: false,
+    message: 'Call failed',
+    statusCode: result?.status,
+    statusText: result?.statusText,
+  }));
+};
+
+export const sendOffer = async (data: FormData) => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/send-offer`, {
       method: 'POST',
       cache: 'no-cache',
       body: data,

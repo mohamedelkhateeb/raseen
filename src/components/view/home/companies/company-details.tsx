@@ -16,7 +16,7 @@ const CompanyDetails = ({ company }: { company: Company }) => {
     toast.error("Company doesn't exist, please try again later");
     redirect('/companies');
   }
-  console.log(company);
+  //console.log(company);
   return (
     <main className="flex w-full">
       <div className="mt-20 px-3 lg:px-12">

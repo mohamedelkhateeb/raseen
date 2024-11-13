@@ -12,7 +12,7 @@ import toast from 'react-hot-toast';
 const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
   const buttonRef = useRef<any>(null);
   const handleRatingChange = async (formData: FormData) => {
-    console.log(Object.fromEntries(formData));
+    //console.log(Object.fromEntries(formData));
     const res = await rateCompany(formData);
     if (res?.status) {
       toast.success('تم ارسال التقييم بنجاح');

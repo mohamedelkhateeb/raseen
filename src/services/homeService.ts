@@ -155,7 +155,7 @@ export const contactUs = async (data: FormData) => {
       body: data,
       headers: await ReqHeaders({}),
     });
-    console.log({ response });
+    //console.log({ response });
 
     return await response.json();
   } catch (error) {

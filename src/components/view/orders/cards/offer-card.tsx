@@ -22,9 +22,9 @@ type OfferCardProps = {
 
 const OfferCard = ({ companyName, stars, description, price, companyImage, isAccepted, offerId, companyId }: OfferCardProps) => {
   const handleAccept = async (formData: FormData) => {
-    console.log(Object.fromEntries(formData));
+    //console.log(Object.fromEntries(formData));
     const res = await acceptOffer(formData);
-    console.log(res);
+    //console.log(res);
     if (res?.status) {
       toast.success('تم قبول العرض بنجاح');
     } else {

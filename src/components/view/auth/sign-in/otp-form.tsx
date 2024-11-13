@@ -32,6 +32,8 @@ const OTPForm = () => {
         phone: authData.phone,
         redirect: false,
       });
+      console.log(response);
+      
       response.status == 401 ? setErrMsg('الرقم غير صحيح') : router.push('/');
     } catch (error) {
       console.error(error);

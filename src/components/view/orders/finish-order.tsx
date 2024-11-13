@@ -6,9 +6,9 @@ import toast from 'react-hot-toast';
 
 const FinishOrder = ({ offerId }: { offerId?: number }) => {
   const handleAccept = async (formData: FormData) => {
-    console.log(Object.fromEntries(formData));
+    //console.log(Object.fromEntries(formData));
     const res = await finishOrder(formData);
-    console.log(res);
+    //console.log(res);
 
     if (res?.status) {
       toast.success('تم تنفيذ الطلب بنجاح');

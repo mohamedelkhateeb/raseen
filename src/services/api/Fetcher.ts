@@ -26,7 +26,7 @@ const Fetcher = async <T>(endpoint: string, opt: FetchOptions = {}) => {
       ...opt,
       headers,
     });
-    console.log(url);
+    //console.log(url);
     const data = await response?.json().catch(() => {
       return {
         message: 'Failed Request',

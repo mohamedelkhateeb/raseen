@@ -23,7 +23,7 @@ export default function ProfileForm({ profile }: any) {
     if (!imageUrl) {
       formData.delete('img');
     }
-    console.log(Object.fromEntries(formData));
+    //console.log(Object.fromEntries(formData));
     const res = await updateProfile(formData);
     if (res?.status) {
       toast.success('تم التعديل بنجاح');
@@ -32,7 +32,7 @@ export default function ProfileForm({ profile }: any) {
     }
   };
 
-    return (
+  return (
     <>
       <form action={handleSubmit} className="my-8 grid grid-cols-2 gap-10 overflow-auto rounded-2xl border-2 bg-white p-12">
         <div className="col-span-2 flex items-center gap-5">

@@ -10,6 +10,7 @@ export const searchParams = {
   minRate: parseAsInteger.withDefault(0),
   maxRate: parseAsInteger.withDefault(3),
   search: parseAsString.withOptions({ shallow: false }),
+  staticsFilter: parseAsString.withOptions({ shallow: false }).withDefault('day'),
 };
 
 export const searchParamsCache = createSearchParamsCache(searchParams);

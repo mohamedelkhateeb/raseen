@@ -65,6 +65,16 @@ export const getOrder = async (id: string) => {
     console.error(error);
   }
 };
+export const getCompanyOrder = async (id: string) => {
+  try {
+    const response = await Fetcher(`get-order-details/${id}`, {
+      next: { tags: ['order'] },
+    });
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
 export const getRelatedService = async () => {
   try {
     const response = await Fetcher(`order-subcategories`, {

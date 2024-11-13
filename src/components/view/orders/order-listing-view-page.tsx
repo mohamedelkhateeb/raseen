@@ -13,7 +13,7 @@ const OrderListingViewPage = ({ orders, relatedServices }: { orders: ReadOrder[]
     { title: <TbSmartHome size={30} color="#EA8D09" />, link: '/' },
     { title: 'طلباتي', link: '/' },
   ];
-  console.log({ relatedServices });
+  //console.log({ relatedServices });
 
   return (
     <section className="px-7">

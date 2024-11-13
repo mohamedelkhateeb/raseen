@@ -14,7 +14,7 @@ export const useClientFetch = (session: any | null, endpoint: string) => {
         const result = await res.json();
         setData(result);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     };
     getData();

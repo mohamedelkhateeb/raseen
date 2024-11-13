@@ -93,7 +93,7 @@ export const getProfile = async () => {
     const response = await Fetcher(`user/get-profile`, {
       next: { tags: ['profile'] },
     });
-    console.log(response);
+    //console.log(response);
     return response?.data;
   } catch (error) {
     console.error(error);

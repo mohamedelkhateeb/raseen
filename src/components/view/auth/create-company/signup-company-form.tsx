@@ -70,9 +70,9 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
       setErrMsg('الرجاء رفع صورة السجل التجاري وصورة هوية المالك');
       return;
     }
-    console.log(Object.fromEntries(formData));
+    //console.log(Object.fromEntries(formData));
     const res = await companySignUp(formData);
-    console.log(res);
+    //console.log(res);
 
     if (!res.status) {
       setErrMsg(res.message);

@@ -46,9 +46,9 @@ export default function OrderForm({ categories, subCategories }: { categories: C
     data.imagesToUpload.forEach((image, index) => {
       formData.append(`images[${index}][img]`, image);
     });
-    console.log(Object.fromEntries(formData));
+    //console.log(Object.fromEntries(formData));
     const res = await createOrder(formData);
-    console.log(res);
+    //console.log(res);
     if (res?.status) {
       setIsPopupOpen({ open: true, id: res?.data?.id });
     } else {
