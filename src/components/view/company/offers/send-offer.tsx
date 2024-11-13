@@ -3,9 +3,9 @@ import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useRouter } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { sendOffer } from '@/services/companyService';
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
