@@ -6,7 +6,7 @@ import { getServerSession } from 'next-auth';
 
 export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
   const session: any = await getServerSession(options);
-  if (session || session?.user?.user_type == 'companies') {
+  if (session && session?.user?.user_type == 'companies') {
     redirect('/company');
   }
   return (

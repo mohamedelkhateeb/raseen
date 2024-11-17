@@ -59,7 +59,7 @@ export default function SigninForm() {
             name="phone"
             type="text"
             placeholder="50******"
-            maxLength={11}
+            maxLength={9}
           />
         </div>
         <FormError error={errMsg} />

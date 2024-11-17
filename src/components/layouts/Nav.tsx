@@ -9,8 +9,8 @@ import { useTranslations } from 'next-intl';
 import { Plus } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import { UserMenu } from '../view/auth/user/user-menu';
-import { IoMdNotifications } from 'react-icons/io';
 import { useSession } from 'next-auth/react';
+import Notifications from './notifications';
 const NavBar = ({ subOne, subTwo }: any) => {
   const t = useTranslations('HomePage');
   const { data: session } = useSession();
@@ -38,7 +38,7 @@ const NavBar = ({ subOne, subTwo }: any) => {
             <Plus className="ml-2" size={20} />
             {t('getOffer')}
           </Link>
-          <IoMdNotifications size={40} className="mx-10" />
+          {session && <Notifications />}
           {session && <UserMenu />}
         </div>
       </div>
