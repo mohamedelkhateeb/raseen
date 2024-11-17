@@ -5,7 +5,6 @@ import useCarousel from '@/hooks/use-carousel';
 export function CarouselSize({
   children,
   showArrows = false,
-  delay = 5000,
   indicators,
 }: {
   children: React.ReactNode;
@@ -37,7 +36,7 @@ export function CarouselSize({
       {indicators && (
         <div className="mx-auto flex flex-row-reverse items-center gap-2 py-2 text-center text-sm text-muted-foreground">
           {Array.from({ length: count })?.map((_, index) => (
-            <div key={index} className={`${index + 1 === current ? 'h-3 w-3 rounded-full bg-darkBlue' : 'h-2 w-2 rounded-full bg-[#D9D9D9]'}`}></div>
+            <div key={index} className={`${index + 1 == current ? 'h-3 w-3 rounded-full bg-darkBlue' : 'h-2 w-2 rounded-full bg-[#D9D9D9]'}`}></div>
           ))}
         </div>
       )}

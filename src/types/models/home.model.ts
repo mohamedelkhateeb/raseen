@@ -22,6 +22,11 @@ export type Category = {
   id: number;
   name: string;
   img: string;
+  subCategories: Array<{
+    id: number;
+    name: string;
+    img: string;
+  }>;
 };
 
 export type Company = {

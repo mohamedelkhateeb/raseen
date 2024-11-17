@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import FormError from '@/components/common/form-error';
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
+import { InputOTP, InputOTPGroup, InputOTPSlot  } from '@/components/ui/input-otp';
 import { redirect, useRouter } from '@/i18n/routing';
 import useUserStore from '@/lib/store/userStore';
 import { checkOtpSchema } from '@/types/schema/auth';
@@ -33,7 +33,6 @@ const OTPForm = () => {
         redirect: false,
       });
       console.log(response);
-      
       response.status == 401 ? setErrMsg('الرقم غير صحيح') : router.push('/');
     } catch (error) {
       console.error(error);
@@ -48,10 +47,10 @@ const OTPForm = () => {
       <div className="space-y-2">
         <InputOTP ref={otpRef} className="" maxLength={4} value={value} onChange={(value) => setValue(value)}>
           <InputOTPGroup>
-            <InputOTPSlot className={OTPStyle} index={0} />
-            <InputOTPSlot className={OTPStyle} index={1} />
-            <InputOTPSlot className={OTPStyle} index={2} />
             <InputOTPSlot className={OTPStyle} index={3} />
+            <InputOTPSlot className={OTPStyle} index={2} />
+            <InputOTPSlot className={OTPStyle} index={1} />
+            <InputOTPSlot className={OTPStyle} index={0} />
           </InputOTPGroup>
         </InputOTP>
       </div>
