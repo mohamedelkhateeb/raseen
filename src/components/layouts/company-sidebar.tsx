@@ -25,7 +25,7 @@ const SidebarItems = [
     icon: <HiOutlineSquares2X2 size={20} />,
   },
   {
-    href: '/company/settings',
+    href: '/company/plans',
     label: 'الاعدادت',
     icon: <HiOutlineSquares2X2 size={20} />,
   },

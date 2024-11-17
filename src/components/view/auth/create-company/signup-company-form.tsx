@@ -18,6 +18,7 @@ import { SubCategory } from '@/types/models/home.model';
 import FormError from '@/components/common/form-error';
 import { companySignUp } from '@/services/authService';
 import useUserStore from '@/lib/store/userStore';
+import MultiImageUpload, { UploadedImage } from '@/components/common/MultiImageUpload';
 
 type AddCompany = {
   name: string;
@@ -35,6 +36,8 @@ type AddCompany = {
 };
 
 export default function SignUpCompanyForm({ subCategories }: { subCategories: SubCategory[] }) {
+  const [cvs, setCvs] = useState<any[]>([]); // State for CV images
+  const [certificates, setCertificates] = useState<any[]>([]); // State for certificates
   const {
     imageUrl: commercialImgUrl,
     error: commercialError,
@@ -42,7 +45,6 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
     resetImage: resetCommercial,
   } = useImageUpload();
   const { imageUrl: ownerImgUrl, error: ownerError, handleImageChange: handleOwnerChange, resetImage: resetOwner } = useImageUpload();
-  const setUserauth = useUserStore((state) => state.setUserauth);
   const [errMsg, setErrMsg] = useState('');
   const [lat] = useQueryState('lat');
   const [lang] = useQueryState('lang');
@@ -66,26 +68,27 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
     formData.append('lat', lat?.toString() || '0');
     formData.append('lng', lang?.toString() || '0');
     formData.append('sub_categories', JSON.stringify(data.sub_categories));
+    cvs.forEach((cv, index) => {
+      formData.append(`cvs[${index}][img]`, cv.file);
+    });
+    certificates.forEach((c, index) => {
+      formData.append(`certeficates[${index}][img]`, c.file);
+    });
     if (!commercialImgUrl || !ownerImgUrl) {
       setErrMsg('الرجاء رفع صورة السجل التجاري وصورة هوية المالك');
       return;
     }
-    //console.log(Object.fromEntries(formData));
+    console.log(Object.fromEntries(formData));
     const res = await companySignUp(formData);
-    //console.log(res);
+    console.log(res);
 
     if (!res.status) {
-      setErrMsg(res.message);
+      setErrMsg(res?.message);
     }
     if (res.status) {
-      setUserauth({
-        otp: res.data?.user?.otp,
-        phone: res.data?.user?.phone,
-      });
-      router.push('/otp');
+      router.push('/');
     }
   };
-
   return (
     <>
       <form action={submitForm} className="my-8 grid gap-5 overflow-auto rounded-2xl border-2 bg-white p-6 lg:grid-cols-2 lg:gap-10 lg:p-12">
@@ -131,6 +134,18 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
           </label>
           <input type="file" id="upload-owner" className="hidden" accept="image/*" name="owner_img" onChange={handleOwnerChange} />
           {ownerError && <p className="text-red-500">{ownerError}</p>}
+        </div>
+        <div className="col-span-2">
+          <MultiImageUpload images={cvs} setImages={setCvs} label="صور التراخيص" placeholder="ارفق صور التراخيص" maxImages={6} />
+        </div>
+        <div className="col-span-2">
+          <MultiImageUpload
+            images={certificates}
+            setImages={setCertificates}
+            label="صور سابقة الأعمال"
+            placeholder="ارفق صور سابقة الأعمال"
+            maxImages={6}
+          />
         </div>
         <Popup
           style="w-[90%] h-[95vh] overflow-y-auto"

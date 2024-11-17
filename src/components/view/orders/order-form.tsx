@@ -46,7 +46,6 @@ export default function OrderForm({ categories, subCategories }: { categories: C
     data.imagesToUpload.forEach((image, index) => {
       formData.append(`images[${index}][img]`, image);
     });
-    //console.log(Object.fromEntries(formData));
     const res = await createOrder(formData);
     //console.log(res);
     if (res?.status) {
@@ -130,7 +129,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
         <div className="col-span-2 lg:col-span-1">
           <DropdownMenu dataFilter={data} setDataFilter={setData} triggerStyle="rounded-2xl border-2 px-5 py-9 text-xl" />
         </div>
-        <MultiImageUpload data={data} setData={setData} />
+        <MultiImageUpload data={data} setData={setData} label="إرفاق صور أو مخطط (اختياري)" placeholder=" أرفق الصور أو المخطط" />
         <div className="col-span-2 grid w-full gap-1.5">
           <p className="py-4 text-xl font-semibold">تفاصيل الطلب (اختياري)</p>
           <Textarea

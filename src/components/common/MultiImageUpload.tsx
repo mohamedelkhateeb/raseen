@@ -1,54 +1,60 @@
 import { ChangeEvent } from 'react';
 import { MdAttachFile } from 'react-icons/md';
 import { FaTrashAlt } from 'react-icons/fa'; // Trash icon for removing images
-import { Order } from '@/types/models/order.model';
 import { CarouselSize } from '@/components/common/carousel';
 import { CarouselItem } from '@/components/ui/carousel';
 
-interface MultiImageUploadProps {
-  data: Order & { imagesToUpload: any[] };
-  setData: (data: Order & { imagesToUpload: any[] }) => void;
-  label?: string;
-  placeholder?: string;
+export interface UploadedImage {
+  file: File;
+  preview: string;
 }
 
-const MultiImageUpload: React.FC<MultiImageUploadProps> = ({ data, setData, label, placeholder }) => {
+interface MultiImageUploadProps {
+  images: UploadedImage[];
+  setImages: any;
+  label?: string;
+  placeholder?: string;
+  maxImages?: number;
+}
+
+const MultiImageUpload: React.FC<MultiImageUploadProps> = ({
+  images,
+  setImages,
+  label = 'Upload Images',
+  placeholder = 'Drag and drop or click to upload',
+  maxImages,
+}) => {
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
-      const imageFiles = files?.map((file) => ({
+      const imageFiles = files.map((file) => ({
         file,
         preview: URL.createObjectURL(file),
       }));
-      setData({
-        ...data,
-        images: [...data.images, ...imageFiles],
-        imagesToUpload: [...data.imagesToUpload, ...files],
-      });
+
+      const newImages = [...images, ...imageFiles].slice(0, maxImages || Infinity); // Limit images if maxImages is provided
+      setImages(newImages);
     }
   };
+
   const removeImage = (indexToRemove: number) => {
-    const updatedImages = data.images.filter((_, index) => index !== indexToRemove);
-    const updatedImagesToUpload = data.imagesToUpload.filter((_, index) => index !== indexToRemove);
-    setData({
-      ...data,
-      images: updatedImages,
-      imagesToUpload: updatedImagesToUpload,
-    });
+    const updatedImages = images.filter((_, index) => index !== indexToRemove);
+    setImages(updatedImages);
   };
+
   return (
     <div className="col-span-2 lg:col-span-1">
       <div className="col-span-2 grid w-full gap-1.5">
-        <p className="py-4 font-semibold lg:text-xl">{label}</p>
-        <label htmlFor="upload" className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
+        {label && <p className="py-4 font-semibold lg:text-xl">{label}</p>}
+        <label htmlFor={label} className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
           {placeholder}
           <MdAttachFile className="absolute bottom-5 end-4 rotate-45 text-3xl" />
         </label>
-        <input type="file" id="upload" className="hidden" accept="image/*" multiple onChange={handleImageChange} />
+        <input type="file" id={label} className="hidden" accept="image/*" multiple onChange={handleImageChange} />
       </div>
       <div className="mt-4">
         <CarouselSize>
-          {data.images?.map((image, index) => (
+          {images.map((image, index) => (
             <CarouselItem key={index} className="basis-1/3">
               <div className="group relative w-full">
                 <img src={image.preview} alt={`Preview ${index}`} className="h-40 w-full rounded-lg object-cover" />

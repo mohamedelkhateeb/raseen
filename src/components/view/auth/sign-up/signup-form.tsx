@@ -27,7 +27,7 @@ export default function SignUpForm({ cities }: { cities: Cities[] }) {
       setErrMsg(result.error.errors[0].message);
       return;
     }
-    const res: Response<Data> = await signUp(result.data);
+    const res: Response<Data> = await signUp(result?.data);
     if (!res.status) {
       setErrMsg(res.message);
     }

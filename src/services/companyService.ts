@@ -164,3 +164,8 @@ export const sendOffer = async (data: FormData) => {
     console.error(error);
   }
 };
+
+export const getPlans = async () => {
+  const res = await Fetcher('plans');
+  return res?.data;
+};
