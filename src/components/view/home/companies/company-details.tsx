@@ -1,5 +1,5 @@
 'use client';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import React from 'react';
 import { TbAlertOctagonFilled } from 'react-icons/tb';
 import { PictureDialog } from '@/components/view/home/companies/picture-dialog';
@@ -9,7 +9,8 @@ import Like from '@/components/common/like';
 import Share from '@/components/common/share';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
-import { redirect } from '@/i18n/routing';
+import { Link, redirect } from '@/i18n/routing';
+import { cn } from '@/lib/utils';
 const CompanyDetails = ({ company }: { company: Company }) => {
   const { data: session } = useSession();
   if (!company) {
@@ -30,13 +31,17 @@ const CompanyDetails = ({ company }: { company: Company }) => {
             </div>
           </div>
           <div>
-            <Button
-              variant="destructive"
-              className="flex items-center gap-2 rounded-2xl border border-red-500 bg-white py-7 text-lg font-bold text-red-500 hover:bg-red-500 hover:text-white"
+            <Link
+              prefetch={true}
+              href={`/contact-us`}
+              className={cn(
+                buttonVariants({ variant: 'default', size: 'default' }),
+                'flex items-center gap-2 rounded-2xl border border-red-500 bg-white py-7 text-lg font-bold text-red-500 hover:bg-red-500 hover:text-white',
+              )}
             >
               الإبلاغ عن مشكلة
               <TbAlertOctagonFilled />
-            </Button>
+            </Link>
           </div>
         </div>
         <div className="mb-10 flex flex-col justify-between gap-7">

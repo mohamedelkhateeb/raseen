@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Category, Company } from '@/types/models/home.model';
 import { parseAsString, useQueryState } from 'nuqs';
 import PageContainer from '@/components/layouts/page-container';
+import { Paginations } from '@/components/common/pagination';
 const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Company[]; categories: Category[]; subCategory: Category[] }) => {
   const [listStyle, setListStyle] = useState('grid');
   const [search, setSearch] = useQueryState('search', parseAsString.withOptions({ shallow: false, throttleMs: 1000 }));
@@ -69,6 +70,7 @@ const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Co
               )}
             </div>
           </PageContainer>
+          <Paginations />
         </div>
       </div>
     </>

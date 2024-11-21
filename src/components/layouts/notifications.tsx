@@ -127,8 +127,6 @@ const Notifications = () => {
     };
     getData();
   }, []);
-  console.log(Data);
-
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -140,8 +138,8 @@ const Notifications = () => {
         </div>
       </PopoverTrigger>
       <PopoverContent side="bottom" sideOffset={20} align="end" className="max-h-[50vh] w-fit overflow-auto bg-slate-50">
-        {notifications.map((notification) => (
-          <div className="flex items-center justify-between gap-8 border-b">
+        {notifications.map((notification, index) => (
+          <div key={index.toString()} className="flex items-center justify-between gap-8 border-b">
             <div key={notification.id} className="mb-4 border-gray-200 p-4">
               <h3 className="text-md font-semibold">{notification.title}</h3>
               <p className="text-sm text-gray-600">{notification.description}</p>
