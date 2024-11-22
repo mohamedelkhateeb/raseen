@@ -1,25 +1,20 @@
 'use client';
 import React from 'react';
-import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { AlignRight, User, X } from 'lucide-react';
-import { LuInstagram } from 'react-icons/lu';
 import { useDirection } from '@/utils/helpers';
 import { Separator } from '../ui/separator';
 import GenericAccordion from '../common/according';
 import { useTranslations } from 'next-intl';
-import { useMenuItems } from '@/constants/useMenuItems';
 import RaseenLogo from '../svgs/raseen-logo';
 import { Link } from '@/i18n/routing';
-import { Button, buttonVariants } from '../ui/button';
-import { RiSnapchatFill } from 'react-icons/ri';
-import { FaXTwitter } from 'react-icons/fa6';
-import { FaFacebookF } from 'react-icons/fa';
+import { buttonVariants } from '../ui/button';
 import { SelectLang } from '../common/choose-lang';
 import { cn } from '@/lib/utils';
 import { useSession } from 'next-auth/react';
 import SocialMediaLinks from '../common/social-media-links';
 
-export function MobileSidebar({ subOne, subTwo }: any) {
+export function MobileSidebar({ subOne, subTwo, subThree }: any) {
   const t = useTranslations('HomePage');
   const accordionItems = [
     {
@@ -31,6 +26,11 @@ export function MobileSidebar({ subOne, subTwo }: any) {
       value: '2',
       trigger: t('NavigationMenu.contracting'),
       content: subTwo,
+    },
+    {
+      value: '3',
+      trigger: t('NavigationMenu.allServices'),
+      content: subThree,
     },
   ];
 

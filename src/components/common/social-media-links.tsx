@@ -5,9 +5,7 @@ import { FaFacebookF, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
 import { useClientFetch } from '@/hooks/use-client-fetch';
 import { IoLogoTiktok } from 'react-icons/io5';
 const SocialMediaLinks = () => {
-  const { Data } = useClientFetch(null, 'footer');
-  console.log({Data});
-  
+  const { Data } = useClientFetch(null, 'footer');  
   return (
     <>
       <LuInstagram

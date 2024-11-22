@@ -10,5 +10,5 @@ export default async function OrdersPage() {
     redirect('/sign-in');
   }
   const [orders, relatedServices] = await Promise.all([getOrders(), getRelatedService()]);
-  return <OrderListingViewPage orders={orders} relatedServices={relatedServices?.data || []} />;
+  return <OrderListingViewPage pagination={orders?.pagination} orders={orders?.data} relatedServices={relatedServices?.data || []} />;
 }

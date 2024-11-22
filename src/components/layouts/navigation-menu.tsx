@@ -27,7 +27,7 @@ const renderMenuItems = (items: any[], categoryId: string) => (
   </ul>
 );
 
-export default function NavigationMenuBar({ subOne, subTwo }: any) {
+export default function NavigationMenuBar({ subOne, subTwo, subThree }: any) {
   const t = useTranslations('HomePage');
   const itemStyle = 'text-lg font-semibold transition-all hover:text-[#EA8D09] p-0';
   const direction = useDirection();
@@ -60,6 +60,7 @@ export default function NavigationMenuBar({ subOne, subTwo }: any) {
       </NavigationMenu>
       {renderMenuSection('services.value', subOne, '1')}
       {renderMenuSection('contracting', subTwo, '2')}
+      {renderMenuSection('allServices', subThree, '3')}
     </div>
   );
 }

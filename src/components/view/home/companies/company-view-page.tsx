@@ -11,7 +11,18 @@ import { Category, Company } from '@/types/models/home.model';
 import { parseAsString, useQueryState } from 'nuqs';
 import PageContainer from '@/components/layouts/page-container';
 import { Paginations } from '@/components/common/pagination';
-const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Company[]; categories: Category[]; subCategory: Category[] }) => {
+import { Pagination } from '@/types/Response';
+const CompanyViewPage = ({
+  companies,
+  categories,
+  subCategory,
+  pagination,
+}: {
+  companies: Company[];
+  categories: Category[];
+  subCategory: Category[];
+  pagination: Pagination;
+}) => {
   const [listStyle, setListStyle] = useState('grid');
   const [search, setSearch] = useQueryState('search', parseAsString.withOptions({ shallow: false, throttleMs: 1000 }));
 
@@ -30,7 +41,7 @@ const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Co
         <div className="relative">
           <BiSearch color="#6D6D6D" size={20} className="absolute right-4 top-1/2 -translate-y-1/2" />
           <input
-            value={search || ''}
+            // value={search || ''}
             onChange={(e) => setSearch(e.target.value)}
             type="text"
             placeholder="ابحث هنا عن أي فئة"
@@ -70,7 +81,7 @@ const CompanyViewPage = ({ companies, categories, subCategory }: { companies: Co
               )}
             </div>
           </PageContainer>
-          <Paginations />
+          <Paginations pagination={pagination} />
         </div>
       </div>
     </>
