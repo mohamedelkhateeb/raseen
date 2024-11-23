@@ -7,6 +7,10 @@ import { HiOutlineSquares2X2 } from 'react-icons/hi2';
 import { Link, usePathname } from '@/i18n/routing';
 import { signOut } from 'next-auth/react';
 import { BsBoxArrowLeft } from 'react-icons/bs';
+import { FaRegFileArchive } from 'react-icons/fa';
+import { TbFileAnalytics } from 'react-icons/tb';
+import { MdOutlineSubtitles } from 'react-icons/md';
+import { FaRegUser } from 'react-icons/fa6';
 
 const SidebarItems = [
   {
@@ -17,29 +21,27 @@ const SidebarItems = [
   {
     href: '/company/offers',
     label: 'عروضي',
-    icon: <HiOutlineSquares2X2 size={20} />,
+    icon: <FaRegFileArchive  size={20} />,
   },
   {
     href: '/company/statics',
     label: 'احصائياتي',
-    icon: <HiOutlineSquares2X2 size={20} />,
+    icon: <TbFileAnalytics  size={20} />,
   },
   {
     href: '/company/plans',
-    label: 'الاعدادت',
-    icon: <HiOutlineSquares2X2 size={20} />,
+    label: 'الاشتراكات',
+    icon: <MdOutlineSubtitles  size={20} />,
   },
   {
-    href: '/company/notifications',
-    label: 'الإشعارات',
-    icon: <HiOutlineSquares2X2 size={20} />,
+    href: '/company/profile',
+    label: 'الملف الشخصي',
+    icon: <FaRegUser  size={20} />,
   },
 ];
 
 const CompanySidebar = () => {
   const pathName = usePathname();
-  //console.log(pathName);
-
   return (
     <div dir={useDirection()} className="flex h-full flex-col items-center gap-6">
       <div className="h-20 w-20">

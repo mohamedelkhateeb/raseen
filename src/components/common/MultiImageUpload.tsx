@@ -31,7 +31,6 @@ const MultiImageUpload: React.FC<MultiImageUploadProps> = ({
         file,
         preview: URL.createObjectURL(file),
       }));
-
       const newImages = [...images, ...imageFiles].slice(0, maxImages || Infinity); // Limit images if maxImages is provided
       setImages(newImages);
     }

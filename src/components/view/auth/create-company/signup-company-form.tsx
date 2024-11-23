@@ -16,9 +16,8 @@ import { cn } from '@/lib/utils';
 import { Checkbox } from '@/components/ui/checkbox';
 import { SubCategory } from '@/types/models/home.model';
 import FormError from '@/components/common/form-error';
-import { companySignUp } from '@/services/authService';
-import useUserStore from '@/lib/store/userStore';
 import MultiImageUpload, { UploadedImage } from '@/components/common/MultiImageUpload';
+import { companySignUp } from '@/services/authService';
 
 type AddCompany = {
   name: string;

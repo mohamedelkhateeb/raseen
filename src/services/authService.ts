@@ -93,8 +93,22 @@ export const getProfile = async () => {
     const response = await Fetcher(`user/get-profile`, {
       next: { tags: ['profile'] },
     });
-    //console.log(response);
     return response?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const updateCompany = async (data: FormData) => {
+  const locale = await getLocale();
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/update-company`, {
+      method: 'POST',
+      cache: 'no-cache',
+      body: data,
+      headers: await ReqHeaders({ 'Accept-Language': locale }),
+    });
+    return await response.json();
   } catch (error) {
     console.error(error);
   }

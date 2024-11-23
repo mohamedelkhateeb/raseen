@@ -5,8 +5,6 @@ import Fetcher from './api/Fetcher';
 import { revalidateTag } from 'next/cache';
 
 export const getCompanies = async (filter: any, pageNumber: number, search?: string | null) => {
-  console.log({ filter });
-
   const selectedIds: string[] = filter?.sub_categories ? filter?.sub_categories.split(',') : [];
   const formData = new FormData();
   if (search) formData.append('search', search);
@@ -17,7 +15,6 @@ export const getCompanies = async (filter: any, pageNumber: number, search?: str
   filter?.min_avg_rates && formData.append('max_price', filter?.min_avg_rates);
   filter?.max_price && formData.append('min_avg_rates', filter?.max_price);
   filter?.max_avg_rates && formData.append('max_avg_rates', filter?.max_avg_rates);
-
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/${search ? `search?${pageNumber}` : `filter?page=${pageNumber}`}`, {
       method: 'POST',
@@ -105,12 +102,12 @@ export const rateCompany = async (data: FormData) => {
     console.error(error);
   }
 };
-export const getCompanyOrders = async () => {
-  const result = await Fetcher('company-orders');
+export const getCompanyOrders = async (page: number) => {
+  const result = await Fetcher(`company-orders?page=${page}`);
   return result?.data;
 };
-export const getCompanyOffers = async () => {
-  const result = await Fetcher('get-offers');
+export const getCompanyOffers = async (page: number) => {
+  const result = await Fetcher(`get-offers?page=${page}`);
   return result?.data;
 };
 export const getCompanyStatics = async (filter: string) => {
@@ -149,7 +146,6 @@ export const callPhone = async (data: FormData) => {
     statusText: result?.statusText,
   }));
 };
-
 export const sendOffer = async (data: FormData) => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/send-offer`, {
@@ -163,8 +159,22 @@ export const sendOffer = async (data: FormData) => {
     console.error(error);
   }
 };
-
 export const getPlans = async () => {
-  const res = await Fetcher('plans');
+  const res = await Fetcher('packages');
   return res?.data;
+};
+export const buyPlan = async (data: any) => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/puy-package`, {
+      method: 'POST',
+      cache: 'no-cache',
+      body: data,
+      headers: await ReqHeaders({}),
+    });
+    //console.log(response);
+    revalidateTag('favourites');
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
 };
