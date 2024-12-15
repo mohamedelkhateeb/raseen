@@ -30,8 +30,8 @@ type AddCompany = {
   lng: string | null;
   location: string;
   commercial_img: string | null;
-  min: string;
-  max: string;
+  min_price: string;
+  price: string;
   sub_categories: SubCategory[];
 };
 
@@ -60,8 +60,8 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
     location: '',
     commercial_img: commercialImgUrl,
     category_id: '',
-    min: '',
-    max: '',
+    min_price: '',
+    price: '',
     sub_categories: [],
   });
   const router = useRouter();
@@ -69,6 +69,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
     setErrMsg('');
     formData.append('lat', lat?.toString() || '0');
     formData.append('lng', lang?.toString() || '0');
+
     formData.append('sub_categories', JSON.stringify(data.sub_categories));
     cvs.forEach((cv, index) => {
       formData.append(`cvs[${index}][img]`, cv.file);
@@ -80,14 +81,12 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
       setErrMsg('الرجاء رفع صورة السجل التجاري وصورة هوية المالك');
       return;
     }
-    console.log(Object.fromEntries(formData));
     const res = await companySignUp(formData);
     console.log(res);
-
-    if (!res.status) {
+    if (!res?.status) {
       setErrMsg(res?.message);
     }
-    if (res.status) {
+    if (res?.status) {
       router.push('/');
     }
   };
@@ -160,7 +159,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
         <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">{'القسم الرئيسي'}</p>
           <Select
-          name='category_id'
+            name="category_id"
             required
             onValueChange={(value) => {
               setCategory(value);
@@ -248,11 +247,12 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
           <div className="col-span-2 flex items-center gap-5 lg:gap-10">
             <div className="relative w-full">
               <Input
-                value={data.min.replace(/(\d{3})(?=\d)/g, '$1,')}
+                name="min_price"
+                value={data.min_price.replace(/(\d{3})(?=\d)/g, '$1,')}
                 type="text"
                 className="rounded-2xl border-2 px-5 py-9 text-xl"
                 placeholder="اكتب السعر"
-                onChange={(e) => setData({ ...data, min: e.target.value })}
+                onChange={(e) => setData({ ...data, min_price: e.target.value })}
                 maxLength={8}
               />
               <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
@@ -260,12 +260,13 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
             <p>بين</p>
             <div className="relative w-full">
               <Input
+                name="price"
                 maxLength={11}
-                value={data.max.replace(/(\d{3})(?=\d)/g, '$1,')}
+                value={data.price.replace(/(\d{3})(?=\d)/g, '$1,')}
                 type="text"
                 className="rounded-2xl border-2 px-5 py-9 text-xl"
                 placeholder="اكتب السعر"
-                onChange={(e) => setData({ ...data, max: e.target.value })}
+                onChange={(e) => setData({ ...data, price: e.target.value })}
               />
               <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
             </div>

@@ -40,10 +40,14 @@ export default function ContactUsForm() {
           <Input type="text" required name="name" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="اكتب اسمك بالكامل" />
         </div>
         <div className="col-span-2 flex w-full flex-col gap-3 lg:col-span-1">
+          <p className="text-xl font-semibold">رقم الجوال</p>
+          <Input maxLength={9} type="text" required name="phone" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="ادخل رقم الجوال" />
+        </div>
+        <div className="col-span-2 flex w-full flex-col gap-3 lg:col-span-1">
           <p className="text-xl font-semibold">الايميل</p>
           <Input type="text" required name="email" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="اكتب بريدك الالكتروني" />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold"> سبب التواصل</p>
           <Select required name="resson" onValueChange={(value) => setData({ ...data, resson: value })}>
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>

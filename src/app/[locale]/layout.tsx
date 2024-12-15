@@ -11,7 +11,7 @@ import { options } from '../api/auth/[...nextauth]/options';
 import { Metadata } from 'next';
 
 const cairo = Cairo({
-  subsets: ['arabic', 'latin-ext', 'latin'],
+  subsets: ['arabic'],
   variable: '--font-cairo',
   weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
 });

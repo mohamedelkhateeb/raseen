@@ -11,10 +11,12 @@ const ProfileViewPage = async () => {
     { title: 'تعديل الملف الشخصي', link: '/profile' },
   ];
   const profile = await getProfile();
+  console.log(profile);
+  
   return (
     <div className="flex flex-col gap-4 px-10">
       <Breadcrumbs items={items} />
-      <ProfileForm profile={profile} />
+      <ProfileForm profile={profile?.user} />
     </div>
   );
 };

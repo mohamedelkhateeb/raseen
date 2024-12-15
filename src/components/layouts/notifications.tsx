@@ -110,7 +110,7 @@ const notifications = [
 const Notifications = () => {
   const { data: session } = useSession();
   if (!session) return;
-  const [Data, setData] = useState<any>(null);
+  const [Data, setData] = useState<{ created_at: string; desc: string; id: number; read: boolean; title: string }[] | null>(null);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -120,13 +120,16 @@ const Notifications = () => {
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session?.token}` },
         });
         const result = await res.json();
-        setData(result);
+        setData(result?.data);
       } catch (error) {
         //console.log(error);
       }
     };
     getData();
   }, []);
+
+  console.log(Data);
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -138,13 +141,13 @@ const Notifications = () => {
         </div>
       </PopoverTrigger>
       <PopoverContent side="bottom" sideOffset={20} align="end" className="max-h-[50vh] w-fit overflow-auto bg-slate-50">
-        {notifications.map((notification, index) => (
+        {Data?.map((notification, index) => (
           <div key={index.toString()} className="flex items-center justify-between gap-8 border-b">
             <div key={notification.id} className="mb-4 border-gray-200 p-4">
               <h3 className="text-md font-semibold">{notification.title}</h3>
-              <p className="text-sm text-gray-600">{notification.description}</p>
+              <p className="text-sm text-gray-600">{notification.desc}</p>
             </div>
-            <h1>{notification.createdAt}</h1>
+            <h1>{notification.created_at}</h1>
           </div>
         ))}
       </PopoverContent>

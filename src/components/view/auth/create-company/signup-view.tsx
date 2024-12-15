@@ -13,8 +13,6 @@ const SignUpCompanyView = async () => {
     { title: 'الرئيسية', link: '/' },
     { title: 'انشاء حساب كشركة', link: '/' },
   ];
-
-
   const category = searchParamsCache.get('category');
   const subCategories = await getSubCategories(category);
   const categories = await getCategories();
