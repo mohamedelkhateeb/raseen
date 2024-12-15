@@ -1,4 +1,5 @@
 import SignUpCompanyView from '@/components/view/auth/create-company/signup-view';
+import { searchParamsCache } from '@/utils/searchparams';
 import { Metadata } from 'next';
 import React from 'react';
 export const metadata: Metadata = {
@@ -6,7 +7,8 @@ export const metadata: Metadata = {
   description: 'Create your account to continue to Raseen.',
 };
 
-export default async function SigninPage() {
+export default async function SigninPage({ searchParams }: { searchParams: Record<string, string> }) {
+  searchParamsCache.parse(searchParams);
   return (
     <>
       <SignUpCompanyView />

@@ -4,6 +4,8 @@ import { TbSmartHome } from 'react-icons/tb';
 import { getProfile } from '@/services/authService';
 import SignUpCompanyForm from './signup-company-form';
 import { getSubCategories } from '@/services/homeService';
+import { searchParamsCache } from '@/utils/searchparams';
+import { getCategories } from '@/services/companyService';
 
 const SignUpCompanyView = async () => {
   const items = [
@@ -11,11 +13,15 @@ const SignUpCompanyView = async () => {
     { title: 'الرئيسية', link: '/' },
     { title: 'انشاء حساب كشركة', link: '/' },
   ];
-  const subCategories = await getSubCategories("0");
+
+
+  const category = searchParamsCache.get('category');
+  const subCategories = await getSubCategories(category);
+  const categories = await getCategories();
   return (
     <div className="flex flex-col gap-4 px-10">
       <Breadcrumbs items={items} />
-      <SignUpCompanyForm subCategories={subCategories} />
+      <SignUpCompanyForm subCategories={subCategories} categories={categories} />
     </div>
   );
 };

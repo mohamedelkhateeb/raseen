@@ -6,15 +6,15 @@ import React, { useState } from 'react';
 import { MdAttachFile, MdOutlineDelete } from 'react-icons/md';
 import DropdownMenu from '../../home/companies/dropdown';
 import { IoLocationOutline } from 'react-icons/io5';
-import { useQueryState } from 'nuqs';
+import { parseAsString, useQueryState } from 'nuqs';
 import Popup from '@/components/common/popup';
 import GoogleMap from '../../maps/map';
 import { useImageUpload } from '@/hooks/useImageUpload';
-import { Select, SelectContent, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useDirection } from '@/utils/helpers';
 import { cn } from '@/lib/utils';
 import { Checkbox } from '@/components/ui/checkbox';
-import { SubCategory } from '@/types/models/home.model';
+import { Category, SubCategory } from '@/types/models/home.model';
 import FormError from '@/components/common/form-error';
 import MultiImageUpload, { UploadedImage } from '@/components/common/MultiImageUpload';
 import { companySignUp } from '@/services/authService';
@@ -22,6 +22,7 @@ import { companySignUp } from '@/services/authService';
 type AddCompany = {
   name: string;
   email: string;
+  category_id: string;
   owner: string;
   address: string;
   owner_img: string | null;
@@ -34,9 +35,10 @@ type AddCompany = {
   sub_categories: SubCategory[];
 };
 
-export default function SignUpCompanyForm({ subCategories }: { subCategories: SubCategory[] }) {
-  const [cvs, setCvs] = useState<any[]>([]); // State for CV images
-  const [certificates, setCertificates] = useState<any[]>([]); // State for certificates
+export default function SignUpCompanyForm({ subCategories, categories }: { subCategories: SubCategory[]; categories: Category[] }) {
+  const [cvs, setCvs] = useState<any[]>([]);
+  const [certificates, setCertificates] = useState<any[]>([]);
+  const [cate, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }));
   const {
     imageUrl: commercialImgUrl,
     error: commercialError,
@@ -57,6 +59,7 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
     lng: lang,
     location: '',
     commercial_img: commercialImgUrl,
+    category_id: '',
     min: '',
     max: '',
     sub_categories: [],
@@ -94,8 +97,16 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
         <input type="hidden" name="device_key" value={'device_key'} />
         <input type="hidden" name="location" value={'location'} />
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">الأسم الكامل</p>
-          <Input required name="name" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل اسمك كاملاً" />
+          <p className="py-4 text-xl font-semibold">
+            الأسم الكامل <span className="text-gray-400">{`(العربية)`}</span>{' '}
+          </p>
+          <Input required name="name_ar" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل اسمك باللغة العربية" />
+        </div>
+        <div className="col-span-2 lg:col-span-1">
+          <p className="py-4 text-xl font-semibold">
+            الأسم الكامل <span className="text-gray-400">{`(الانجليزية)`}</span>{' '}
+          </p>
+          <Input required name="name_en" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل اسمك باللغة الانجليزية" />
         </div>
         <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">البريد الإلكتروني </p>
@@ -109,7 +120,7 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
           <p className="py-4 text-xl font-semibold">رقم الجوال</p>
           <Input required name="phone" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="رقم الجوال" maxLength={9} />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 lg:col-span-1">
           <DropdownMenu dataFilter={data} setDataFilter={setData} />
         </div>
         <div className="col-span-2 grid w-full gap-1.5">
@@ -146,23 +157,31 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
             maxImages={6}
           />
         </div>
-        <Popup
-          style="w-[90%] h-[95vh] overflow-y-auto"
-          title="يرجى تحديد الموقع على الخريطة"
-          trigger={
-            <div className="col-span-2 grid w-full gap-1.5 lg:col-span-1">
-              <p className="py-4 font-semibold lg:text-xl">الموقع</p>
-              <div className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
-                {lang && lat ? <p>{`${lang}, ${lat}`}</p> : <p>موقع الشركة</p>}
-                <IoLocationOutline className="absolute bottom-5 end-4 text-3xl" />
-              </div>
-            </div>
-          }
-        >
-          <GoogleMap />
-        </Popup>
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">{'الخدمات'}</p>
+          <p className="py-4 text-xl font-semibold">{'القسم الرئيسي'}</p>
+          <Select
+          name='category_id'
+            required
+            onValueChange={(value) => {
+              setCategory(value);
+              setData({ ...data, sub_categories: [] });
+              setData({ ...data, category_id: value });
+            }}
+          >
+            <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
+              <SelectValue className="text-xl text-gray-200" placeholder={' القسم الرئيسي'} />
+            </SelectTrigger>
+            <SelectContent className="flex flex-col gap-10" dir={useDirection()}>
+              {categories?.map((option, index) => (
+                <SelectItem key={index} className="text-xl" value={option.id.toString()}>
+                  {option.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="col-span-2 lg:col-span-1">
+          <p className="py-4 text-xl font-semibold">{'القسم الفرعي'}</p>
           <Select>
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
               <SelectValue
@@ -175,7 +194,7 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
                           return selectedOption ? selectedOption.name : '';
                         })
                         .join(', ')
-                    : 'اختر الخدمات'
+                    : 'القسم الفرعي'
                 }
               />
             </SelectTrigger>
@@ -206,6 +225,23 @@ export default function SignUpCompanyForm({ subCategories }: { subCategories: Su
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="col-span-2">
+          <Popup
+            style="w-[90%] h-[95vh] overflow-y-auto"
+            title="يرجى تحديد الموقع على الخريطة"
+            trigger={
+              <div className="grid w-full gap-1.5 lg:col-span-1">
+                <p className="py-4 font-semibold lg:text-xl">الموقع</p>
+                <div className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
+                  {lang && lat ? <p>{`${lang}, ${lat}`}</p> : <p>موقع الشركة</p>}
+                  <IoLocationOutline className="absolute bottom-5 end-4 text-3xl" />
+                </div>
+              </div>
+            }
+          >
+            <GoogleMap />
+          </Popup>
         </div>
         <div className="col-span-2 grid w-full gap-1.5">
           <p>تحديد الميزانية</p>
