@@ -100,7 +100,7 @@ export default function CompanyProfile({
             placeholder="أدخل اسمك باللغة الانجليزية"
           />
         </div>
-        <div className="col-span-2 lg:col-span-1">
+        <div className="col-span-2">
           <p className="py-4 text-xl font-semibold">البريد الإلكتروني </p>
           <Input
             defaultValue={data.email}

@@ -8,7 +8,8 @@ import { MPlan, YPlan } from '@/types/models/plans.model';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-export default function PlansViewPage({ plans }: any) {
+import { SubscriptionCard } from './subscription-card';
+export default function PlansViewPage({ plans, plan, profile }: any) {
   const [data, setData] = useState({
     package_id: '',
     type: '',
@@ -29,7 +30,7 @@ export default function PlansViewPage({ plans }: any) {
     }
   };
 
-  return (
+  return !profile.package ? (
     <Tabs defaultValue="month" className="mt-10 max-h-full w-full p-3">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="year">سنوي</TabsTrigger>
@@ -74,9 +75,7 @@ export default function PlansViewPage({ plans }: any) {
               <label htmlFor={plan?.id.toString()} className="h-full w-full cursor-pointer">
                 <div className="flex justify-between">
                   <h1 className="text-2xl text-[#004267]">{plan?.price_year} ريال / سنة</h1>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem className="h-7 w-7" value={plan?.id.toString()} id={plan?.id.toString()} />
-                  </div>
+                  <div className="flex items-center space-x-2"></div>
                 </div>
                 <div className="mt-4 flex flex-col gap-2">
                   {plan?.details.map((detail: any) => (
@@ -95,5 +94,7 @@ export default function PlansViewPage({ plans }: any) {
         <LoadingButton content="اشتراك الآن" style="w-1/2 my-5" />
       </form>
     </Tabs>
+  ) : (
+    <SubscriptionCard {...plan} />
   );
 }

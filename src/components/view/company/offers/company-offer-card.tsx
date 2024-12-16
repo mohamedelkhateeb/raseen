@@ -17,7 +17,7 @@ export const statusColorMap = {
 } as const;
 
 const CompanyOfferCard = ({ item }: { item: CompanyOffers }) => {
-  //console.log(item.status);
+  console.log(item);
 
   return (
     <div dir="rtl" className="flex w-full flex-col gap-4 rounded-xl border px-10 py-4">
@@ -47,7 +47,7 @@ const CompanyOfferCard = ({ item }: { item: CompanyOffers }) => {
       <div className="flex items-center gap-4">
         <Link
           prefetch={true}
-          href={`/company/${item?.id}`}
+          href={`/company/${item?.order?.id}`}
           className={cn(
             buttonVariants({
               variant: 'outline',

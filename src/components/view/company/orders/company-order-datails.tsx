@@ -1,12 +1,8 @@
 import { Breadcrumbs } from '@/components/common/breadcrumd';
 import React from 'react';
 import { TbSmartHome } from 'react-icons/tb';
-import { TOrder } from '@/types/models/order.model';
 import CopmanyOrderDetailsCard from './order-details-card';
-import { Link } from '@/i18n/routing';
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { CompanyOrder, CompanyOrders } from '@/types/models/company.model';
+import { CompanyOrder } from '@/types/models/company.model';
 import Image from 'next/image';
 
 const CopmanyOrderDetailsViewPage = ({ order }: { order: CompanyOrder }) => {
@@ -33,7 +29,7 @@ const CopmanyOrderDetailsViewPage = ({ order }: { order: CompanyOrder }) => {
           images={order?.images}
           category={order?.category?.name}
         />
-        <Link
+        {/* <Link
           prefetch={true}
           href="/sign-company"
           className={cn(
@@ -44,7 +40,7 @@ const CopmanyOrderDetailsViewPage = ({ order }: { order: CompanyOrder }) => {
           )}
         >
           تقديم عرض{' '}
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

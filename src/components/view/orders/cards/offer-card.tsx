@@ -32,10 +32,10 @@ const OfferCard = ({ companyName, stars, description, price, companyImage, isAcc
     }
   };
   return (
-    <div dir="rtl" className="flex w-full flex-col gap-4 rounded-xl bg-[#f3f3f3d5] px-24 py-14">
+    <div dir="rtl" className="flex max-h-[300px] w-full flex-col gap-4 overflow-auto rounded-xl bg-[#f3f3f3d5] px-24 py-14">
       <Link prefetch={true} href={`/companies/${companyId}`} className="flex items-center gap-6">
         <div>
-          <img src={companyImage} alt="company logo" className="h-full w-full object-cover" />
+          <img src={companyImage} alt="company logo" className="h-full max-h-36 w-full max-w-44 object-cover" />
         </div>
         <div className="flex flex-col gap-5">
           <h1 className="text-xl font-bold">{companyName}</h1>

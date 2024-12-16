@@ -1,112 +1,11 @@
+'use client';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { IoMdNotifications } from 'react-icons/io';
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-const notifications = [
-  {
-    id: 1,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 2,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-  {
-    id: 3,
-    title: 'لوريم ايبسوم هو نموذج',
-    description: 'لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم؟',
-    createdAt: new Date().toLocaleDateString(),
-  },
-];
+import { readAllNotification } from '@/services/companyService';
+
 const Notifications = () => {
   const { data: session } = useSession();
   if (!session) return;
@@ -128,17 +27,21 @@ const Notifications = () => {
     getData();
   }, []);
 
-  console.log(Data);
+  const handleSubmit = async (data: FormData) => {
+    const res = await readAllNotification();
+  };
 
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="relative mx-5 cursor-pointer">
-          <IoMdNotifications size={40} />
+        <form action={handleSubmit} className="relative mx-5 cursor-pointer">
+          <button type="submit">
+            <IoMdNotifications size={40} />
+          </button>
           <span className="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white">
             {Data?.length}
           </span>
-        </div>
+        </form>
       </PopoverTrigger>
       <PopoverContent side="bottom" sideOffset={20} align="end" className="max-h-[50vh] w-fit overflow-auto bg-slate-50">
         {Data?.map((notification, index) => (

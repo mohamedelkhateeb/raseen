@@ -106,6 +106,18 @@ export const getCompanyOrders = async (page: number) => {
   const result = await Fetcher(`company-orders?page=${page}`);
   return result?.data;
 };
+export const readNotification = async (id: any) => {
+  const result = await Fetcher(`read-notification/${id}`);
+  return result?.data;
+};
+export const readAllNotification = async () => {
+  const result = await Fetcher(`read-all-notifications`);
+  return result?.data;
+};
+export const getCompanyPackage = async () => {
+  const result = await Fetcher(`purchased-package`);
+  return result?.data;
+};
 export const getCompanyOffers = async (page: number) => {
   const result = await Fetcher(`get-offers?page=${page}`);
   return result?.data;

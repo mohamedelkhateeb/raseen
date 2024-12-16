@@ -28,13 +28,13 @@ const SidebarItems = [
     icon: <TbFileAnalytics size={20} />,
   },
   {
-    href: '/company/settings',
-    label: 'الاعدادت',
+    href: '/company/plans',
+    label: 'الاشتراكات',
     icon: <MdOutlineSubtitles size={20} />,
   },
   {
-    href: '/company/notifications',
-    label: 'الإشعارات',
+    href: '/company/profile',
+    label: 'الملف الشخصي',
     icon: <FaRegUser size={20} />,
   },
 ];

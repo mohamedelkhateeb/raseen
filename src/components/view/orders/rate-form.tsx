@@ -14,6 +14,8 @@ const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
   const handleRatingChange = async (formData: FormData) => {
     //console.log(Object.fromEntries(formData));
     const res = await rateCompany(formData);
+    console.log(res);
+    
     if (res?.status) {
       toast.success('تم ارسال التقييم بنجاح');
       buttonRef.current?.click();
@@ -24,7 +26,7 @@ const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
   return (
     <Popup
       defaultOpen={false}
-      style="p-7 w-[400px] lg:w-[800px] max-h-[96vh] overflow-y-auto"
+      style="p-7 w-[400px] lg:w-[800px] max-h-[95vh] overflow-y-auto"
       title=""
       trigger={
         <Button size="lg" variant="default" className="rounded-full bg-darkBlue px-10 py-8 text-xl">
@@ -35,7 +37,7 @@ const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
       description=""
     >
       <form action={handleRatingChange} className="flex flex-col items-center gap-6 py-7">
-        <img src={img} alt="company" />
+        <img src={img} alt="company" className='max-w-48 ' />
         <h1 className="text-2xl font-semibold">شركة المتميز للديكور</h1>
         <p className="text-2xl text-gray-600">ما مستوى رضاك عن التعامل مع الشركة؟</p>
         <RatingStars style="w-12 h-12" />
