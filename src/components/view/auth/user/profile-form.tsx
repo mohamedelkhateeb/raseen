@@ -15,8 +15,6 @@ export default function ProfileForm({ profile }: any) {
   const { imageUrl, handleImageChange, resetImage } = useImageUpload();
   const [data, setData] = useState<any>({
     name: profile?.name || '',
-    name_en: profile?.name_en || '',
-    name_ar: profile?.name_ar,
     email: profile?.email || '',
     phone: profile?.phone || '',
     img: null,
@@ -53,30 +51,6 @@ export default function ProfileForm({ profile }: any) {
         <div>
           <p className="py-4 text-xl font-semibold">الأسم الكامل</p>
           <Input defaultValue={data?.name} name="name" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل اسمك كاملاً" />
-        </div>
-        <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">
-            الأسم الكامل <span className="text-gray-400">{`(العربية)`}</span>{' '}
-          </p>
-          <Input
-            defaultValue={data?.name_ar}
-            required
-            name="name_ar"
-            className="rounded-2xl border-2 px-5 py-9 text-xl"
-            placeholder="أدخل اسمك باللغة العربية"
-          />
-        </div>
-        <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">
-            الأسم الكامل <span className="text-gray-400">{`(الانجليزية)`}</span>{' '}
-          </p>
-          <Input
-            defaultValue={data?.name_ar}
-            required
-            name="name_en"
-            className="rounded-2xl border-2 px-5 py-9 text-xl"
-            placeholder="أدخل اسمك باللغة الانجليزية"
-          />
         </div>
         <div>
           <p className="py-4 text-xl font-semibold">البريد الإلكتروني</p>

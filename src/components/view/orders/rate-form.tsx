@@ -9,13 +9,13 @@ import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { DialogClose } from '@/components/ui/dialog';
 import { rateCompany } from '@/services/companyService';
 import toast from 'react-hot-toast';
-const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
+const RateForm = ({ companyId, img, order_id }: { companyId?: number; img?: string; order_id?: string }) => {
   const buttonRef = useRef<any>(null);
   const handleRatingChange = async (formData: FormData) => {
-    //console.log(Object.fromEntries(formData));
+    formData.append('order_id', order_id || '');
+    console.log(Object.fromEntries(formData));
     const res = await rateCompany(formData);
     console.log(res);
-    
     if (res?.status) {
       toast.success('تم ارسال التقييم بنجاح');
       buttonRef.current?.click();
@@ -37,7 +37,7 @@ const RateForm = ({ companyId, img }: { companyId?: number; img?: string }) => {
       description=""
     >
       <form action={handleRatingChange} className="flex flex-col items-center gap-6 py-7">
-        <img src={img} alt="company" className='max-w-48 ' />
+        <img src={img} alt="company" className="max-w-48" />
         <h1 className="text-2xl font-semibold">شركة المتميز للديكور</h1>
         <p className="text-2xl text-gray-600">ما مستوى رضاك عن التعامل مع الشركة؟</p>
         <RatingStars style="w-12 h-12" />

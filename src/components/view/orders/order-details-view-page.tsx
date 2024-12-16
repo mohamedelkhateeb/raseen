@@ -38,7 +38,7 @@ const OrderDetailsViewPage = ({ order }: { order: TOrder }) => {
         showStatus={false}
       >
         {!order?.rates?.id && order?.status.id == 3 && (
-          <RateForm companyId={order?.offer_accepted?.company?.id} img={order?.offer_accepted?.company?.img} />
+          <RateForm companyId={order?.offer_accepted?.company?.id} img={order?.offer_accepted?.company?.img} order_id={order?.id.toString()} />
         )}
         {order?.status.id == 2 && <FinishOrder offerId={order?.id} />}
       </OrderCard>

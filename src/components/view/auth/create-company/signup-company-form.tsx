@@ -22,6 +22,7 @@ import { companySignUp } from '@/services/authService';
 type AddCompany = {
   name: string;
   email: string;
+  img: string | null;
   category_id: string;
   owner: string;
   address: string;
@@ -46,12 +47,14 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
     resetImage: resetCommercial,
   } = useImageUpload();
   const { imageUrl: ownerImgUrl, error: ownerError, handleImageChange: handleOwnerChange, resetImage: resetOwner } = useImageUpload();
+  const { imageUrl: CompanyImgUrl, error: CompanyError, handleImageChange: handleCompanyChange, resetImage: resetCompany } = useImageUpload();
   const [errMsg, setErrMsg] = useState('');
   const [lat] = useQueryState('lat');
   const [lang] = useQueryState('lang');
   const [data, setData] = useState<AddCompany>({
     name: '',
     email: '',
+    img: CompanyImgUrl,
     owner: '',
     address: '',
     owner_img: ownerImgUrl,
@@ -143,6 +146,17 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
           </label>
           <input type="file" id="upload-owner" className="hidden" accept="image/*" name="owner_img" onChange={handleOwnerChange} />
           {ownerError && <p className="text-red-500">{ownerError}</p>}
+        </div>
+        <div className="col-span-2 mt-6 grid w-full gap-1.5">
+          <p className="py-4 font-semibold lg:text-xl">صورة الشركة</p>
+          <label htmlFor="upload-company-img" className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
+            صورة الشركة
+            <MdAttachFile className="absolute bottom-5 end-4 rotate-45 text-3xl" />
+            {CompanyImgUrl && <img src={CompanyImgUrl} alt="Owner Image" className="mt-2 max-h-64 w-full object-contain" />}
+            {CompanyImgUrl && <MdOutlineDelete onClick={resetCompany} className="cursor-pointer" color="red" size={40} />}
+          </label>
+          <input type="file" id="upload-company-img" className="hidden" accept="image/*" name="img" onChange={handleCompanyChange} />
+          {CompanyError && <p className="text-red-500">{CompanyError}</p>}
         </div>
         <div className="col-span-2">
           <MultiImageUpload images={cvs} setImages={setCvs} label="صور التراخيص" placeholder="ارفق صور التراخيص" maxImages={6} />

@@ -110,36 +110,6 @@ export default function CompanyProfile({
             placeholder="أدخل بريدك الإلكتروني"
           />
         </div>
-        <div className="col-span-2 grid w-full gap-1.5">
-          <p>تحديد الميزانية</p>
-          <div className="col-span-2 flex items-center gap-5 lg:gap-10">
-            <div className="relative w-full">
-              <Input
-                name="min_price"
-                defaultValue={data.min_price.replace(/(\d{3})(?=\d)/g, '$1,')}
-                type="text"
-                className="rounded-2xl border-2 px-5 py-9 text-xl"
-                placeholder="اكتب السعر"
-                onChange={(e) => setData({ ...data, min_price: e.target.value })}
-                maxLength={8}
-              />
-              <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
-            </div>
-            <p>بين</p>
-            <div className="relative w-full">
-              <Input
-                name="price"
-                maxLength={11}
-                defaultValue={data.price.replace(/(\d{3})(?=\d)/g, '$1,')}
-                type="text"
-                className="rounded-2xl border-2 px-5 py-9 text-xl"
-                placeholder="اكتب السعر"
-                onChange={(e) => setData({ ...data, price: e.target.value })}
-              />
-              <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
-            </div>
-          </div>
-        </div>
         <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">{'القسم الرئيسي'}</p>
           <Select
@@ -210,6 +180,37 @@ export default function CompanyProfile({
             </SelectContent>
           </Select>
         </div>
+        <div className="col-span-2 grid w-full gap-1.5">
+          <p>تحديد الميزانية</p>
+          <div className="col-span-2 flex items-center gap-5 lg:gap-10">
+            <div className="relative w-full">
+              <Input
+                name="min_price"
+                defaultValue={data.min_price.replace(/(\d{3})(?=\d)/g, '$1,')}
+                type="text"
+                className="rounded-2xl border-2 px-5 py-9 text-xl"
+                placeholder="اكتب السعر"
+                onChange={(e) => setData({ ...data, min_price: e.target.value })}
+                maxLength={8}
+              />
+              <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
+            </div>
+            <p>بين</p>
+            <div className="relative w-full">
+              <Input
+                name="price"
+                maxLength={11}
+                defaultValue={data.price.replace(/(\d{3})(?=\d)/g, '$1,')}
+                type="text"
+                className="rounded-2xl border-2 px-5 py-9 text-xl"
+                placeholder="اكتب السعر"
+                onChange={(e) => setData({ ...data, price: e.target.value })}
+              />
+              <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
+            </div>
+          </div>
+        </div>
+
         <div className="col-span-2">
           <MultiImageUpload images={cvs} setImages={setCvs} label="صور التراخيص" placeholder="ارفق صور التراخيص" maxImages={6} />
         </div>
