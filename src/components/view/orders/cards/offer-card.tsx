@@ -1,11 +1,8 @@
 'use client';
 import RatingStars from '@/components/common/rating-stars';
-import { Button } from '@/components/ui/button';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { Link } from '@/i18n/routing';
-import { cn } from '@/lib/utils';
 import { acceptOffer } from '@/services/orderService';
-import Image from 'next/image';
 import React from 'react';
 import toast from 'react-hot-toast';
 

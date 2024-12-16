@@ -146,6 +146,30 @@ export const getTerms = async () => {
     console.error(error);
   }
 };
+export const getArticleDetails = async (id: number) => {
+  const locale = await getLocale();
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/artical-details/${id}`, {
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': locale,
+      },
+    });
+    const data = await response?.json().catch(() => {
+      return {
+        message: 'Failed Request',
+        statusCode: response.status,
+        statusText: response.statusText,
+        data: null,
+        success: response.ok,
+      };
+    });
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export const contactUs = async (data: FormData) => {
   try {
@@ -155,8 +179,6 @@ export const contactUs = async (data: FormData) => {
       body: data,
       headers: await ReqHeaders({}),
     });
-    //console.log({ response });
-
     return await response.json();
   } catch (error) {
     console.error(error);

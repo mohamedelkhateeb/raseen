@@ -44,7 +44,7 @@ const Articals = ({ articals = [] }: { articals: Article[] }) => {
                 />
                 <Link
                   prefetch={true}
-                  href="/"
+                  href={`/articles?id=${a.id}`}
                   className={'text:xl mb-4 flex items-center justify-end gap-4 px-4 font-bold text-[#004267] lg:text-xl'}
                 >
                   قراءة المزيد
