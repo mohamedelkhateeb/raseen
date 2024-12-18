@@ -1,6 +1,7 @@
 import OrderButton from '@/components/common/order-button';
 import { Link } from '@/i18n/routing';
-import React from 'react';
+import { useTranslations } from 'next-intl';
+import React, { use } from 'react';
 
 type OrderCardProps = {
   title: string;
@@ -20,6 +21,7 @@ export const statusColorMap = {
 } as const;
 
 const OrderCard = ({ title, id, code, status, icon, label, showStatus, children }: OrderCardProps) => {
+  const t = useTranslations();
   return (
     <div className="flex justify-between rounded-2xl bg-[#FAFAFA] p-8 py-12 xl:mx-11">
       <Link prefetch={true} href={`/orders/${id}`} className="">
@@ -28,7 +30,7 @@ const OrderCard = ({ title, id, code, status, icon, label, showStatus, children 
           <div className="flex flex-col gap-2">
             <h3 className="text-lg font-bold">{title}</h3>
             <div className="flex gap-3">
-              <h1 className="text-lg font-bold">رقم الطلب</h1>
+              <h1 className="text-lg font-bold">{t('orderNumber')}</h1>
               <span className="text-lg text-gray-400">{code}</span>
             </div>
           </div>

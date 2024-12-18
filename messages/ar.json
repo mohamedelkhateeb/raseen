@@ -102,6 +102,13 @@
   "error": {
     "loadingCities": "فشل في تحميل المدن."
   },
+  "OrderDetails": {
+    "orderDetails": "تفاصيل الطلب",
+    "selectedService": "الخدمة المختارة",
+    "city": "المدينة",
+    "orderDescription": "وصف الطلب",
+    "attachedImages": "الصور المرفقة"
+  },
   "city": "المدينة",
   "selectCity": "اختار مدينتك",
   "raseenServices": "خدمات رصين",
@@ -145,5 +152,11 @@
   "setBudget": "تحديد الميزانية",
   "error.submitError": "حدث خطأ، حاول مرة أخرى",
   "to": "إلى",
-  "from": "من"
+  "from": "من",
+  "orderNumber": "رقم الطلب",
+  "myOrders": "طلباتي",
+  "noOrders": "لا توجد طلبات",
+  "relatedServices": "خدمات أخرى ذات صلة",
+  "viewAll": "عرض الكل",
+  "relatedService": "خدمة ذات صلة"  
 }

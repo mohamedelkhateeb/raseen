@@ -105,6 +105,13 @@
   "error": {
     "loadingCities": "Failed to load cities."
   },
+  "OrderDetails": {
+    "orderDetails": "Order Details",
+    "selectedService": "Selected Service",
+    "city": "City",
+    "orderDescription": "Order Description",
+    "attachedImages": "Attached Images"
+  },
   "selectCity": "Select your city",
   "raseenServices": "Raseen Services",
   "successPartners": "Success Partners",
@@ -148,5 +155,11 @@
   "setBudget": "Set Budget",
   "error.submitError": "An error occurred, please try again",
   "to": "إلى",
-  "from": "من"
+  "from": "من",
+  "orderNumber": "Order Number",
+  "myOrders": "My Orders",
+  "noOrders": "No orders available",
+  "relatedServices": "Other Related Services",
+  "viewAll": "View All",
+  "relatedService": "Related Service"
 }
