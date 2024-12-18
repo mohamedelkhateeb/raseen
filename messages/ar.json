@@ -142,6 +142,19 @@
     "saveChanges": "حفظ التغييرات",
     "updateSuccess": "تم التعديل بنجاح"
   },
+  "UserMenu": {
+    "editProfile": "تعديل",
+    "myOrders": "طلباتي",
+    "favoriteCompanies": "الشركات المفضلة",
+    "signOut": "تسجيل الخروج"
+  },
+  "OfferCard": {
+    "offerAccepted": "تم قبول العرض بنجاح",
+    "errorOccurred": "حدث خطأ، حاول مرة اخرى",
+    "proposedPrice": "السعر المقترح",
+    "acceptOffer": "قبول العرض",
+    "acceptingOffer": "قبول العرض..."
+  },
   "city": "المدينة",
   "selectCity": "اختار مدينتك",
   "raseenServices": "خدمات رصين",

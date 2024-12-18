@@ -145,6 +145,19 @@
     "saveChanges": "Save Changes",
     "updateSuccess": "Profile updated successfully"
   },
+  "UserMenu": {
+    "editProfile": "Edit",
+    "myOrders": "My Orders",
+    "favoriteCompanies": "Favorite Companies",
+    "signOut": "Sign Out"
+  },
+  "OfferCard": {
+    "offerAccepted": "Offer accepted successfully",
+    "errorOccurred": "An error occurred, please try again",
+    "proposedPrice": "Proposed Price",
+    "acceptOffer": "Accept Offer",
+    "acceptingOffer": "Accepting offer..."
+  },
   "selectCity": "Select your city",
   "raseenServices": "Raseen Services",
   "successPartners": "Success Partners",
