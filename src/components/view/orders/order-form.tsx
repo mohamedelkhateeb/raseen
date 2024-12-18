@@ -53,7 +53,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
     if (res?.status) {
       setIsPopupOpen({ open: true, id: res?.data?.id });
     } else {
-      toast.error(res?.message || t('error.submitError')); // Use translation for error message
+      toast.error(res?.message || t('errorSubmitError'));
     }
   };
 

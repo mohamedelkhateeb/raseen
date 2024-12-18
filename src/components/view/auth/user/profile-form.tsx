@@ -8,9 +8,11 @@ import toast from 'react-hot-toast';
 import { updateProfile } from '@/services/authService';
 import DropdownMenu from '../../home/companies/dropdown';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
-import { useSession } from 'next-auth/react';
+import { useTranslations } from 'next-intl'; // Import the useTranslations hook
+import { useDirection } from '@/utils/helpers';
+
 export default function ProfileForm({ profile }: any) {
-  console.log(profile);
+  const t = useTranslations('Profile'); // Use a namespace for translations
 
   const { imageUrl, handleImageChange, resetImage } = useImageUpload();
   const [data, setData] = useState<any>({
@@ -26,10 +28,9 @@ export default function ProfileForm({ profile }: any) {
     if (!imageUrl) {
       formData.delete('img');
     }
-    //console.log(Object.fromEntries(formData));
     const res = await updateProfile(formData);
     if (res?.status) {
-      toast.success('تم التعديل بنجاح');
+      toast.success(t('updateSuccess'));
     } else {
       toast.error(res?.message);
     }
@@ -44,34 +45,34 @@ export default function ProfileForm({ profile }: any) {
             htmlFor="upload"
             className="cursor-pointer rounded-2xl border border-darkBlue px-8 py-5 text-2xl font-bold text-darkBlue hover:bg-darkBlue hover:text-white"
           >
-            تعديل الصورة الشخصية
+            {t('changeProfilePicture')}
           </label>
           {imageUrl && <MdOutlineDelete onClick={resetImage} className="cursor-pointer" color="red" size={40} />}
           <input id="upload" type="file" name="img" className="hidden" accept="image/*" onChange={handleImageChange} />
         </div>
         <div>
-          <p className="py-4 text-xl font-semibold">الأسم الكامل</p>
-          <Input defaultValue={data?.name} name="name" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل اسمك كاملاً" />
+          <p className="py-4 text-xl font-semibold">{t('fullName')}</p>
+          <Input defaultValue={data?.name} name="name" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder={t('enterFullName')} />
         </div>
         <div>
-          <p className="py-4 text-xl font-semibold">البريد الإلكتروني</p>
+          <p className="py-4 text-xl font-semibold">{t('email')}</p>
           <Input
             defaultValue={data?.email}
             type="email"
             name="email"
             className="rounded-2xl border-2 px-5 py-9 text-xl"
-            placeholder="البريد الألكتروني"
+            placeholder={t('emailPlaceholder')}
           />
         </div>
         <div className="relative">
-          <p className="py-4 text-xl font-semibold">رقم الجوال</p>
+          <p className="py-4 text-xl font-semibold">{t('phone')}</p>
           <input type="hidden" value={data?.phone} name="phone" />
-          <Input disabled defaultValue={data?.phone} className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="رقم الجوال" />
-          <IoLockClosedOutline className="absolute bottom-5 left-4 text-3xl" color="#004267" />
+          <Input disabled defaultValue={data?.phone} className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder={t('phonePlaceholder')} />
+          <IoLockClosedOutline className={`absolute bottom-5 ${useDirection() === 'rtl' ? 'left-5' : 'right-5'} text-3xl`} color="#004267" />
         </div>
         <DropdownMenu dataFilter={profile} setDataFilter={setData} />
         <div className="col-span-2 mt-8 flex flex-col gap-4">
-          <LoadingButton content="حفظ التغييرات" style="mr-auto w-1/4 rounded-2xl bg-darkBlue px-8 text-base text-white xl:py-9 xl:text-2xl" />
+          <LoadingButton content={t('saveChanges')} style="mr-auto w-1/4 rounded-2xl bg-darkBlue py-7 px-8 text-xl text-white xl:py-9 xl:text-2xl" />
         </div>
       </form>
     </>

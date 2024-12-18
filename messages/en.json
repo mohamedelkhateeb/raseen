@@ -105,6 +105,10 @@
   "error": {
     "loadingCities": "Failed to load cities."
   },
+  "Pagination": {
+    "previous": "Previous",
+    "next": "Next"
+  },
   "OrderDetails": {
     "orderDetails": "Order Details",
     "selectedService": "Selected Service",
@@ -129,6 +133,17 @@
     "cancelButton": "Cancel",
     "successMessage": "Your rating has been submitted successfully.",
     "errorMessage": "An error occurred, please try again."
+  },
+  "Profile": {
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "changeProfilePicture": "Change Profile Picture",
+    "enterFullName": "Enter your full name",
+    "emailPlaceholder": "Email",
+    "phonePlaceholder": "Phone Number",
+    "saveChanges": "Save Changes",
+    "updateSuccess": "Profile updated successfully"
   },
   "selectCity": "Select your city",
   "raseenServices": "Raseen Services",
@@ -171,7 +186,7 @@
   "viewOrderDetails": "Go to Order Details",
   "orderSuccessDescription": "You will receive offers from companies in your order details",
   "setBudget": "Set Budget",
-  "error.submitError": "An error occurred, please try again",
+  "errorSubmitError": "An error occurred, please try again",
   "to": "إلى",
   "from": "من",
   "orderNumber": "Order Number",
@@ -184,5 +199,6 @@
   "acceptedCompany": "Accepted Company",
   "user": "User",
   "header": "Company Offers",
-  "noOffers": "No offers available yet"
+  "noOffers": "No offers available yet",
+  "editProfile": "Edit Profile"
 }

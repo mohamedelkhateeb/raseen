@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 
 const Partners = ({ partners = [] }: { partners: Partner[] }) => {
-    const t = useTranslations('');
+    const t = useTranslations();
 
   return (
     <section className="flex flex-col items-center justify-center lg:mt-8">

@@ -102,6 +102,10 @@
   "error": {
     "loadingCities": "فشل في تحميل المدن."
   },
+  "Pagination": {
+    "previous": "السابق",
+    "next": "التالي"
+  },
   "OrderDetails": {
     "orderDetails": "تفاصيل الطلب",
     "selectedService": "الخدمة المختارة",
@@ -126,6 +130,17 @@
     "cancelButton": "إلغاء",
     "successMessage": "تم ارسال التقييم بنجاح",
     "errorMessage": "حدث خطأ، حاول مرة اخرى"
+  },
+  "Profile": {
+    "fullName": "الأسم الكامل",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الجوال",
+    "changeProfilePicture": "تعديل الصورة الشخصية",
+    "enterFullName": "أدخل اسمك كاملاً",
+    "emailPlaceholder": "البريد الألكتروني",
+    "phonePlaceholder": "رقم الجوال",
+    "saveChanges": "حفظ التغييرات",
+    "updateSuccess": "تم التعديل بنجاح"
   },
   "city": "المدينة",
   "selectCity": "اختار مدينتك",
@@ -168,7 +183,7 @@
   "viewOrderDetails": "الذهاب الى تفاصيل الطلب",
   "orderSuccessDescription": "ستتلقى عروض الشركات في تفاصيل طلبك",
   "setBudget": "تحديد الميزانية",
-  "error.submitError": "حدث خطأ، حاول مرة أخرى",
+  "errorSubmitError": "حدث خطأ، حاول مرة أخرى",
   "to": "إلى",
   "from": "من",
   "orderNumber": "رقم الطلب",
@@ -181,5 +196,6 @@
   "acceptedCompany": "الشركة المقبولة",
   "user": "المستخدم",
   "header": "عروض الشركات",
-  "noOffers": "لا يوجد عروض حتى الان"
+  "noOffers": "لا يوجد عروض حتى الان",
+  "editProfile": "تعديل الملف الشخصي"
 }

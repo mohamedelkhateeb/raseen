@@ -13,7 +13,7 @@ const Categories = ({ categories }: { categories: Category[] }) => {
   const [category, setCategory] = useQueryState('category', parseAsInteger.withOptions({ shallow: false }).withDefault(1));
   const [subCategories, setSubCategories] = useState<any[]>(categories[0]?.subCategories || []);
   const { setApi, current, plugin } = useCarousel();
-    const t = useTranslations('');
+    const t = useTranslations();
 
 
   return (

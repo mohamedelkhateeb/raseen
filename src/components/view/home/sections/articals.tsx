@@ -12,7 +12,7 @@ import { useTranslations } from 'next-intl';
 
 const Articals = ({ articals = [] }: { articals: Article[] }) => {
   const { setApi, current, count, plugin } = useCarousel();
-  const t = useTranslations('');
+  const t = useTranslations();
 
   return (
     <section id="articles" className="mb-10 flex flex-col items-center justify-center gap-5 lg:gap-10">
