@@ -109,6 +109,24 @@
     "orderDescription": "وصف الطلب",
     "attachedImages": "الصور المرفقة"
   },
+  "FinishOrder": {
+    "successMessage": "تم تنفيذ الطلب بنجاح",
+    "errorMessage": "حدث خطأ، حاول مرة اخرى",
+    "confirmButton": "تاكيد تنفيذ الطلب",
+    "loadingMessage": "تنفيذ الطلب..."
+  },
+  "RateForm": {
+    "rateCompany": "تقييم الشركة",
+    "companyName": "شركة المتميز للديكور",
+    "satisfactionPrompt": "ما مستوى رضاك عن التعامل مع الشركة؟",
+    "addComment": "إضافة تعليق (اختياري)",
+    "commentPlaceholder": "يرجى مشاركة تفاصيل تجربتك مع الشركة هنا....",
+    "submitButton": "تم التقييم",
+    "loadingMessage": "تقييم...",
+    "cancelButton": "إلغاء",
+    "successMessage": "تم ارسال التقييم بنجاح",
+    "errorMessage": "حدث خطأ، حاول مرة اخرى"
+  },
   "city": "المدينة",
   "selectCity": "اختار مدينتك",
   "raseenServices": "خدمات رصين",
@@ -158,5 +176,10 @@
   "noOrders": "لا توجد طلبات",
   "relatedServices": "خدمات أخرى ذات صلة",
   "viewAll": "عرض الكل",
-  "relatedService": "خدمة ذات صلة"  
+  "relatedService": "خدمة ذات صلة",
+  "orderDetailsWord": "تفاصيل الطلب",
+  "acceptedCompany": "الشركة المقبولة",
+  "user": "المستخدم",
+  "header": "عروض الشركات",
+  "noOffers": "لا يوجد عروض حتى الان"
 }

@@ -112,6 +112,24 @@
     "orderDescription": "Order Description",
     "attachedImages": "Attached Images"
   },
+  "FinishOrder": {
+    "successMessage": "The order has been successfully completed.",
+    "errorMessage": "An error occurred, please try again.",
+    "confirmButton": "Confirm Order Completion",
+    "loadingMessage": "Completing the order..."
+  },
+  "RateForm": {
+    "rateCompany": "Rate Company",
+    "companyName": "Company Name",
+    "satisfactionPrompt": "How satisfied are you with the company?",
+    "addComment": "Add a comment (optional)",
+    "commentPlaceholder": "Please share details of your experience here...",
+    "submitButton": "Submit Rating",
+    "loadingMessage": "Submitting...",
+    "cancelButton": "Cancel",
+    "successMessage": "Your rating has been submitted successfully.",
+    "errorMessage": "An error occurred, please try again."
+  },
   "selectCity": "Select your city",
   "raseenServices": "Raseen Services",
   "successPartners": "Success Partners",
@@ -161,5 +179,10 @@
   "noOrders": "No orders available",
   "relatedServices": "Other Related Services",
   "viewAll": "View All",
-  "relatedService": "Related Service"
+  "relatedService": "Related Service",
+  "orderDetailsWord": "Order Details",
+  "acceptedCompany": "Accepted Company",
+  "user": "User",
+  "header": "Company Offers",
+  "noOffers": "No offers available yet"
 }
