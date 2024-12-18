@@ -20,8 +20,10 @@ import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { createOrder } from '@/services/orderService';
 import toast from 'react-hot-toast';
 import { formatInputPrice } from '@/utils/numsFormatter';
+import { useTranslations } from 'next-intl'; // Add this import for translations
 
 export default function OrderForm({ categories, subCategories }: { categories: Category[]; subCategories: Category[] }) {
+  const t = useTranslations(); // Hook for translations
   const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }).withDefault('0'));
   const [data, setData] = useState<Order & { imagesToUpload: any[] }>({
     max: '0',
@@ -48,11 +50,10 @@ export default function OrderForm({ categories, subCategories }: { categories: C
       formData.append(`images[${index}][img]`, image);
     });
     const res = await createOrder(formData);
-    //console.log(res);
     if (res?.status) {
       setIsPopupOpen({ open: true, id: res?.data?.id });
     } else {
-      toast.error(res?.message || 'حدث خطأ، حاول مرة اخرى');
+      toast.error(res?.message || t('error.submitError')); // Use translation for error message
     }
   };
 
@@ -60,7 +61,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
     <>
       <form action={handleSubmit} className="my-8 grid gap-5 overflow-auto rounded-2xl border-2 bg-white p-6 lg:grid-cols-2 lg:gap-10 lg:p-12">
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">{'القسم الرئيسي'}</p>
+          <p className="py-4 text-xl font-semibold">{t('mainCategory')}</p>
           <Select
             required
             onValueChange={(value) => {
@@ -70,7 +71,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
             }}
           >
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
-              <SelectValue className="text-xl text-gray-200" placeholder={' القسم الرئيسي'} />
+              <SelectValue className="text-xl text-gray-200" placeholder={t('mainCategory')} />
             </SelectTrigger>
             <SelectContent className="flex flex-col gap-10" dir={useDirection()}>
               {categories?.map((option, index) => (
@@ -82,7 +83,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
           </Select>
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">{'القسم الفرعي'}</p>
+          <p className="py-4 text-xl font-semibold">{t('subCategory')}</p>
           <Select disabled={data.category_id == ''}>
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
               <SelectValue
@@ -95,7 +96,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
                           return selectedOption ? selectedOption.name : '';
                         })
                         .join(', ')
-                    : 'القسم الفرعي'
+                    : t('subCategory') // Use translation
                 }
               />
             </SelectTrigger>
@@ -130,58 +131,62 @@ export default function OrderForm({ categories, subCategories }: { categories: C
         <div className="col-span-2 lg:col-span-1">
           <DropdownMenu dataFilter={data} setDataFilter={setData} triggerStyle="rounded-2xl border-2 px-5 py-9 text-xl" />
         </div>
-        <MultiImageUpload data={data} setData={setData} label="إرفاق صور أو مخطط (اختياري)" placeholder=" أرفق الصور أو المخطط" />
+        <MultiImageUpload data={data} setData={setData} label={t('attachImages')} placeholder={t('attachImages')} />
         <div className="col-span-2 grid w-full gap-1.5">
-          <p className="py-4 text-xl font-semibold">تفاصيل الطلب (اختياري)</p>
+          <p className="py-4 text-xl font-semibold">{t('orderDetails')}</p>
           <Textarea
             className="h-[200px] rounded-2xl border-2 p-6 text-2xl"
-            placeholder="كتابة وصف للطلب ان وجد"
+            placeholder={t('orderDetails')}
             id="message"
             onChange={(e) => setData({ ...data, notes: e.target.value })}
           />
         </div>
-        <p className="text-xl font-semibold">تحديد الميزانية (اختياري)</p>
+        <p className="text-xl font-semibold">{t('budgetRange')}</p>
         <div className="col-span-2 flex items-center gap-5 lg:gap-10">
           <div className="relative w-full">
             <Input
               value={formatInputPrice(data?.min)}
               type="text"
               className="rounded-2xl border-2 px-5 py-9 text-xl"
-              placeholder="اكتب السعر"
+              placeholder={t('setBudget')}
               onChange={(e) => setData({ ...data, min: e.target.value })}
               maxLength={8}
             />
-            <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
+            <span className="absolute bottom-7 end-4 lg:bottom-6">{t('SAR')}</span>
           </div>
-          <p>بين</p>
+          <p>{t('to')}</p>
           <div className="relative w-full">
             <Input
               maxLength={11}
               value={formatInputPrice(data?.max)}
               type="text"
               className="rounded-2xl border-2 px-5 py-9 text-xl"
-              placeholder="اكتب السعر"
+              placeholder={t('setBudget')}
               onChange={(e) => setData({ ...data, max: e.target.value })}
             />
-            <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
-          </div>{' '}
+            <span className="absolute bottom-7 end-4 lg:bottom-6">{t('SAR')}</span>
+          </div>
         </div>
         <div className="col-span-2 mt-8 flex flex-col gap-4">
-          <LoadingButton content="ارسال" loader="ارسال..." style="mr-auto rounded-2xl bg-darkBlue px-8 py-9 text-2xl text-white lg:w-1/4" />
+          <LoadingButton
+            content={t('sendOrder')}
+            loader={t('sendingOrder')}
+            style="mr-auto rounded-2xl bg-darkBlue px-8 py-9 text-2xl text-white lg:w-1/4"
+          />
         </div>
       </form>
       {isPopupOpen.open && (
         <Popup defaultOpen={true} style="p-5 w-[80%] lg:w-[30%]" title="" trigger="" triggerStyle="w-full border-none p-1" description="">
           <div className="flex flex-col items-center gap-3">
-            <Image src={CardImg} alt="Error" />
-            <h1 className="text-2xl font-bold">تم نشر طلبك بنجاح</h1>
-            <p className="text-sm text-gray-600">ستتلقى عروض الشركات في تفاصيل طلبك</p>
+            <Image src={CardImg} alt="Success" />
+            <h1 className="text-2xl font-bold">{t('orderSentSuccess')}</h1>
+            <p className="text-sm text-gray-600">{t('orderSuccessDescription')}</p>
             <Link
               prefetch={true}
               href={`/orders/${isPopupOpen?.id}`}
               className={cn(buttonVariants({ variant: 'default', size: 'default' }), 'my-5 w-full bg-darkBlue px-8 py-7 text-base text-white')}
             >
-              الذهاب الى تفاصيل الطلب
+              {t('viewOrderDetails')}
             </Link>
           </div>
         </Popup>

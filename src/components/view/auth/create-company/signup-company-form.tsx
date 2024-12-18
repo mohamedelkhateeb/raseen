@@ -20,6 +20,7 @@ import MultiImageUpload, { UploadedImage } from '@/components/common/MultiImageU
 import { companySignUp } from '@/services/authService';
 import { formatInputPrice, formatPrice } from '@/utils/numsFormatter';
 import toast from 'react-hot-toast';
+import { useTranslations } from 'next-intl';
 
 type AddCompany = {
   name: string;
@@ -39,6 +40,7 @@ type AddCompany = {
 };
 
 export default function SignUpCompanyForm({ subCategories, categories }: { subCategories: SubCategory[]; categories: Category[] }) {
+  const t = useTranslations('companySignup');
   const [cvs, setCvs] = useState<any[]>([]);
   const [certificates, setCertificates] = useState<any[]>([]);
   const [cate, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }));
@@ -83,7 +85,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
       formData.append(`certeficates[${index}][img]`, c.file);
     });
     if (!commercialImgUrl || !ownerImgUrl) {
-      setErrMsg('الرجاء رفع صورة السجل التجاري وصورة هوية المالك');
+      setErrMsg(t('uploadError'));
       return;
     }
     const res = await companySignUp(formData);
@@ -92,7 +94,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
       setErrMsg(res?.message);
     }
     if (res?.status) {
-      toast.success('تم التسجيل بنجاح');
+      toast.success(t('successMessage'));
       router.push('/');
     }
   };
@@ -102,34 +104,30 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
         <input type="hidden" name="device_key" value={'device_key'} />
         <input type="hidden" name="location" value={'location'} />
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">
-            الأسم الكامل <span className="text-gray-400">{`(العربية)`}</span>{' '}
-          </p>
-          <Input required name="name_ar" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل اسمك باللغة العربية" />
+          <p className="py-4 text-xl font-semibold">{t('fullNameAr')}</p>
+          <Input required name="name_ar" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder={t('enterNameAr')} />
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">
-            الأسم الكامل <span className="text-gray-400">{`(الانجليزية)`}</span>{' '}
-          </p>
-          <Input required name="name_en" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل اسمك باللغة الانجليزية" />
+          <p className="py-4 text-xl font-semibold">{t('fullNameEn')}</p>
+          <Input required name="name_en" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder={t('enterNameEn')} />
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">البريد الإلكتروني </p>
-          <Input required name="email" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="أدخل بريدك الإلكتروني" />
+          <p className="py-4 text-xl font-semibold">{t('email')}</p>
+          <Input required name="email" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder={t('enterEmail')} />
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">اسم مالك الشركة</p>
-          <Input required name="owner" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="اسم مالك الشركة" />
+          <p className="py-4 text-xl font-semibold">{t('ownerName')}</p>
+          <Input required name="owner" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder={t('enterOwnerName')} />
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">رقم الجوال</p>
-          <Input required name="phone" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="رقم الجوال" maxLength={9} />
+          <p className="py-4 text-xl font-semibold">{t('phoneNumber')}</p>
+          <Input required name="phone" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder={t('enterPhoneNumber')} maxLength={9} />
         </div>
         <div className="col-span-2 lg:col-span-1">
           <DropdownMenu dataFilter={data} setDataFilter={setData} />
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">{'القسم الرئيسي'}</p>
+          <p className="py-4 text-xl font-semibold">{t('mainCategory')}</p>
           <Select
             name="category_id"
             required
@@ -140,7 +138,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
             }}
           >
             <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
-              <SelectValue className="text-xl text-gray-200" placeholder={' القسم الرئيسي'} />
+              <SelectValue className="text-xl text-gray-200" placeholder={t('mainCategory')} />
             </SelectTrigger>
             <SelectContent className="flex flex-col gap-10" dir={useDirection()}>
               {categories?.map((option, index) => (
@@ -152,7 +150,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
           </Select>
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">{'القسم الفرعي'}</p>
+          <p className="py-4 text-xl font-semibold">{t('subCategory')}</p>
           <Select>
             <SelectTrigger disabled={data.category_id == ''} dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
               <SelectValue
@@ -165,7 +163,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
                           return selectedOption ? selectedOption.name : '';
                         })
                         .join(', ')
-                    : 'القسم الفرعي'
+                    : t('subCategory')
                 }
               />
             </SelectTrigger>
@@ -198,9 +196,9 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
           </Select>
         </div>
         <div className="col-span-2 grid w-full gap-1.5">
-          <p className="py-7 font-semibold lg:text-xl">صورة السجل التجاري</p>
+          <p className="py-7 font-semibold lg:text-xl">{t('commercialImage')}</p>
           <label htmlFor="upload-commercial" className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
-            صورة السجل التجاري
+            {t('uploadCommercialImage')}
             <MdAttachFile className="absolute bottom-5 end-4 rotate-45 text-3xl" />
             {commercialImgUrl && <img src={commercialImgUrl} alt="Commercial Image" className="mt-2 max-h-64 w-full object-contain" />}
             {commercialImgUrl && <MdOutlineDelete onClick={resetCommercial} className="cursor-pointer" color="red" size={40} />}
@@ -209,9 +207,9 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
           {commercialError && <p className="text-red-500">{commercialError}</p>}
         </div>
         <div className="col-span-2 mt-6 grid w-full gap-1.5">
-          <p className="py-4 font-semibold lg:text-xl">صورة هوية المالك</p>
+          <p className="py-4 font-semibold lg:text-xl">{t('ownerImage')}</p>
           <label htmlFor="upload-owner" className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
-            صورة هوية المالك
+            {t('uploadOwnerImage')}
             <MdAttachFile className="absolute bottom-5 end-4 rotate-45 text-3xl" />
             {ownerImgUrl && <img src={ownerImgUrl} alt="Owner Image" className="mt-2 max-h-64 w-full object-contain" />}
             {ownerImgUrl && <MdOutlineDelete onClick={resetOwner} className="cursor-pointer" color="red" size={40} />}
@@ -220,9 +218,9 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
           {ownerError && <p className="text-red-500">{ownerError}</p>}
         </div>
         <div className="col-span-2 mt-6 grid w-full gap-1.5">
-          <p className="py-4 font-semibold lg:text-xl">صورة الشركة</p>
+          <p className="py-4 font-semibold lg:text-xl">{t('companyImage')}</p>
           <label htmlFor="upload-company-img" className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
-            صورة الشركة
+            {t('uploadCompanyImage')}
             <MdAttachFile className="absolute bottom-5 end-4 rotate-45 text-3xl" />
             {CompanyImgUrl && <img src={CompanyImgUrl} alt="Owner Image" className="mt-2 max-h-64 w-full object-contain" />}
             {CompanyImgUrl && <MdOutlineDelete onClick={resetCompany} className="cursor-pointer" color="red" size={40} />}
@@ -231,26 +229,26 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
           {CompanyError && <p className="text-red-500">{CompanyError}</p>}
         </div>
         <div className="col-span-2">
-          <MultiImageUpload images={cvs} setImages={setCvs} label="صور التراخيص" placeholder="ارفق صور التراخيص" maxImages={6} />
+          <MultiImageUpload images={cvs} setImages={setCvs} label={t('licensesImages')} placeholder={t('uploadLicensesImages')} maxImages={6} />
         </div>
         <div className="col-span-2">
           <MultiImageUpload
             images={certificates}
             setImages={setCertificates}
-            label="صور سابقة الأعمال"
-            placeholder="ارفق صور سابقة الأعمال"
+            label={t('previousWorkImages')}
+            placeholder={t('uploadPreviousWorkImages')}
             maxImages={6}
           />
         </div>
         <div className="col-span-2">
           <Popup
             style="w-[90%] h-[95vh] overflow-y-auto"
-            title="يرجى تحديد الموقع على الخريطة"
+            title={t('selectLocation')}
             trigger={
               <div className="grid w-full gap-1.5 lg:col-span-1">
-                <p className="py-4 font-semibold lg:text-xl">الموقع</p>
+                <p className="py-4 font-semibold lg:text-xl">{t('companyLocation')}</p>
                 <div className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
-                  {lang && lat ? <p>{`${lang}, ${lat}`}</p> : <p>موقع الشركة</p>}
+                  {lang && lat ? <p>{`${lang}, ${lat}`}</p> : <p>{t('companyLocation')}</p>}
                   <IoLocationOutline className="absolute bottom-5 end-4 text-3xl" />
                 </div>
               </div>
@@ -260,7 +258,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
           </Popup>
         </div>
         <div className="col-span-2 grid w-full gap-1.5">
-          <p>تحديد الميزانية</p>
+          <p>{t('budget')}</p>
           <div className="col-span-2 flex items-center gap-5 lg:gap-10">
             <div className="relative w-full">
               <Input
@@ -268,13 +266,13 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
                 value={formatInputPrice(data?.min_price)}
                 type="text"
                 className="rounded-2xl border-2 px-5 py-9 text-xl"
-                placeholder="اكتب السعر"
+                placeholder={t('enterPrice')}
                 onChange={(e) => setData({ ...data, min_price: e.target.value })}
                 maxLength={8}
               />
-              <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
+              <span className="absolute bottom-7 end-4 lg:bottom-6">{t('currency')}</span>
             </div>
-            <p>بين</p>
+            <p>{t('to')}</p>
             <div className="relative w-full">
               <Input
                 name="price"
@@ -282,10 +280,10 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
                 value={formatInputPrice(data?.price)}
                 type="text"
                 className="rounded-2xl border-2 px-5 py-9 text-xl"
-                placeholder="اكتب السعر"
+                placeholder={t('enterPrice')}
                 onChange={(e) => setData({ ...data, price: e.target.value })}
               />
-              <span className="absolute bottom-7 end-4 lg:bottom-6">ر.س</span>
+              <span className="absolute bottom-7 end-4 lg:bottom-6">{t('currency')}</span>
             </div>
           </div>
         </div>
@@ -294,8 +292,8 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
         </div>
         <div className="col-span-2 mt-8 flex items-start justify-start gap-4">
           <LoadingButton
-            content="انشاء حساب"
-            loader="انشاء حساب..."
+            content={t('submitButton')}
+            loader={t('submitLoading')}
             style=" w-1/2 mr-auto rounded-lg bg-darkBlue py-6 text-base text-white xl:py-9 xl:text-2xl"
           />
         </div>

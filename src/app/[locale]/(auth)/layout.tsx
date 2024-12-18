@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { options } from '@/app/api/auth/[...nextauth]/options';
 import { getServerSession } from 'next-auth';
 import { Link, redirect } from '@/i18n/routing';
+import { direction } from '@/utils/helpers';
 
 export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(options);
@@ -12,7 +13,11 @@ export default async function LocaleLayout({ children }: { children: React.React
   }
   return (
     <div className="relative h-screen flex-col items-center justify-center lg:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <Link prefetch={true} href={'/'} className="absolute right-6 top-6 z-10 hidden lg:block">
+      <Link
+        prefetch={true}
+        href={'/'}
+        className={`absolute ${(await direction()) === 'ltr' ? 'left-6' : 'right-6'}  top-6 z-10 hidden lg:block`}
+      >
         <Image src={SigninLogo} alt="Sign in cover" className="" />
       </Link>
       <main className="flex h-full items-center p-4 lg:p-8">{children}</main>
