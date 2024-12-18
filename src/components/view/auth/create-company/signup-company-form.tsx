@@ -18,6 +18,7 @@ import { Category, SubCategory } from '@/types/models/home.model';
 import FormError from '@/components/common/form-error';
 import MultiImageUpload, { UploadedImage } from '@/components/common/MultiImageUpload';
 import { companySignUp } from '@/services/authService';
+import { formatInputPrice, formatPrice } from '@/utils/numsFormatter';
 
 type AddCompany = {
   name: string;
@@ -125,6 +126,75 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
         <div className="col-span-2 lg:col-span-1">
           <DropdownMenu dataFilter={data} setDataFilter={setData} />
         </div>
+        <div className="col-span-2 lg:col-span-1">
+          <p className="py-4 text-xl font-semibold">{'القسم الرئيسي'}</p>
+          <Select
+            name="category_id"
+            required
+            onValueChange={(value) => {
+              setCategory(value);
+              setData({ ...data, sub_categories: [] });
+              setData({ ...data, category_id: value });
+            }}
+          >
+            <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
+              <SelectValue className="text-xl text-gray-200" placeholder={' القسم الرئيسي'} />
+            </SelectTrigger>
+            <SelectContent className="flex flex-col gap-10" dir={useDirection()}>
+              {categories?.map((option, index) => (
+                <SelectItem key={index} className="text-xl" value={option.id.toString()}>
+                  {option.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="col-span-2 lg:col-span-1">
+          <p className="py-4 text-xl font-semibold">{'القسم الفرعي'}</p>
+          <Select>
+            <SelectTrigger disabled={data.category_id == ''} dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
+              <SelectValue
+                className="text-xl text-gray-200"
+                placeholder={
+                  data.sub_categories.length > 0
+                    ? data.sub_categories
+                        ?.map((sub) => {
+                          const selectedOption = subCategories.find((option) => option.id == sub.id);
+                          return selectedOption ? selectedOption.name : '';
+                        })
+                        .join(', ')
+                    : 'القسم الفرعي'
+                }
+              />
+            </SelectTrigger>
+            <SelectContent className="flex flex-col gap-10" dir={useDirection()}>
+              {subCategories?.map((option, index) => (
+                <div dir={useDirection()} key={index.toString()} className="my-4 flex items-center justify-between gap-4 p-2 text-xl">
+                  <label
+                    htmlFor={index.toString()}
+                    className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    {option?.name}
+                  </label>
+                  <Checkbox
+                    className="h-4 w-4"
+                    id={index.toString()}
+                    onCheckedChange={() => {
+                      const isSelected = data.sub_categories.some((sub) => sub.id == option.id);
+                      setData({
+                        ...data,
+                        sub_categories: isSelected
+                          ? data.sub_categories.filter((sub) => sub.id !== option.id)
+                          : ([...data.sub_categories, { id: option.id }] as any),
+                      });
+                    }}
+                    checked={data.sub_categories.some((sub: any) => sub.id == option.id.toString())}
+                  />
+                </div>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         <div className="col-span-2 grid w-full gap-1.5">
           <p className="py-7 font-semibold lg:text-xl">صورة السجل التجاري</p>
           <label htmlFor="upload-commercial" className="text-medium relative cursor-pointer rounded-2xl border-2 px-5 py-6">
@@ -170,75 +240,6 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
             maxImages={6}
           />
         </div>
-        <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">{'القسم الرئيسي'}</p>
-          <Select
-            name="category_id"
-            required
-            onValueChange={(value) => {
-              setCategory(value);
-              setData({ ...data, sub_categories: [] });
-              setData({ ...data, category_id: value });
-            }}
-          >
-            <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
-              <SelectValue className="text-xl text-gray-200" placeholder={' القسم الرئيسي'} />
-            </SelectTrigger>
-            <SelectContent className="flex flex-col gap-10" dir={useDirection()}>
-              {categories?.map((option, index) => (
-                <SelectItem key={index} className="text-xl" value={option.id.toString()}>
-                  {option.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="col-span-2 lg:col-span-1">
-          <p className="py-4 text-xl font-semibold">{'القسم الفرعي'}</p>
-          <Select>
-            <SelectTrigger dir={useDirection()} className={cn('rounded-2xl border-2 px-5 py-9 text-xl')}>
-              <SelectValue
-                className="text-xl text-gray-200"
-                placeholder={
-                  data.sub_categories.length > 0
-                    ? data.sub_categories
-                        ?.map((sub) => {
-                          const selectedOption = subCategories.find((option) => option.id == sub.id);
-                          return selectedOption ? selectedOption.name : '';
-                        })
-                        .join(', ')
-                    : 'القسم الفرعي'
-                }
-              />
-            </SelectTrigger>
-            <SelectContent className="flex flex-col gap-10" dir={useDirection()}>
-              {subCategories?.map((option, index) => (
-                <div dir={useDirection()} key={index.toString()} className="my-4 flex items-center justify-between gap-4 p-2 text-xl">
-                  <label
-                    htmlFor={index.toString()}
-                    className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    {option?.name}
-                  </label>
-                  <Checkbox
-                    className="h-4 w-4"
-                    id={index.toString()}
-                    onCheckedChange={() => {
-                      const isSelected = data.sub_categories.some((sub) => sub.id == option.id);
-                      setData({
-                        ...data,
-                        sub_categories: isSelected
-                          ? data.sub_categories.filter((sub) => sub.id !== option.id)
-                          : ([...data.sub_categories, { id: option.id }] as any),
-                      });
-                    }}
-                    checked={data.sub_categories.some((sub: any) => sub.id == option.id.toString())}
-                  />
-                </div>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
         <div className="col-span-2">
           <Popup
             style="w-[90%] h-[95vh] overflow-y-auto"
@@ -262,7 +263,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
             <div className="relative w-full">
               <Input
                 name="min_price"
-                value={data.min_price.replace(/(\d{3})(?=\d)/g, '$1,')}
+                value={formatInputPrice(data?.min_price)}
                 type="text"
                 className="rounded-2xl border-2 px-5 py-9 text-xl"
                 placeholder="اكتب السعر"
@@ -276,7 +277,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
               <Input
                 name="price"
                 maxLength={11}
-                value={data.price.replace(/(\d{3})(?=\d)/g, '$1,')}
+                value={formatInputPrice(data?.price)}
                 type="text"
                 className="rounded-2xl border-2 px-5 py-9 text-xl"
                 placeholder="اكتب السعر"

@@ -30,6 +30,9 @@ export default function PlansViewPage({ plans, plan, profile }: any) {
     }
   };
 
+  console.log(plans);
+  
+
   return !profile.package ? (
     <Tabs defaultValue="month" className="mt-10 max-h-full w-full p-3">
       <TabsList className="grid w-full grid-cols-2">

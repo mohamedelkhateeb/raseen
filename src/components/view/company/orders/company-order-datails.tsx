@@ -20,6 +20,10 @@ const CopmanyOrderDetailsViewPage = ({ order }: { order: CompanyOrder }) => {
           <div className="flex items-center gap-4 bg-[#FAFAFA] p-4">
             <Image src={order?.user.img} alt="Card image" className="h-20 w-32 rounded-full border-2 object-cover" width={100} height={100} />
             <h1 className="text-lg font-semibold">{order?.user?.name}</h1>
+            <div className="flex gap-3">
+              <h1 className="text-lg font-bold">رقم الطلب</h1>
+              <span className="text-lg text-gray-400">{order?.code}</span>
+            </div>
           </div>
         </div>
         <CopmanyOrderDetailsCard
@@ -29,18 +33,6 @@ const CopmanyOrderDetailsViewPage = ({ order }: { order: CompanyOrder }) => {
           images={order?.images}
           category={order?.category?.name}
         />
-        {/* <Link
-          prefetch={true}
-          href="/sign-company"
-          className={cn(
-            buttonVariants({
-              variant: 'default',
-            }),
-            'w-1/4 bg-darkBlue py-8 lg:text-xl xl:text-2xl',
-          )}
-        >
-          تقديم عرض{' '}
-        </Link> */}
       </div>
     </div>
   );

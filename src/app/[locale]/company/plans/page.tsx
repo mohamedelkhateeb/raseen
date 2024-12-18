@@ -4,11 +4,8 @@ import { getCompanyPackage, getPlans } from '@/services/companyService';
 import React from 'react';
 
 const Page = async () => {
-  const plans = await getPlans();
-  const profile = await getProfile();
-  const pack = await getCompanyPackage();
-
-  console.log(profile);
+  const [plans, profile, pack] = await Promise.all([getPlans(), getProfile(), getCompanyPackage()]);
+  console.log(plans);
   console.log(pack);
 
   return <PlansViewPage plans={plans} plan={pack} profile={profile} />;

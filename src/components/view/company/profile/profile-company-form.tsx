@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Category, SubCategory } from '@/types/models/home.model';
 import { parseAsString, useQueryState } from 'nuqs';
+import { formatInputPrice } from '@/utils/numsFormatter';
 
 type AddCompany = {
   name: string;
@@ -23,6 +24,7 @@ type AddCompany = {
   price: string;
   name_ar: string;
   name_en: string;
+  owner: string;
 };
 
 export default function CompanyProfile({
@@ -47,6 +49,7 @@ export default function CompanyProfile({
     category_id: profile.user.category.id || '',
     min_price: profile.user?.min_price || '',
     price: profile.user?.price || '',
+    owner: profile?.owner || '',
   });
   const router = useRouter();
   const submitForm = async (formData: FormData) => {
@@ -100,7 +103,11 @@ export default function CompanyProfile({
             placeholder="أدخل اسمك باللغة الانجليزية"
           />
         </div>
-        <div className="col-span-2">
+        {/* <div className="col-span-2 lg:col-span-1">
+          <p className="py-4 text-xl font-semibold">اسم مالك الشركة</p>
+          <Input required name="owner" className="rounded-2xl border-2 px-5 py-9 text-xl" placeholder="اسم مالك الشركة" />
+        </div> */}
+        <div className="col-span-2 lg:col-span-1">
           <p className="py-4 text-xl font-semibold">البريد الإلكتروني </p>
           <Input
             defaultValue={data.email}
@@ -186,7 +193,7 @@ export default function CompanyProfile({
             <div className="relative w-full">
               <Input
                 name="min_price"
-                defaultValue={data.min_price.replace(/(\d{3})(?=\d)/g, '$1,')}
+                defaultValue={formatInputPrice(data.min_price)}
                 type="text"
                 className="rounded-2xl border-2 px-5 py-9 text-xl"
                 placeholder="اكتب السعر"
@@ -200,7 +207,7 @@ export default function CompanyProfile({
               <Input
                 name="price"
                 maxLength={11}
-                defaultValue={data.price.replace(/(\d{3})(?=\d)/g, '$1,')}
+                defaultValue={formatInputPrice(data.price)}
                 type="text"
                 className="rounded-2xl border-2 px-5 py-9 text-xl"
                 placeholder="اكتب السعر"

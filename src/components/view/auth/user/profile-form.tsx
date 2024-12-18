@@ -17,6 +17,7 @@ export default function ProfileForm({ profile }: any) {
     name: profile?.name || '',
     email: profile?.email || '',
     phone: profile?.phone || '',
+    owner: profile?.owner || '',
     img: null,
     city_id: profile?.city || '',
   });

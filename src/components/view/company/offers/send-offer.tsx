@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useRouter } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { sendOffer } from '@/services/companyService';
+import { formatInputPrice } from '@/utils/numsFormatter';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -36,6 +37,7 @@ const SendOffer = ({ order_id }: { order_id: number }) => {
             <p className="py-4 text-xl font-semibold">السعر المقترح</p>
             <Input
               required
+              value={formatInputPrice(data?.price)}
               type="number"
               className="rounded-2xl border-2 px-5 py-9 text-xl"
               placeholder="اكتب السعر"

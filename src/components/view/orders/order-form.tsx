@@ -19,6 +19,7 @@ import { Order } from '@/types/models/order.model';
 import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { createOrder } from '@/services/orderService';
 import toast from 'react-hot-toast';
+import { formatInputPrice } from '@/utils/numsFormatter';
 
 export default function OrderForm({ categories, subCategories }: { categories: Category[]; subCategories: Category[] }) {
   const [category, setCategory] = useQueryState('category', parseAsString.withOptions({ shallow: false }).withDefault('0'));
@@ -143,7 +144,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
         <div className="col-span-2 flex items-center gap-5 lg:gap-10">
           <div className="relative w-full">
             <Input
-              value={data.min.replace(/(\d{3})(?=\d)/g, '$1,')}
+              value={formatInputPrice(data?.min)}
               type="text"
               className="rounded-2xl border-2 px-5 py-9 text-xl"
               placeholder="اكتب السعر"
@@ -156,7 +157,7 @@ export default function OrderForm({ categories, subCategories }: { categories: C
           <div className="relative w-full">
             <Input
               maxLength={11}
-              value={data.max.replace(/(\d{3})(?=\d)/g, '$1,')}
+              value={formatInputPrice(data?.max)}
               type="text"
               className="rounded-2xl border-2 px-5 py-9 text-xl"
               placeholder="اكتب السعر"
