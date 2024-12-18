@@ -8,13 +8,15 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/com
 import React from 'react';
 import useCarousel from '@/hooks/use-carousel';
 import { useDirection } from '@/utils/helpers';
+import { useTranslations } from 'next-intl';
 
 const Articals = ({ articals = [] }: { articals: Article[] }) => {
   const { setApi, current, count, plugin } = useCarousel();
+  const t = useTranslations('');
 
   return (
     <section id="articles" className="mb-10 flex flex-col items-center justify-center gap-5 lg:gap-10">
-      <Title content="ابتكر واجهات ملهمة وتجارب لمنزلك" />
+      <Title content={t('testimonialsAboutRaseen')} />
       <Carousel
         plugins={[plugin.current]}
         opts={{
@@ -36,19 +38,24 @@ const Articals = ({ articals = [] }: { articals: Article[] }) => {
                     <LuLayoutDashboard />
                   </p>
                 </div>
-                <h1 className="text-md mt-3 px-4 text-right font-semibold leading-normal lg:text-xl">{a.title}</h1>
+                <h1
+                  className={`text-md mt-3 flex w-full items-center justify-start px-8 font-bold leading-normal lg:text-xl ${useDirection() === 'rtl' ? 'text-right' : ''}`}
+                >
+                  {a.title}
+                </h1>
                 <div
                   className="terms-page px-10 pt-4 text-xs leading-7 lg:text-[14px]"
                   dir={useDirection()}
                   dangerouslySetInnerHTML={{ __html: a.desc }}
                 />
                 <Link
+                  dir={useDirection()}
                   prefetch={true}
                   href={`/articles?id=${a.id}`}
-                  className={'text:xl mb-4 flex items-center justify-end gap-4 px-4 font-bold text-[#004267] lg:text-xl'}
+                  className="mb-4 flex items-center justify-start gap-4 px-10 text-xl font-bold text-[#004267] lg:text-xl"
                 >
-                  قراءة المزيد
-                  <IoIosArrowRoundBack size={35} color="#004267" />
+                  {t('readMore')}
+                  <IoIosArrowRoundBack size={35} color="#004267" className={useDirection() === 'ltr' ? 'rotate-180' : ''} />
                 </Link>
               </div>
             </CarouselItem>

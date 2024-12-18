@@ -9,6 +9,9 @@ import LoadingButton from '@/components/ui/custom-buttons/loading-btn';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { SubscriptionCard } from './subscription-card';
+import Popup from '@/components/common/popup';
+import MoyasarPaymentForm from '@/components/common/MoyasarPaymentForm';
+import { Button } from '@/components/ui/button';
 export default function PlansViewPage({ plans, plan, profile }: any) {
   const [data, setData] = useState({
     package_id: '',
@@ -31,7 +34,6 @@ export default function PlansViewPage({ plans, plan, profile }: any) {
   };
 
   console.log(plans);
-  
 
   return !profile.package ? (
     <Tabs defaultValue="month" className="mt-10 max-h-full w-full p-3">
@@ -78,7 +80,9 @@ export default function PlansViewPage({ plans, plan, profile }: any) {
               <label htmlFor={plan?.id.toString()} className="h-full w-full cursor-pointer">
                 <div className="flex justify-between">
                   <h1 className="text-2xl text-[#004267]">{plan?.price_year} ريال / سنة</h1>
-                  <div className="flex items-center space-x-2"></div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem className="h-7 w-7" value={plan?.id.toString()} id={plan?.id.toString()} />
+                  </div>{' '}
                 </div>
                 <div className="mt-4 flex flex-col gap-2">
                   {plan?.details.map((detail: any) => (
@@ -93,9 +97,20 @@ export default function PlansViewPage({ plans, plan, profile }: any) {
           ))}
         </TabsContent>
       </RadioGroup>
-      <form action={handleSubmit}>
-        <LoadingButton content="اشتراك الآن" style="w-1/2 my-5" />
-      </form>
+      <Popup
+        defaultOpen={false}
+        style="p-5 lg:w-[30%] h-fit flex justify-center items-center"
+        title=""
+        trigger={
+          <Button disabled={data.package_id ? false : true} className="my-5 w-1/4">
+            اشتراك الآن
+          </Button>
+        }
+        triggerStyle="w-full border-none p-1"
+        description=""
+      >
+        <MoyasarPaymentForm />
+      </Popup>
     </Tabs>
   ) : (
     <SubscriptionCard {...plan} />

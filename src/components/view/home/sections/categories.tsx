@@ -1,25 +1,24 @@
 'use client';
-import { CarouselSize } from '@/components/common/carousel';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Title from '@/components/ui/title';
 import { Link } from '@/i18n/routing';
-import CategorySection from '@/components/common/category-btns';
 import React, { useState } from 'react';
 import { Category } from '@/types/models/home.model';
-import { getSubCategories } from '@/services/homeService';
-import { searchParamsCache } from '@/utils/searchparams';
 import { Button } from '@/components/ui/button';
 import { parseAsInteger, useQueryState } from 'nuqs';
 import useCarousel from '@/hooks/use-carousel';
+import { useTranslations } from 'next-intl';
 
 const Categories = ({ categories }: { categories: Category[] }) => {
   const [category, setCategory] = useQueryState('category', parseAsInteger.withOptions({ shallow: false }).withDefault(1));
   const [subCategories, setSubCategories] = useState<any[]>(categories[0]?.subCategories || []);
   const { setApi, current, plugin } = useCarousel();
+    const t = useTranslations('');
+
 
   return (
     <section className="my-10 flex flex-col items-center justify-center gap-10 p-4 px-8 lg:mt-8">
-      <Title content={'خدمات رصين'} />
+      <Title content={t('raseenServices')} />
       <div className="grid grid-cols-3 gap-5">
         {categories?.map((c, index) => (
           <Button

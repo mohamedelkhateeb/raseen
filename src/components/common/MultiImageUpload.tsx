@@ -56,7 +56,7 @@ const MultiImageUpload: React.FC<MultiImageUploadProps> = ({
           {images.map((image, index) => (
             <CarouselItem key={index} className="basis-1/3">
               <div className="group relative w-full">
-                <img src={image.preview} alt={`Preview ${index}`} className=" w-full rounded-lg object-cover" />
+                <img src={image.preview} alt={`Preview ${index}`} className=" w-full h-full rounded-lg object-cover" />
                 <button
                   type="button"
                   onClick={() => removeImage(index)}

@@ -3,12 +3,15 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CarouselItem } from '@/components/ui/carousel';
 import Title from '@/components/ui/title';
 import { Partner } from '@/types/models/home.model';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 const Partners = ({ partners = [] }: { partners: Partner[] }) => {
+    const t = useTranslations('');
+
   return (
     <section className="flex flex-col items-center justify-center lg:mt-8">
-      <Title content="شركاء النجاح" />
+      <Title content={t('successPartners')} />
       <CarouselSize showArrows={false}>
         {partners?.map((partner, index) => (
           <CarouselItem key={index} className="basis-1/6">

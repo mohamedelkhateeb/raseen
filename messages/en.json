@@ -2,7 +2,7 @@
   "lang": "en",
   "HomePage": {
     "followUs": "Follow us on:",
-    "slogen": "Discover everything related to your home, from finishing and design to decoration... with Rasian",
+    "slogen": "Discover everything related to your home, from finishing and design to decoration... with Raseen",
     "signin": "Sign in",
     "NavigationMenu": {
       "home": "Home",
@@ -20,10 +20,38 @@
       },
       "contracting": "Contracting and Decoration",
       "articles": "Articles",
+      "allServices": "All Services",
       "contact": "Contact Us"
     },
     "homeTitle": "",
     "getOffer": "Get a Free Offer",
     "content": "Provides you with everything you need to design your perfect home. Enjoy advanced 2D and 3D design studios, where you can meticulously plan and design every interior corner."
-  }
+  },
+  "footer": {
+    "description": "A website that provides everything you need for your space, from contracting to finishing and even interior decoration.",
+    "importantLinks": "Important Links",
+    "home": "Home",
+    "companies": "Companies",
+    "articles": "Articles",
+    "contactUs": "Contact Us",
+    "aboutRaseen": "About Raseen",
+    "termsAndConditions": "Terms and Conditions",
+    "privacyPolicy": "Privacy Policy",
+    "faq": "FAQ",
+    "ourServices": "Our Services",
+    "engineeringOffices": "Engineering Offices",
+    "constructionAndDecoration": "Contracting and Decoration",
+    "copyrightText": "All rights reserved for Raseen website © 2024"
+  },
+  "decorationServices": {
+    "title": "Design Your Complete Interior Easily",
+    "cardTitle": "Finishing .. Contracting .. Decoration",
+    "description": "Everything you need for your home, get it with Raseen at the highest quality and distinguished services",
+    "buttonText": "Browse Services"
+  },
+  "raseenServices": "Raseen Services",
+  "successPartners": "Success Partners",
+  "testimonialsAboutRaseen": "What They Said About Raseen",
+  "createInspiringInterfaces": "Create inspiring interfaces and experiences for your home",
+  "readMore": "Read More"
 }

@@ -5,15 +5,19 @@ import { AppStore } from '../svgs/app-store';
 import { Link } from '@/i18n/routing';
 import SocialMediaLinks from '../common/social-media-links';
 import { useClientFetch } from '@/hooks/use-client-fetch';
+import { useTranslations } from 'next-intl'; // Assuming you are using next-intl
+
 const Footer = () => {
   const { Data } = useClientFetch(null, 'footer');
+  const t = useTranslations('footer'); 
+
   return (
-    <footer className="border-t bg-[#F8F8F8] p-6 text-center md:px-12 md:text-right">
+    <footer className="border-t bg-[#F8F8F8] p-6  md:px-12">
       <div className="flex flex-col gap-20 lg:flex-row">
         <div className="flex flex-col items-center gap-5 sm:text-left">
           <RaseenLogo />
           <p className="mb-4 text-center font-medium text-black md:text-start">
-            موقع يوفر لك كل ما تحتاجه لمساحتك من مقاولات .. تشطيب .. وحتى الديكور الداخلي
+            {t('description')}
           </p>
           <div className="flex justify-center gap-4 sm:justify-start">
             <button onClick={() => window.open(Data?.data?.android, '_blank')}>
@@ -26,68 +30,68 @@ const Footer = () => {
         </div>
         <div className="container mx-auto grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="mb-4 text-lg font-bold">روابط هامة</h3>
+            <h3 className="mb-4 text-lg font-bold">{t('importantLinks')}</h3>
             <ul>
               <li className="mb-2">
                 <Link prefetch={true} href="/" className="hover:text-primary">
-                  الرئيسية
+                  {t('home')}
                 </Link>
               </li>
               <li className="mb-2">
                 <Link prefetch={true} href="/companies" className="hover:text-primary">
-                  الشركات
+                  {t('companies')}
                 </Link>
               </li>
               <li className="mb-2">
                 <Link prefetch={true} href="/articles" className="hover:text-primary">
-                  المقالات
+                  {t('articles')}
                 </Link>
               </li>
               <li className="mb-2">
                 <Link prefetch={true} href="/contact-us" className="hover:text-primary">
-                  تواصل معنا
+                  {t('contactUs')}
                 </Link>
               </li>
             </ul>
           </div>
           {/* About Links */}
           <div>
-            <h3 className="mb-4 text-lg font-bold">عن رصين</h3>
+            <h3 className="mb-4 text-lg font-bold">{t('aboutRaseen')}</h3>
             <ul>
               <li className="mb-2">
                 <Link prefetch={true} href="/about-us" className="hover:text-primary">
-                  إعرفني
+                  {t('aboutRaseen')}
                 </Link>
               </li>
               <li className="mb-2">
                 <Link prefetch={true} href="/terms" className="hover:text-primary">
-                  الشروط و الاحكام
+                  {t('termsAndConditions')}
                 </Link>
               </li>
               <li className="mb-2">
                 <Link prefetch={true} href="/privacy" className="hover:text-primary">
-                  سياسة الخصوصية
+                  {t('privacyPolicy')}
                 </Link>
               </li>
               <li className="mb-2">
                 <Link prefetch={true} href="/faq" className="hover:text-primary">
-                  الأسئلة الشائعة
+                  {t('faq')}
                 </Link>
               </li>
             </ul>
           </div>
           {/* Services Links */}
           <div>
-            <h3 className="mb-4 text-lg font-bold">خدماتنا</h3>
+            <h3 className="mb-4 text-lg font-bold">{t('ourServices')}</h3>
             <ul>
               <li className="mb-2">
                 <Link prefetch={true} href="/companies?category=1" className="hover:text-primary">
-                  المكاتب الهندسية
+                  {t('engineeringOffices')}
                 </Link>
               </li>
               <li className="mb-2">
                 <Link prefetch={true} href="/companies?category=2" className="hover:text-primary">
-                  المقاولات والديكور
+                  {t('constructionAndDecoration')}
                 </Link>
               </li>
             </ul>
@@ -103,7 +107,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="mb-4 md:mb-0">
-            جميع الحقوق محفوظة <span className="text-yellow-500"> لموقع رصين</span> © 2024
+            {t('copyrightText')}
           </p>
         </div>
       </div>

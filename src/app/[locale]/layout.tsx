@@ -29,6 +29,11 @@ export default async function RootLayout({ children, params: { locale } }: { chi
   const session = await getServerSession(options);
   return (
     <html dir={locale === 'ar' ? 'rtl' : 'ltr'} className={cairo.className}>
+      <head>
+        <link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.14.0/moyasar.css" />
+        <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=fetch"></script>
+        <script src="https://cdn.moyasar.com/mpf/1.14.0/moyasar.js"></script>
+      </head>
       <NextIntlClientProvider messages={messages}>
         <body>
           <main dir={locale === 'ar' ? 'rtl' : 'ltr'} className="w-full flex-1 overflow-hidden">

@@ -19,6 +19,7 @@ import FormError from '@/components/common/form-error';
 import MultiImageUpload, { UploadedImage } from '@/components/common/MultiImageUpload';
 import { companySignUp } from '@/services/authService';
 import { formatInputPrice, formatPrice } from '@/utils/numsFormatter';
+import toast from 'react-hot-toast';
 
 type AddCompany = {
   name: string;
@@ -91,6 +92,7 @@ export default function SignUpCompanyForm({ subCategories, categories }: { subCa
       setErrMsg(res?.message);
     }
     if (res?.status) {
+      toast.success('تم التسجيل بنجاح');
       router.push('/');
     }
   };

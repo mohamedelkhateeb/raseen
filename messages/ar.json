@@ -19,12 +19,40 @@
         }
       },
       "contracting": "المقاولات والديكور",
-      "allServices": "الخدمة الشاملة",
       "articles": "مقالات",
+      "allServices": "الخدمة الشاملة",
       "contact": "تواصل معنا"
     },
     "homeTitle": "",
     "getOffer": "احصل على عرض مجانا",
     "content": " يقدم لك كل ما تحتاجه لتصميم منزلك المثالي. استمتع باستوديوهات متقدمة للتصميم ثنائي وثلاثي الأبعاد، حيث يمكنك تخطيط وتصميم كل زاوية داخلية بشكل دقيق"
-  }
+  },
+  "footer": {
+    "description": "موقع يوفر لك كل ما تحتاجه لمساحتك من مقاولات .. تشطيب .. وحتى الديكور الداخلي",
+    "importantLinks": "روابط هامة",
+    "home": "الرئيسية",
+    "companies": "الشركات",
+    "articles": "المقالات",
+    "contactUs": "تواصل معنا",
+    "aboutRaseen": "عن رصين",
+    "termsAndConditions": "الشروط و الاحكام",
+    "privacyPolicy": "سياسة الخصوصية",
+    "faq": "الأسئلة الشائعة",
+    "ourServices": "خدماتنا",
+    "engineeringOffices": "المكاتب الهندسية",
+    "constructionAndDecoration": "المقاولات والديكور",
+    "copyrightText": "جميع الحقوق محفوظة لموقع رصين © 2024"
+  },
+  "decorationServices": {
+    "title": "تصميم ديكورك المتكامل بسهولة",
+    "cardTitle": "تشطيب .. مقاولات .. ديكور",
+    "description": "كل ما تحتاجه لمنزلك احصل عليه مع رصين بأعلى جودة وخدمات متميزة",
+    "buttonText": "تصفح الخدمات"
+  },
+  
+  "raseenServices": "خدمات رصين",
+  "successPartners": "شركاء النجاح",
+  "testimonialsAboutRaseen": "ماذا قالوا عن رصين",
+  "createInspiringInterfaces": "ابتكر واجهات ملهمة وتجارب لمنزلك",
+  "readMore": "قراءة المزيد"
 }

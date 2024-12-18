@@ -6,12 +6,15 @@ import { Rate } from '@/types/models/home.model';
 import React from 'react';
 import { BiSolidQuoteAltLeft } from 'react-icons/bi';
 import useCarousel from '@/hooks/use-carousel';
+import { useTranslations } from 'next-intl';
 
 const Rates = ({ rates = [] }: { rates: Rate[] }) => {
   const { setApi, current, count, plugin } = useCarousel();
+      const t = useTranslations('');
+  
   return (
     <section id="articles" className="flex flex-col items-center justify-center gap-5 lg:gap-10">
-      <Title content="ماذا قالوا عن رصين" />
+      <Title content={t('testimonialsAboutRaseen')} />
       <Carousel
         plugins={[plugin.current]}
         opts={{
