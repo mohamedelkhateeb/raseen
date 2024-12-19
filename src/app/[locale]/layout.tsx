@@ -9,6 +9,7 @@ import Providers from '@/context/Providers';
 import { getServerSession } from 'next-auth';
 import { options } from '../api/auth/[...nextauth]/options';
 import { Metadata } from 'next';
+import FirebaseNotify from '@/utils/firebase-notify';
 
 const cairo = Cairo({
   subsets: ['arabic'],
@@ -36,6 +37,7 @@ export default async function RootLayout({ children, params: { locale } }: { chi
       </head>
       <NextIntlClientProvider messages={messages}>
         <body>
+          <FirebaseNotify />
           <main dir={locale === 'ar' ? 'rtl' : 'ltr'} className="w-full flex-1 overflow-hidden">
             <NextTopLoader showSpinner={false} />
             <Providers session={session}>{children}</Providers>
